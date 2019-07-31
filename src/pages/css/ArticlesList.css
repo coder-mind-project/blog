@@ -1,0 +1,74 @@
+.drawer .MuiDrawer-paperAnchorLeft{
+    width: 235px;
+}
+
+.articles-container{
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+
+}
+
+.loading-ellipsis{
+    width: 100px;
+}
+
+.drawer-header{
+    background-color: #000;
+}
+
+.light-color{
+    color: #fff;
+}
+
+.search-input input{
+    font-size: larger;
+}
+
+.hud-top-bar{
+    display: flex;
+    max-height: 75px;
+    margin: 15px;
+}
+
+.hud-top-bar-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.hud-top-bar-search{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px 25px 25px 0;
+}
+
+.hud-top-bar-search div{
+    width: 100%;
+}
+
+.search-results{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.see_more_area, .loading_indicator{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 !important;
+}
+
+.high_light_text{
+    color: #f50057;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media(max-width: 768px){
+    .drawer .MuiDrawer-paperAnchorLeft{
+        width: 50%;
+    }
+}

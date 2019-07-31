@@ -1,0 +1,22 @@
+.floatingButton{
+    position: fixed !important;
+    z-index: 1;
+    left: 90%;
+    top: 80%;
+    overflow: hidden;
+}
+
+.defaultButtonColor{
+    background-color: rgb(34, 225, 199) !important;
+    color: #fff !important;
+}
+
+@media(max-width: 768px){
+    .floatingButton{
+        position: fixed !important;
+        z-index: 1;
+        left: 75%;
+        top: 80%;
+        overflow: hidden;
+    }
+}

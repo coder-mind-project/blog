@@ -1,0 +1,64 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    min-height: 70vh;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+.main-container-msg{
+    color: #fff;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+}
+
+.main-container-img{
+    color: #fff;
+    font-size: 5rem !important;
+}
+
+.best_articles, .about_project{
+    min-height: 35vw;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 25px;
+}
+
+.top-article{
+    text-decoration: none;
+    color: #000;
+}
+
+.loading-ellipsis{
+    width: 100px;
+}
+
+.search-label, .text-center{
+    text-align: center;
+    font-weight: 500;
+}
+
+.search-input input{
+    font-size: larger;
+}
+
+.small-text{
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+
+.about_project_one, .about_project_two{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
