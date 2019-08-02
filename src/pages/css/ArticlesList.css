@@ -27,7 +27,7 @@
 .hud-top-bar{
     display: flex;
     max-height: 75px;
-    margin: 15px;
+    margin: 15px !important;
 }
 
 .hud-top-bar-icon{
@@ -53,11 +53,11 @@
     flex-wrap: wrap;
 }
 
-.see_more_area, .loading_indicator{
+.see_more_area{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     margin: 15px 0 !important;
 }
 

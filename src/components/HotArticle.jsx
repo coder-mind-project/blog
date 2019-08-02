@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { Grid, Box } from '@material-ui/core'
-import Image from 'material-ui-image'
 
 import './css/HotArticle.css'
 
@@ -24,6 +23,9 @@ class HotArticle extends Component {
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <small><strong>{this.article.theme.name}</strong></small>
+                    </Box>
+                    <Box display="flex" justifyContent="center">
+                        <small className="short-description">{this.article.shortDescription}</small>
                     </Box>
                 </Box>
             </Grid>

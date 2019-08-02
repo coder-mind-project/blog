@@ -4,18 +4,16 @@ export const styles = theme => ({
         backgroundColor: '#000',
         minHeight: 160,
         display: 'flex',
-        flexWrap: 'wrap',
-    },
-    footerContainerChildStart: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        flexWrap: 'wrap',
-    },
-    footerContainerChildEnd: {
-        display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'center'
+    },
+    footerContainerTop: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    footerContainerBottom: {
+        display: 'flex',
+        justifyContent: 'space-between',
         alignItems: 'flex-end',
         flexWrap: 'wrap',
     },

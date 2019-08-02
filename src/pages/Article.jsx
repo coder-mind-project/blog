@@ -15,15 +15,13 @@ import Comment from '../components/Comment.jsx'
 import LoadingEllipsis from '../assets/loading-ellipsis.gif'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTag, faTags, faHeart, faDownload, faCommentDots } from '@fortawesome/free-solid-svg-icons'
+import { faTag, faTags, faDownload, faCommentDots } from '@fortawesome/free-solid-svg-icons'
 import { faFileCode } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookSquare, faTwitterSquare, faWhatsapp, faLinkedin, faTelegram } from '@fortawesome/free-brands-svg-icons'
 
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton, LinkedinShareButton  } from 'react-share'
 
 import FloatingButton from '../components/FloatingButton.jsx'
-
-import Image from 'material-ui-image'
 
 import './css/Article.css'
 
@@ -370,7 +368,7 @@ class Article extends Component {
                         autoHideDuration={6000}
                         onClose={() => this.handleClose()}
                         ContentProps={{
-                        'aria-describedby': 'message-id',
+                            'aria-describedby': 'message-id',
                         }}
                         message={<h3 id="message-id">Comentário enviado, em 24 horas ele estará publico para outros usuários</h3>}
                         action={[

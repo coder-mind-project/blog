@@ -33,11 +33,12 @@ class ArticlesList extends Component {
         articles: [],
         page: 1,
         count: 0,
-        limit: 5,
+        limit: 1,
         loadingArticles: false,
         loadingMoreArticles: false,
         author: '',
         theme: '',
+        error: false,
 
         drawer: false,
         search: '',
@@ -69,7 +70,8 @@ class ArticlesList extends Component {
     
     async getThemes(){
         await this.toogleLoadingThemes()
-        await axios('http://localhost:3002/themes').then(res => {
+        const url = `${api_cm_web_service}/themes`
+        await axios(url).then(res => {
             const themes = res.data.themes.map(theme => {
                 return {
                     value: theme.name,
@@ -108,9 +110,12 @@ class ArticlesList extends Component {
                     articles,
                     count: res.data.count,
                     limit: res.data.limit,
+                    error: false,
                 }
             )
-        })
+        }).catch(error => this.setState({error: true}))
+
+
         if(seeMore){
             this.toogleLoadingMoreArticles()
         }else{
@@ -150,12 +155,10 @@ class ArticlesList extends Component {
                         <Box display="flex" flexDirection="column" justifyContent="space-between" height="100%">
                             <Box display="flex" flexDirection="column">
                                 <Box className="drawer-header" display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="150px">
-                                    <img src="..." width="180"
-                                        alt="Logo"
-                                    />
-                                    <Box display="flex">
+                                    <h3 className="coder-mind"><span style={{color: '#fff'}}>Coder Mind</span></h3>
+                                    <Box display="flex" mt={2}>
                                         <Icon color="secondary">filter_list</Icon>
-                                        <small className="light-color">Filtros</small>
+                                        <small className="light-color">Filtros de pesquisa</small>
                                     </Box>
                                 </Box>
                                 <Box p={2}>
@@ -261,15 +264,17 @@ class ArticlesList extends Component {
                                     <p>Carregando mais artigos...</p>
                                 </Box>
                             }
-                            <Button color="secondary" variant="outlined" size="medium" disabled={this.state.loadingMoreArticles} onClick={() => this.searchArticles(true)}>
-                                Ver mais
-                            </Button>
+                            <Box display="flex" justifyContent="center" alignItems="center">
+                                <Button color="secondary" variant="outlined" size="medium" disabled={this.state.loadingMoreArticles} onClick={() => this.searchArticles(true)}>
+                                    Ver mais
+                                </Button>
+                            </Box>
                         </Grid>
                     }
                     <FloatingButton action={() => document.documentElement.scrollTop = 0}/>
                     {
                         this.state.loadingArticles &&
-                            <Grid item xs={12} className="loading_indicator">
+                            <Grid item xs={12}>
                                 <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                                     <figure>
                                             <img src={LoadingEllipsis} alt="Carregando..."/>
@@ -280,14 +285,38 @@ class ArticlesList extends Component {
                             </Grid>
                     }
                     {
-                        this.state.articles.length === 0 && !this.state.loadingArticles &&
-                            <Box display="flex" justifyContent="center" alignItems="center" height="100vh" width="100%">
-                                <FontAwesomeIcon icon={faFilter} size="5x" color="rgba(245, 0, 87,0.5)" />
-                                <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                                    <p>Ops, parece que não conseguimos encontrar nenhum resultado</p>
-                                    <p>Caso necessário você pode alterar seus <strong className="high_light_text" onClick={() => this.toogleDrawer()}>filtros de busca</strong> ou alterar a informação no <strong className="high_light_text" onClick={() => {document.documentElement.scrollTop = 0; document.querySelector('#search-input').focus();}}>campo de pesquisa</strong>.</p>
+                        this.state.articles.length === 0 && !this.state.loadingArticles && !this.state.error &&
+                            <Grid item xs={12}>
+                                <Box display="flex" justifyContent="center" alignItems="center" flexWrap="wrap" mt={4} mb={4} p={3}>
+                                    <FontAwesomeIcon icon={faFilter} size="5x" color="rgba(245, 0, 87,0.5)" />
+                                    <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+                                        <h3>Ops! parece que não conseguimos encontrar nenhum resultado</h3>
+                                        <h3>Caso necessário você pode alterar seus <strong className="high_light_text" onClick={() => this.toogleDrawer()}>filtros de busca</strong> ou alterar a informação no <strong className="high_light_text" onClick={() => {document.documentElement.scrollTop = 0; document.querySelector('#search-input').focus();}}>campo de pesquisa</strong>.</h3>
+                                    </Box>
+                                </Box>
+                            </Grid>
+                    }
+                    { this.state.error && !this.state.loadingArticles && 
+                        <Grid item xs={12}>
+                            <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+                                <Box display="flex" alignItems="baseline" justifyContent="center" flexDirection="column" p={2}>
+                                    <Box display="flex" alignItems="center" flexWrap="wrap">
+                                        <Box display="flex" justifyContent="center" alignItems="center" className="error-icon-area">
+                                            <Icon color="secondary" className="error-icon">healing</Icon>
+                                        </Box>
+                                        <Box display="flex" justifyContent="center" alignItems="center">
+                                            <h2 className="message-error">Ops! ocorreu um erro ao buscar nossos artigos. Já tentou atualizar a página?</h2>
+                                        </Box>
+                                    </Box>
+                                    <Box display="flex" flexDirection="column" width="100%" mt={3}>
+                                        <Button color="secondary" fullWidth variant="outlined" onClick={() => window.location.reload()}>Atualizar página</Button>
+                                    </Box>
+                                    <Box display="flex" flexDirection="column" width="100%" mt={3}>
+                                        <Button color="secondary" fullWidth variant="contained" onClick={() => window.location.href = '/sobre#contact'}>Reportar bug</Button>
+                                    </Box>
                                 </Box>
                             </Box>
+                        </Grid>
                     }
                 </Grid>
             </Grid>

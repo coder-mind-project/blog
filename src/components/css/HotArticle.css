@@ -1,5 +1,4 @@
-.articleTitle{
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis;
+.short-description{
+    padding: 10px;
+    font-size: 0.8rem !important;
 }

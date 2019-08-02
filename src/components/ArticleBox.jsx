@@ -35,15 +35,17 @@ const ArticleBox = props => {
                             {props.article.title}
                         </Link>
                     </h2>
-                    <Box display="flex" flexDirection="column" alignItems={matches ? 'center' : 'flex-start'}>
-                        <small>Assuntos do momento</small>
-                        <Rating 
-                            placeholderRating={5}
-                            readonly
-                            placeholderSymbol={(<FontAwesomeIcon icon={faStar} color="yellow" />)}
-                            emptySymbol={(<FontAwesomeIcon icon={faStar} color="gray" />)}
-                        /> 
-                    </Box>
+                    { props.article.boosted && 
+                        <Box display="flex" flexDirection="column" alignItems={matches ? 'center' : 'flex-start'}>
+                            <small>Assuntos do momento</small>
+                            <Rating 
+                                placeholderRating={5}
+                                readonly
+                                placeholderSymbol={(<FontAwesomeIcon icon={faStar} color="yellow" />)}
+                                emptySymbol={(<FontAwesomeIcon icon={faStar} color="gray" />)}
+                            /> 
+                        </Box>
+                    }
                     <p className={matches ? classes.textXs : ''}>
                         {props.article.shortDescription}
                     </p>

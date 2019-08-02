@@ -8,7 +8,7 @@ import { AppBar, Toolbar, IconButton, Drawer, List, ListItem,
     
 import { styles } from './styles/Menu'
 
-import { version } from '../config/appConfig'
+import { version, build } from '../config/appConfig'
 
 const useStyles = makeStyles(styles)
 
@@ -41,10 +41,9 @@ const Menu = props => {
                     }
                     <Box display="flex" alignItems="center">
                         <Link className={classes.link} to="/">
-                            <img src="..." width="180"
-                                className={classes.menuLogo}
-                                alt="Logo"
-                            />
+                            <h1 className="coder-mind">
+                                Coder Mind
+                            </h1>
                         </Link>
                     </Box>
                     { matches && 
@@ -76,7 +75,9 @@ const Menu = props => {
                     <Box className={classes.logo}>
                         <Grid item xs={10} sm={11}>
                             <Box width="100%" height="100%" display="flex" ml={5} mr={5} alignItems="center">
-                                <img src="..." width="180" alt="Logo"/>
+                                <h1 className="coder-mind">
+                                    Coder Mind
+                                </h1>
                             </Box>
                         </Grid>
                         <Grid item xs={2} sm={1} className={classes.fakeLink}>
@@ -149,7 +150,7 @@ const Menu = props => {
                                 <Icon  className={classes.iconButtonMenu}>
                                     code
                                 </Icon>
-                                {version}
+                                {version} - {build}
                             </span>
                         </ListItem>
                     </List>

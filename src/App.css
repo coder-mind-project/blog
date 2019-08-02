@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Offside&display=swap');
 
 body, div, button, li {
     font-family: 'Darker Grotesque', sans-serif !important;
+}
+
+.coder-mind{
+    font-family: 'Offside', cursive !important;
 }
 
 button > span{

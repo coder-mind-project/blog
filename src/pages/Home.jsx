@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Grid, Button, Icon, Box, Tabs, Tab } from '@material-ui/core'
+import { Grid, Button, Box, Tabs, Tab } from '@material-ui/core'
 import SearchBar from 'material-ui-search-bar'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPeopleCarry, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+import { faNodeJs, faJava, faReact } from '@fortawesome/free-brands-svg-icons'
 
 import { Link } from 'react-router-dom'
 
@@ -50,12 +51,20 @@ class Home extends Component {
         return ( 
             <div>
                 <Grid item xs={12} className="main-container">
-                        <Icon className="main-container-img">
-                            library_books
-                        </Icon>
+                        <Box display="flex" alignItems="center" mb={2}>
+                            <Box p={1}>
+                                <FontAwesomeIcon icon={faJava} size="8x" className="main-container-img" />
+                            </Box>
+                            <Box p={1}>
+                                <FontAwesomeIcon icon={faNodeJs} size="8x" className="main-container-img" />
+                            </Box>
+                            <Box p={1}>
+                                <FontAwesomeIcon icon={faReact} size="8x" className="main-container-img" />
+                            </Box>
+                        </Box>
                         <h3 className="main-container-msg">
-                            Aqui na <span style={{color: '#22E1C7'}}>Coder</span> <span style={{color: '#f50057'}}>Mind</span> você poderá acompanhar os principais
-                            assuntos de tecnologia. De programação a arquitetura de computadores e tudo
+                            Aqui na <span style={{color: '#22E1C7'}} className="coder-mind">Coder</span> <span style={{color: '#f50057'}} className="coder-mind">Mind</span> você poderá acompanhar bons
+                            conteúdos de tecnologia. De programação a arquitetura de computadores e tudo
                             isso de graça!
                         </h3>
                         <Link to="/artigos">

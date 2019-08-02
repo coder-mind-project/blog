@@ -3,14 +3,28 @@ import Photo from '../assets/allan-wanderley.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { Grid, Box, TextField, Button, ButtonBase, Icon, CircularProgress } from '@material-ui/core'
+import { Grid, Box, TextField, Button, ButtonBase, Icon,
+        CircularProgress, Snackbar, IconButton } from '@material-ui/core'
 
+import axios from 'axios'
+import { api_cm_web_service } from '../config/appConfig'
 import './css/About.css'
 class About extends Component {
     state = { 
         email: '',
         msg: '',
         sending: false,
+
+        showSuccessSend: false,
+        showErrorSend: false,
+    }
+
+    handleClose(event, reason) {
+        if (reason === 'clickaway') {
+            return;
+        }
+        
+        this.setState({showSuccessSend: false, showErrorSend: false});
     }
 
     handleChange(event, attr){
@@ -29,6 +43,21 @@ class About extends Component {
     async sendMessage(event){
         event.preventDefault()
         await this.changeStateSending()
+        const url = `${api_cm_web_service}/contact`
+        const message = {
+            email: this.state.email,
+            message: this.state.msg
+        }
+
+        await axios.post(url, message).then(res => {
+            this.setState({
+                showSuccessSend: true,
+                email: '',
+                msg: ''
+            })
+        }).catch(error => {
+            this.setState({showErrorSend: error.response && error.response.data ? error.response.data : 'Ocorreu um erro ao enviar sua mensagem, por gentileza utilize outra plataforma ou tente novamente mais tarde'})
+        })
             /* ... */
         this.changeStateSending()
     }
@@ -69,8 +98,8 @@ class About extends Component {
                     </Box>
                 </Box>
                 <Box mt={3} mb={3} id="contact">
-                    <h2>Prefere falar comigo de outra forma?</h2>
-                    <p>Basta me informar seu e-mail de contato e informar sua mensagem.</p>
+                    <h2>Prefere falar conosco de outra forma?</h2>
+                    <p>Basta nos informar seu e-mail de contato e incluir sua mensagem.</p>
                     <p>Pode ficar tranquilo, qualquer tipo de dado fornecido a este site é 100% confidencial e instranferível</p>
                     <label htmlFor="email"></label>
                     <form onSubmit={(event) => this.sendMessage(event)} autoComplete="on">
@@ -78,8 +107,8 @@ class About extends Component {
                             <Box mb={2}>
                                 <TextField id="email" fullWidth placeholder="Informe o seu e-mail" value={this.state.email} onChange={(event) => this.handleChange(event, 'email')} error={this.state.email.length > 100} helperText={this.state.email.length > 100 ? "Quantidade de caracteres acima do permitido" : ""}></TextField>
                             </Box>
-                            <Box mb={2}>
-                                <TextField id="message" multiline className="input-message" fullWidth placeholder="Digite sua mensagem" value={this.state.msg} onChange={(event) => this.handleChange(event, 'msg')} error={this.state.msg.length > 1000} helperText={this.state.msg > 1000 ? "Quantidade de caracteres acima do permitido, se necessário me envie um e-mail" : ""} />
+                            <Box mb={5}>
+                                <TextField id="message" multiline className="input-message" fullWidth placeholder="Digite sua mensagem" value={this.state.msg} onChange={(event) => this.handleChange(event, 'msg')} error={this.state.msg.length > 1000} helperText={this.state.msg.length > 1000 ? "Quantidade de caracteres acima do permitido, se necessário nos envie um e-mail" : ""} />
                             </Box>
                             <Box mb={2}>
                                 <ButtonBase type="submit" className="button-base-equal-button">
@@ -96,6 +125,62 @@ class About extends Component {
                             </Box>
                         </Box>
                     </form>
+                    <Snackbar
+                        anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                        }}
+                        open={Boolean(this.state.showSuccessSend)}
+                        autoHideDuration={6000}
+                        onClose={() => this.handleClose()}
+                        ContentProps={{
+                        'aria-describedby': 'message-id',
+                        }}
+                        message={<h3 id="message-id">Mensagem enviada com sucesso! Agora é com a gente, prometemos te responder rapidinho ;)</h3>}
+                        action={[
+                        <Button key="undo" color="secondary" size="small" onClick={() => this.handleClose()}>
+                            Fechar
+                        </Button>,
+                        <IconButton
+                            key="close"
+                            aria-label="close"
+                            color="inherit"
+                            onClick={() => this.handleClose()}
+                        >
+                            <Box ml={1}>
+                                <Icon>clear</Icon>
+                            </Box>
+                        </IconButton>,
+                        ]}
+                    />
+                <Snackbar
+                        anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                        }}
+                        open={Boolean(this.state.showErrorSend)}
+                        autoHideDuration={6000}
+                        onClose={() => this.handleClose()}
+                        ContentProps={{
+                        'aria-describedby': 'message-id',
+                        }}
+                        message={<h3 id="message-id">{this.state.showErrorSend}</h3>}
+                        action={[
+                        <Button key="undo" color="secondary" size="small" onClick={() => this.handleClose()}>
+                            Fechar
+                        </Button>,
+                        <IconButton
+                            key="close"
+                            aria-label="close"
+                            color="inherit"
+                            onClick={() => this.handleClose()}
+                        >
+                            <Box ml={1}>
+                                <Icon>clear</Icon>
+                            </Box>
+                        </IconButton>,
+                        ]}
+                    />
                 </Box>
             </Grid>
         )
