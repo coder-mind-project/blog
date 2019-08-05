@@ -33,7 +33,7 @@ class ArticlesList extends Component {
         articles: [],
         page: 1,
         count: 0,
-        limit: 1,
+        limit: 10,
         loadingArticles: false,
         loadingMoreArticles: false,
         author: '',

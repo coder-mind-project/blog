@@ -9,6 +9,18 @@ body, div, button, li {
     font-family: 'Offside', cursive !important;
 }
 
+label.Mui-focused{
+    color: #f50057 !important;
+}
+
+.Mui-focused fieldset{
+    border-color: #f50057 !important;
+}
+
+.MuiInput-underline:after{
+    border-bottom-color: #f50057 !important;
+}
+
 button > span{
     font-size: 1rem;
     font-weight: 700;

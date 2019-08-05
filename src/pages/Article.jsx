@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Box, Divider, Tooltip, TextField,
+import { Grid, Box, Divider, TextField,
         Button, Zoom, Snackbar, Icon, IconButton,
         CircularProgress } from '@material-ui/core'
 
@@ -22,6 +22,10 @@ import { faFacebookSquare, faTwitterSquare, faWhatsapp, faLinkedin, faTelegram }
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton, LinkedinShareButton  } from 'react-share'
 
 import FloatingButton from '../components/FloatingButton.jsx'
+
+import { PDFDownloadLink } from '@react-pdf/renderer'
+
+import {PDFSample} from '../components/PDFSample.jsx'
 
 import './css/Article.css'
 
@@ -46,6 +50,11 @@ class Article extends Component {
         showFormComment: false,
         showSuccessComment: false,
         showErrorComment: false,
+        enableDownload: false,
+    }
+
+    enable(){
+        this.setState({enableDownload: true})
     }
 
     toogleLoadingArticle(){
@@ -74,6 +83,13 @@ class Article extends Component {
         if(this.state.article) document.querySelector('#article-content').innerHTML = this.state.article.textArticle
 
         this.getRelateds(customURL)
+        this.setView()
+    }
+
+    setView(){
+        const url = `${api_cm_web_service}/articles`
+        const article = this.state.article
+        axios.post(url, article)
     }
 
     formatDate(date){
@@ -113,7 +129,7 @@ class Article extends Component {
 
     async sendComment(){
         await this.toogleSendingComment()
-        const url = 'http://localhost:3002/comments/article'
+        const url = `${api_cm_web_service}/comments/article`
         const comment = {
             ...this.state.comment,
             article: this.state.article
@@ -151,8 +167,9 @@ class Article extends Component {
 
 
     
-    componentDidMount(){
-        this.getArticle()
+    async componentDidMount(){
+        await this.getArticle()
+        this.enable()
     }
 
     render() { 
@@ -214,25 +231,26 @@ class Article extends Component {
                         <Grid item xs={12} className="article-footer">
                             <Box p={3} display="flex" alignItems="center">
                                 {/* <Box mr={2} ml={2}>
-                                    <Tooltip title={this.state.liked ? (<h2>Remover gostei</h2>) : (<h2>Gostei</h2>)} >
                                         <Box>
                                             <FontAwesomeIcon icon={faHeart} className="foot-button" color={this.state.liked ? '#f50057' : 'gray'} size="2x" onClick={() => this.setState({liked: !this.state.liked})}/>
                                         </Box>
-                                    </Tooltip>
                                 </Box> */}
                                 <Box mr={2} ml={2}>
-                                    <Tooltip title={(<h2>Salvar Offline</h2>)} >
-                                        <Box>
-                                            <FontAwesomeIcon icon={faDownload} className="foot-button" size="2x" onClick={() => console.log('oi')}/>
-                                        </Box>
-                                    </Tooltip>
+                                { this.state.enableDownload && 
+                                    <PDFDownloadLink
+                                        document={<PDFSample article={this.state.article} />}
+                                        fileName={`${this.state.article.title} - Coder Mind.pdf`}
+                                    >
+                                        {({ blob, url, loading, error }) =>
+                                            <FontAwesomeIcon icon={faDownload} className="foot-button" color="#f50057" size="2x"/>
+                                        }
+                                    </PDFDownloadLink>
+
+                                }
+                                    
                                 </Box>
                                 <Box mr={2} ml={2}>
-                                    <Tooltip title={(<h2>Comentários</h2>)} >
-                                        <Box>
-                                            <FontAwesomeIcon icon={faCommentDots} className="foot-button" size="2x" onClick={() => this.goToComments()}/>
-                                        </Box>
-                                    </Tooltip>
+                                    <FontAwesomeIcon icon={faCommentDots} className="foot-button" size="2x" onClick={() => this.goToComments()}/>
                                 </Box>
                             </Box>
                         </Grid>
