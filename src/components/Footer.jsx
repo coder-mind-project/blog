@@ -51,9 +51,6 @@ const Footer = (props) => {
                             <Box display="flex" flexDirection={matches ? "row" : "column"} justifyContent="space-between" m={2}>
                                 <p className={classes.footerText}>Gostou do conteúdo? consulte nossas <Link to="/privacidade" className={classes.footerText}><u>políticas de uso</u></Link>.</p>
                             </Box>
-                            <Box display="flex" flexDirection={matches ? "row" : "column"} justifyContent="space-between" m={2}>
-                                <p className={classes.footerText}>Desenvolvido com <FontAwesomeIcon icon={faHeart} color="red" /> por <a href="https://github.com/allanalves23" className={classes.footerText}><u>Allan Wanderley</u></a></p>
-                            </Box>
                         </Box>}
                         <Box p={2} display="flex" justifyContent={matches ? "center" : "flex-end"} width={matches ? "100%" : "inherit"}>
                             <h2 className="coder-mind"><span style={{color: '#FFF'}}>Coder Mind</span></h2>

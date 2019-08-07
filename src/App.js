@@ -22,7 +22,7 @@ function App() {
           <Menu />
           <ScrollToTop>
             <Switch >
-              <Route path="/" exact render={() => console.log('render')} component={Home}></Route>     
+              <Route path="/" exact component={Home}></Route>     
               <Route path="/artigos" exact component={ArticlesList}></Route>     
               <Route path="/artigos/:resource" exact component={Article}></Route>
               <Route path="/privacidade" exact component={Privacity}></Route>

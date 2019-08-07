@@ -15,17 +15,17 @@ import Comment from '../components/Comment.jsx'
 import LoadingEllipsis from '../assets/loading-ellipsis.gif'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTag, faTags, faDownload, faCommentDots } from '@fortawesome/free-solid-svg-icons'
-import { faFileCode } from '@fortawesome/free-regular-svg-icons'
+import { faTag, faTags, faCommentDots, faPaperclip, faShareAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faFileCode, faCommentDots as faCommentDotsRegular } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookSquare, faTwitterSquare, faWhatsapp, faLinkedin, faTelegram } from '@fortawesome/free-brands-svg-icons'
 
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton, LinkedinShareButton  } from 'react-share'
 
 import FloatingButton from '../components/FloatingButton.jsx'
 
-import { PDFDownloadLink } from '@react-pdf/renderer'
+// import { PDFDownloadLink } from '@react-pdf/renderer'
 
-import {PDFSample} from '../components/PDFSample.jsx'
+// import {PDFSample} from '../components/PDFSample.jsx'
 
 import './css/Article.css'
 
@@ -50,12 +50,14 @@ class Article extends Component {
         showFormComment: false,
         showSuccessComment: false,
         showErrorComment: false,
-        enableDownload: false,
+
+        badBehavior: 0
+        // enableDownload: false,
     }
 
-    enable(){
-        this.setState({enableDownload: true})
-    }
+    // enable(){
+    //     this.setState({enableDownload: true})
+    // }
 
     toogleLoadingArticle(){
         this.setState({loadingArticle: !this.state.loadingArticle})
@@ -69,11 +71,21 @@ class Article extends Component {
         const customURL = this.props.match.params.resource
         const url = `${api_cm_web_service}/articles/${customURL}`
 
+
         await this.toogleLoadingArticle()
         await axios(url).then( async res => {
+            let liked = false
+
+            let localLike = await JSON.parse(localStorage.getItem(`${res.data.article._id}`))
+            const remoteLike = res.data.userLike
+
+            if(!localLike && remoteLike && remoteLike.confirmed) liked = true
+            if(localLike && localLike.confirmed) liked = true
+
             await this.setState({
                 article: res.data.article,
-                comments: res.data.comments
+                comments: res.data.comments,
+                liked
             })
         }).catch(error => {
             this.setState({error})
@@ -83,13 +95,6 @@ class Article extends Component {
         if(this.state.article) document.querySelector('#article-content').innerHTML = this.state.article.textArticle
 
         this.getRelateds(customURL)
-        this.setView()
-    }
-
-    setView(){
-        const url = `${api_cm_web_service}/articles`
-        const article = this.state.article
-        axios.post(url, article)
     }
 
     formatDate(date){
@@ -135,6 +140,9 @@ class Article extends Component {
             article: this.state.article
         }
         await axios.post(url, comment).then(() => {
+            localStorage.setItem('cm-user-comment', this.state.comment.userName)
+            localStorage.setItem('cm-user-email', this.state.comment.userEmail)
+            
             this.setState({
                 showSuccessComment: true,
                 showFormComment: false,
@@ -161,15 +169,100 @@ class Article extends Component {
         this.setState({showSuccessComment: false, showErrorComment: false});
     }
 
-    async goToComments(){
-        document.querySelector('#comments').focus()
+    goToComments(){
+        document.querySelector('#form-comment').focus()
+    }
+    
+    goToShareOptions(){
+        document.documentElement.scrollTop = 150
+        document.querySelector('#share-options').focus()
     }
 
+    async defineUser(){
+        const user = localStorage.getItem('cm-user-comment')
+        const email = localStorage.getItem('cm-user-email')
 
+        if(user && email){
+            this.setState({comment: {
+                ...this.state.comment,
+                userName: user,
+                userEmail: email
+            }})
+        }
+
+        const idle = await this.verifyIdleMode()
+        
+        if(!idle){
+            const article = this.state.article
+            const url = `${api_cm_web_service}/articles`
+
+            axios.post(url, article).then(res => {
+                this.setState({liked: res.data.confirmed})
+            })
+        }
+
+    }
+
+    async verifyIdleMode(){
+
+        /* Capturação do modo ocioso */
+        const idleMode = localStorage.getItem('cm-idle-mode')
+
+        /* Caso o modo esteja setado é verificado o tempo de ociosidade definido */
+        if(idleMode){
+            if(idleMode <= Math.floor(Date.now()/1000)){
+                await localStorage.removeItem('cm-idle-mode')
+                return false
+            }else{
+                return true
+            }
+        }else{
+            return true
+        }
+    }
+
+    analizeBehavior(){
+        /* analizador de mal comportamento */
+        const analizer = this.state.badBehavior
+
+
+        if(analizer > 3){
+            const timedOut = Math.floor(Date.now()/1000) + (60)
+            localStorage.setItem('cm-idle-mode', timedOut)
+
+            return false
+        }else{
+            const newBadBehavior = this.state.badBehavior + 1
+            this.setState({badBehavior: newBadBehavior})
+            return true
+        }
+    }
+
+    async like(){
+        await this.setState({liked: !this.state.liked})
+
+        const idle = await this.verifyIdleMode()
+        const authorize = await this.analizeBehavior()
+        
+        if(idle && authorize){
+            const url = `${api_cm_web_service}/articles`
+            const article = this.state.article
+            axios.post(url, article)
+        }else{
+
+            const like = {
+                createdAt: new Date(),
+                confirmed: this.state.liked,
+            }
+
+            localStorage.setItem(`${this.state.article._id}`, JSON.stringify(like))
+        }
+    }
     
     async componentDidMount(){
         await this.getArticle()
-        this.enable()
+        this.defineUser()
+        // this.enable()
     }
 
     render() { 
@@ -217,7 +310,7 @@ class Article extends Component {
                         </Grid>
                         { this.state.article && this.state.article._id &&
                             <Grid item xs={12}>
-                                <Box display="flex" justifyContent="center" alignItems="center" width="100%">
+                                <Box display="flex" justifyContent="center" alignItems="center" width="100%" id="share-options" tabIndex="-1">
                                     <FacebookShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} quote={`Veja mais sobre ${this.state.article.title}`} children={<FontAwesomeIcon icon={faFacebookSquare} size="2x" color="#3C5A99"/>} />
                                     <TwitterShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`${this.state.article.title}`} hashtags={[`${this.state.article.theme.name}`, `${this.state.article.title}`, 'Coder Mind']} children={<FontAwesomeIcon icon={faTwitterSquare} size="2x" color="#1da1f2"/>} />
                                     <WhatsappShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} separator=" | " children={<FontAwesomeIcon icon={faWhatsapp} size="2x" color="#58e870"/>} />
@@ -230,13 +323,12 @@ class Article extends Component {
                         <Grid item xs={12} id="article-content"></Grid>
                         <Grid item xs={12} className="article-footer">
                             <Box p={3} display="flex" alignItems="center">
-                                {/* <Box mr={2} ml={2}>
-                                        <Box>
-                                            <FontAwesomeIcon icon={faHeart} className="foot-button" color={this.state.liked ? '#f50057' : 'gray'} size="2x" onClick={() => this.setState({liked: !this.state.liked})}/>
-                                        </Box>
-                                </Box> */}
                                 <Box mr={2} ml={2}>
-                                { this.state.enableDownload && 
+                                    <Box>
+                                        <FontAwesomeIcon icon={faHeart} className="foot-button" color={ this.state.liked ? "#f50057":'gray'} size="2x" onClick={() => this.like()}/>
+                                    </Box>
+                                </Box>
+                                { /* this.state.enableDownload &&<Box mr={2} ml={2}>
                                     <PDFDownloadLink
                                         document={<PDFSample article={this.state.article} />}
                                         fileName={`${this.state.article.title} - Coder Mind.pdf`}
@@ -246,11 +338,15 @@ class Article extends Component {
                                         }
                                     </PDFDownloadLink>
 
-                                }
-                                    
+                                </Box>
+                                */}
+                                <Box mr={2} ml={2}>
+                                    <Box>
+                                        <FontAwesomeIcon icon={faShareAlt} className="foot-button" color="gray" size="2x" onClick={() => this.goToShareOptions()}/>
+                                    </Box>
                                 </Box>
                                 <Box mr={2} ml={2}>
-                                    <FontAwesomeIcon icon={faCommentDots} className="foot-button" size="2x" onClick={() => this.goToComments()}/>
+                                    <FontAwesomeIcon icon={faCommentDots} className="foot-button" color="gray" size="2x" onClick={() => this.goToComments()}/>
                                 </Box>
                             </Box>
                         </Grid>
@@ -260,8 +356,13 @@ class Article extends Component {
                         { this.state.relatedArticles.length > 0 && 
                             <Grid item xs={12} className="more_related">
                                 <Box className="more_related_title" display="flex" alignItems="center">
-                                    <Box mr={1}>
-                                        <FontAwesomeIcon icon={faFileCode} size="2x" />
+                                    <Box display="flex" alignItems="center" mr={1}>
+                                        <Box m={1}>
+                                            <FontAwesomeIcon icon={faPaperclip} size="1x" color="#f50057" id="related-articles" tabIndex="-1" />
+                                        </Box>
+                                        <Box m={1}>
+                                            <FontAwesomeIcon icon={faFileCode} size="2x" color="#f50057" />
+                                        </Box>
                                     </Box>
                                     <h2>Conteúdos relacionados</h2>
                                 </Box>
@@ -273,8 +374,13 @@ class Article extends Component {
                         <Divider />
                         <Grid item xs={12} className="comments">
                             <Box className="comments_title" display="flex" alignItems="center">
-                                <Box mr={1}>
-                                    <FontAwesomeIcon icon={faCommentDots} size="2x" />
+                                <Box display="flex" alignItems="center" mr={1}>
+                                    <Box m={1}>
+                                        <FontAwesomeIcon icon={faPaperclip} size="1x" color="#f50057" id="form-comment" tabIndex="-1" />
+                                    </Box>
+                                    <Box m={1}>
+                                        <FontAwesomeIcon icon={faCommentDotsRegular} size="2x" color="#f50057" />
+                                    </Box>
                                 </Box>
                                 <h2>Comentários</h2>
                             </Box>
@@ -318,7 +424,7 @@ class Article extends Component {
                                     </Zoom>
                                 }
                             </Box>
-                            <Grid item xs={12} className="comments-content" id="comments" tabIndex="-1">
+                            <Grid item xs={12} className="comments-content">
                                 { this.state.comments.length > 0 && 
                                     this.state.comments.map(comment => 
                                         <Comment key={comment._id} comment={comment}/>)
@@ -330,7 +436,7 @@ class Article extends Component {
                                         <Box>
                                             <Button color="secondary" variant="text" size="small" onClick={async () => {
                                                 await this.setState({showFormComment: true})
-                                                document.querySelector('#user-name').focus()
+                                                document.querySelector('#form-comment').focus()
                                             }}>
                                                 comentar
                                             </Button>
@@ -358,12 +464,12 @@ class Article extends Component {
                     <Grid className="article-wrapper">
                         <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="100vh">
                             <Box display="flex" alignItems="baseline" justifyContent="center" flexDirection="column" p={2}>
-                                <Box display="flex" alignItems="center" flexWrap="wrap">
+                                <Box display="flex" alignItems="center" justifyContent="center">
                                     <Box display="flex" justifyContent="center" alignItems="center" className="error-icon-area">
                                         <Icon color="secondary" className="error-icon">healing</Icon>
                                     </Box>
                                     <Box display="flex" justifyContent="center" alignItems="center">
-                                        <h2 className="message-error">Ops, ocorreu um erro ao recuperar seu artigo. Já tentou atualizar a página?</h2>
+                                        <h2 className="message-error">{this.state.error && this.state.error.response.status === 404 ? 'Artigo não encontrado, acredita que houve um problema? Clique no botão rosa para nos comunicar =D': 'Ops, ocorreu um erro ao recuperar seu artigo. Já tentou atualizar a página?'}</h2>
                                     </Box>
                                 </Box>
                                 <Box display="flex" flexDirection="column" width="100%" mt={3}>

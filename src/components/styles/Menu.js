@@ -3,6 +3,7 @@ export const styles = theme => ({
         display: 'flex',
         paddingLeft: 10,
         paddingRight: 10,
+        background: 'linear-gradient(to right, #414345, #232526)',
         backgroundColor: 'rgb(0,0,0)',
         borderBottom: '1px solid #ccc',
     },
@@ -31,6 +32,7 @@ export const styles = theme => ({
     },
     iconButtonMenu: {
         marginRight: '10px',
+        color: '#f50057'
     },
     link: {
         color: 'inherit',
@@ -75,6 +77,7 @@ export const styles = theme => ({
         justifyContent: 'center',
         paddingTop: 15,
         paddingBottom: 15,
+        background: 'linear-gradient(to right, #414345, #232526)',
         backgroundColor: '#000',
         height: 100
     },

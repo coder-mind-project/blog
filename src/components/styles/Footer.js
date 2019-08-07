@@ -1,6 +1,7 @@
 export const styles = theme => ({
     footerContainer: {
         width: '100%',
+        background: 'linear-gradient(to right, #414345, #232526)',
         backgroundColor: '#000',
         minHeight: 160,
         display: 'flex',

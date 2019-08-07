@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Photo from '../assets/allan-wanderley.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPaperclip, faUserTie } from '@fortawesome/free-solid-svg-icons'
 import { Grid, Box, TextField, Button, ButtonBase, Icon,
         CircularProgress, Snackbar, IconButton } from '@material-ui/core'
 
@@ -56,7 +56,8 @@ class About extends Component {
                 msg: ''
             })
         }).catch(error => {
-            this.setState({showErrorSend: error.response && error.response.data ? error.response.data : 'Ocorreu um erro ao enviar sua mensagem, por gentileza utilize outra plataforma ou tente novamente mais tarde'})
+            const msg = error.response && error.response.data ? error.response.data : 'Ops, ocorreu um erro desconhecido. Que tal tentar novamente?'
+            this.setState({showErrorSend: msg})
         })
             /* ... */
         this.changeStateSending()
@@ -71,17 +72,17 @@ class About extends Component {
                 <p>Não existe nada comercial por trás desta iniciativa e sim uma vontade de persistir um conteúdo bom e principalmente de graça!</p>
                 <p>Fiquem a vontade para me conhecer ai embaixo e acima de tudo vamos trocar conhecimento, se você estar aqui então quer dizer que se minimamente se interessou. Então vamos lá, dê aquela força e compartilhe o material com quem possa estar precisando. Caso queira tirar dúvidas ou simplesmente trocar uma idéia basta entrar em contato pela plataforma que quiser, prometo que te respondo o mais rápido possível.</p>
                 <p>Então é isso, forte abraço e espero que a experiência tenha sido excelente!</p>
-                <Box mt={3} display="flex" justifyContent="space-between" alignItems="center" flexWrap="wrap">
+                <Box mt={5} mb={5} display="flex" justifyContent="space-between" alignItems="center" flexWrap="wrap">
                     <figure>
                         <img src={Photo} alt="Foto de Allan" className="photography" />
                         <figcaption>Allan Wanderley - Idealizador do projeto</figcaption>
                     </figure>
                     <Box className="social-media">
-                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('https://github.com/allanalves23')}>
+                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('https://allanalves23.top/')}>
                             <Box mr={1}>
-                                <FontAwesomeIcon icon={faGithubAlt}/>
+                                <FontAwesomeIcon icon={faUserTie}/>
                             </Box>
-                            Github pessoal
+                            Website
                         </Button>
                         <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('https://github.com/')}>
                             <Box mr={1}>
@@ -97,8 +98,15 @@ class About extends Component {
                         </Button>
                     </Box>
                 </Box>
-                <Box mt={3} mb={3} id="contact">
-                    <h2>Prefere falar conosco de outra forma?</h2>
+                <Box mt={3} mb={1}>
+                    <Box display="flex" alignItems="center">
+                        <Box m={1}>
+                            <FontAwesomeIcon icon={faPaperclip} size="1x" color="#f50057" id="contact" tabIndex="-1" />
+                        </Box>
+                        <Box m={1}>
+                            <h2>Prefere falar conosco de outra forma?</h2>
+                        </Box>
+                    </Box>
                     <p>Basta nos informar seu e-mail de contato e incluir sua mensagem.</p>
                     <p>Pode ficar tranquilo, qualquer tipo de dado fornecido a este site é 100% confidencial e instranferível</p>
                     <label htmlFor="email"></label>

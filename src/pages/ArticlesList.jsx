@@ -167,7 +167,7 @@ class ArticlesList extends Component {
                                         <TextField value={this.state.author} onChange={(event) => this.handleChange(event, 'author') } fullWidth />
                                     </Box>
                                     <Box>
-                                        <small>Tema</small>
+                                        <small>Assunto</small>
                                         <Select
                                             native
                                             value={this.state.theme}

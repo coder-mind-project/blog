@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 import { Grid, Box } from '@material-ui/core'
 
+import { api_cm_management } from '../config/appConfig'
+import DefaultImg from '../assets/img_not_found_768.png'
+
 import './css/HotArticle.css'
 
 
@@ -14,7 +17,7 @@ class HotArticle extends Component {
             <Grid item xs={12}>
                 <Box display="flex" flexDirection="column" alignItems="space-between" width="250px" height="300px">
                     <Box display="flex" justifyContent="center">
-                        <img src={`http://localhost:3001/${this.article.smallImg}`}  height="150px" alt={this.article.title} />
+                        <img src={ this.article.smallImg ? `${api_cm_management}/${this.article.smallImg}` : `${DefaultImg}`}  height="150px" alt={this.article.title} />
                     </Box>
                     <Box display="flex" justifyContent="center" height="50px">
                         <h4>
@@ -25,7 +28,7 @@ class HotArticle extends Component {
                         <small><strong>{this.article.theme.name}</strong></small>
                     </Box>
                     <Box display="flex" justifyContent="center">
-                        <small className="short-description">{this.article.shortDescription}</small>
+                        <small className="hot-article-short-description">{this.article.shortDescription}</small>
                     </Box>
                 </Box>
             </Grid>
