@@ -9,7 +9,7 @@ import { api_cm_management } from '../config/appConfig'
 const useStyles = makeStyles({
     card: {
         width: 345,
-        marginBottom: 15,
+        margin: 15,
     },
     media: {
         minHeight: 180,

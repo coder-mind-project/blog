@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faYoutube, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faImages } from '@fortawesome/free-regular-svg-icons'
 import {styles} from './styles/Footer'
@@ -58,9 +57,6 @@ const Footer = (props) => {
                         { matches && <Box display="flex" justifyContent={matches ? 'center' : 'flex-start'} flexWrap="wrap">
                             <Box display="flex" flexDirection={matches ? "row" : "column"} justifyContent="space-between" m={2}>
                                 <p className={classes.footerText}>Gostou do conteúdo? consulte nossas <Link to="/privacidade" className={classes.footerText}><u>políticas de uso</u></Link>.</p>
-                            </Box>
-                            <Box display="flex" flexDirection={matches ? "row" : "column"} justifyContent="space-between" m={2}>
-                                <p className={classes.footerText}>Desenvolvido com <FontAwesomeIcon icon={faHeart} color="red" /> por <a href="https://github.com/allanalves23" className={classes.footerText}><u>Allan Wanderley</u></a></p>
                             </Box>
                         </Box>}
                 </Grid>

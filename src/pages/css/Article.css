@@ -122,6 +122,26 @@
     padding: 15px 0px;
 }
 
+#article-content pre{
+    overflow-x: scroll;
+}
+
+#article-content pre::-webkit-scrollbar{
+    display: none;
+}
+
+#article-content blockquote{
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#article-content a{
+    color: #f50057 !important;
+    font-weight: 600 !important;
+    text-decoration: underline !important;
+}
+
 .message-error{
     text-align: center;
 }
@@ -149,6 +169,21 @@
 @media(max-width: 768px){
     .error-icon-area{
         width: 100%;
+    }
+
+    #article-content pre::-webkit-scrollbar{
+        display: block;
+        height: 5px;
+    }
+    
+    #article-content pre::-webkit-scrollbar-track{
+        background-color: #f5f5f5;
+        border-radius: 10px;
+    }
+    
+    #article-content pre::-webkit-scrollbar-thumb{
+        background-color: #f50057;
+        border-radius: 10px;
     }
 
     .article-title{

@@ -39,6 +39,9 @@ class Article extends Component {
         relatedArticles: [],
         loadingRelateds: false,
 
+        pageComments: 1,
+        limitComments: 10,
+        countComments: 0,
         comments: [],
         comment: {
             userName: '',
@@ -85,7 +88,8 @@ class Article extends Component {
             await this.setState({
                 article: res.data.article,
                 comments: res.data.comments,
-                liked
+                countComments: res.data.countComments,
+                liked,
             })
         }).catch(error => {
             this.setState({error})
@@ -95,6 +99,33 @@ class Article extends Component {
         if(this.state.article) document.querySelector('#article-content').innerHTML = this.state.article.textArticle
 
         this.getRelateds(customURL)
+    }
+
+    getMoreComments(){
+        const idArticle = this.state.article._id
+        const page = this.state.pageComments + 1
+        const limit = this.state.limitComments
+
+        const url = `${api_cm_web_service}/comments/article?article=${idArticle}&page=${page}&limit=${limit}`
+
+        axios(url).then( async res => {
+
+            if(this.state.comments.length === 0){
+                this.setState({
+                    comments: res.data.comments,
+                    countDocuments: res.data.count
+                })
+            }else{
+                let comments = this.state.comments
+                comments.push(...res.data.comments)
+
+                await this.setState({
+                    comments,
+                    countDocuments: res.data.count,
+                    pageComments: page
+                })
+            }
+        })
     }
 
     formatDate(date){
@@ -284,7 +315,7 @@ class Article extends Component {
                         <Grid item xs={12} className="header-hud-bar">
                             <Box display="flex" justifyContent="center" alignItems="center" mr={1} ml={1}>
                                 <Box mr={1} display="flex" alignItems="center">
-                                    <Avatar name={this.state.article.author.name} size={30} round={true} />
+                                    <Avatar src={`${api_cm_management}/${this.state.article.author.profilePhoto}`} name={this.state.article.author.name} size={30} round={true} />
                                 </Box>
                                 <p>{this.state.article.author.name}</p>
                             </Box>
@@ -429,6 +460,13 @@ class Article extends Component {
                                     this.state.comments.map(comment => 
                                         <Comment key={comment._id} comment={comment}/>)
                                 }
+                                { this.state.comments.length > 0 && this.state.countComments > this.state.comments.length &&
+                                    <Grid item xs={12}>
+                                        <Box width="100%" display="flex" justifyContent="center" alignItems="center">
+                                            <Button color="secondary" variant="contained" onClick={() => this.getMoreComments()}>Ver mais</Button>
+                                        </Box>
+                                    </Grid>
+                                }
                                 { this.state.comments.length === 0 && !this.state.loadingArticle &&
                                     <Box display="flex" justifyContent="center" alignItems="center" mt={5} mb={5}>
                                         <Icon fontSize="large" color="secondary">priority_high</Icon>
@@ -469,7 +507,7 @@ class Article extends Component {
                                         <Icon color="secondary" className="error-icon">healing</Icon>
                                     </Box>
                                     <Box display="flex" justifyContent="center" alignItems="center">
-                                        <h2 className="message-error">{this.state.error && this.state.error.response.status === 404 ? 'Artigo não encontrado, acredita que houve um problema? Clique no botão rosa para nos comunicar =D': 'Ops, ocorreu um erro ao recuperar seu artigo. Já tentou atualizar a página?'}</h2>
+                                        <h2 className="message-error">{this.state.error && this.state.error.response && this.state.error.response.status === 404 ? 'Artigo não encontrado, acredita que houve um problema? Clique no botão rosa para nos comunicar =D': 'Ops, ocorreu um erro ao recuperar seu artigo. Já tentou atualizar a página?'}</h2>
                                     </Box>
                                 </Box>
                                 <Box display="flex" flexDirection="column" width="100%" mt={3}>
