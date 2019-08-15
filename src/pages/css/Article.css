@@ -1,6 +1,5 @@
-
 .article-wrapper{
-    margin-top: 6% !important;
+    margin-top: 7%;
 }
 
 .article-header{
@@ -114,9 +113,12 @@
     font-size: 1.1rem !important;
 }
 
-#article-content img{
-    width: 100%;
+.ql-align-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 #article-content code{
     padding: 15px 0px;
@@ -127,7 +129,7 @@
 }
 
 #article-content pre::-webkit-scrollbar{
-    display: none;
+    display: none 
 }
 
 #article-content blockquote{
@@ -151,13 +153,13 @@
 }
 
 @media(max-width: 1055px){
-
+    
     .article-header{
         height: 180px;
         overflow: hidden;
         box-shadow: none;
     }
-
+    
     .more_related_content{
         display: flex;
         align-items: center;
@@ -169,6 +171,13 @@
 @media(max-width: 768px){
     .error-icon-area{
         width: 100%;
+    }
+    
+    .ql-align-center{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        overflow-x: scroll;    
     }
 
     #article-content pre::-webkit-scrollbar{

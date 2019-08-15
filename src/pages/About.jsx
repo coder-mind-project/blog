@@ -84,13 +84,13 @@ class About extends Component {
                             </Box>
                             Website
                         </Button>
-                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('https://github.com/')}>
+                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('https://github.com/coder-mind')}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faGithubAlt}/>
                             </Box>
                             Github Coder Mind
                         </Button>
-                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('mailto:awallan259@gmail.com')}>
+                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('mailto:allan.codermind@gmail.com')}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faEnvelope}/>
                             </Box>

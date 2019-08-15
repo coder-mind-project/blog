@@ -3,8 +3,7 @@ import { Grid, Button, Box, Tabs, Tab } from '@material-ui/core'
 import SearchBar from 'material-ui-search-bar'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPeopleCarry, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
-import { faNodeJs, faJava, faReact } from '@fortawesome/free-brands-svg-icons'
+import { faPeopleCarry, faQuestionCircle, faMobileAlt, faLaptop, faDatabase } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from 'react-router-dom'
 
@@ -54,19 +53,19 @@ class Home extends Component {
                 <Grid item xs={12} className="main-container">
                         <Box display="flex" alignItems="center" mb={2}>
                             <Box p={1}>
-                                <FontAwesomeIcon icon={faJava} size="8x" className="main-container-img" />
+                                <FontAwesomeIcon icon={faMobileAlt} size="8x" className="main-container-img" />
                             </Box>
                             <Box p={1}>
-                                <FontAwesomeIcon icon={faNodeJs} size="8x" className="main-container-img" />
+                                <FontAwesomeIcon icon={faLaptop} size="8x" className="main-container-img" />
                             </Box>
                             <Box p={1}>
-                                <FontAwesomeIcon icon={faReact} size="8x" className="main-container-img" />
+                                <FontAwesomeIcon icon={faDatabase} size="8x" className="main-container-img" />
                             </Box>
                         </Box>
                         <h3 className="main-container-msg">
-                            Aqui na <span style={{color: '#22E1C7'}} className="coder-mind">Coder</span> <span style={{color: '#f50057'}} className="coder-mind">Mind</span> você poderá acompanhar bons
-                            conteúdos de tecnologia. De programação a arquitetura de computadores e tudo
-                            isso de graça!
+                            Programação, banco de dados, e tecnologia em geral. De fundamentos a ferramentas, <br/>na
+                            &nbsp;<span style={{color: '#22E1C7'}} className="coder-mind">Coder</span> <span style={{color: '#f50057'}} className="coder-mind">Mind</span>&nbsp;
+                            você irá acompanhar bons conteúdos de tecnologia.
                         </h3>
                         <Link to="/artigos">
                             <Button color="secondary" variant="contained">Ver Mais</Button>
@@ -160,7 +159,7 @@ class Home extends Component {
                                 <Box>
                                     <p>Dúvidas? Bugs na platafoma? Quer falar conosco?</p>
                                     <p>
-                                        Acesse nosso <Link to="/faq">FAQ</Link> ou mande uma 
+                                        Acesse nosso <Link to="/faq"><strong style={{color: '#f50057', textDecoration: 'underline'}}>FAQ</strong></Link> ou mande uma 
                                         mensagem clicando no botão abaixo,
                                         estamos ansiosos para respondê-lo!
                                     </p>

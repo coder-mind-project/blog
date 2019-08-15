@@ -1,4 +1,4 @@
-export const version = '1.0.1'
+export const version = '1.0.2'
 export const build = 'Beta'
 
 export const url = 'http://localhost:3000'
@@ -7,7 +7,7 @@ export const url = 'http://localhost:3000'
 export const api_cm_management = 'http://localhost:3001'
 
 // Apps API
-export const api_cm_web_service = 'http://localhost:3002'
+export const api_cm_web_service = 'http://localhost:3010'
 
 /*
     Produção | Production

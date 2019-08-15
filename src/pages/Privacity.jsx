@@ -33,8 +33,8 @@ class Privacity extends Component {
         return ( 
             <Grid item xs={12} className="container">
                 <h1>Políticas de uso</h1>
-                <p>Este material é escrito e revisto pelo seus autores. Todo material de estudo e projetos apresentados serão de 100% (cem por cento) autoral do autor, caso esteja assumindo consumir um trabalho de terceiros estará claramente definido durante o conteúdo publicado. </p>
-                <p>Em caso de reinvidicação, fique a vontade para entrar em contato com o autor da publicação ou use nossa plataforma clicando <Link to="/contato">aqui</Link>.</p>
+                <p>Este material é escrito e revisto pelo seus autores. Todo material de estudo e projetos apresentados serão de 100% (cem por cento) autoral do respectivo autor, caso esteja assumindo consumir um trabalho de terceiros estará claramente definido durante o conteúdo publicado. </p>
+                <p>Em caso de reinvidicação, fique a vontade para entrar em contato com o autor da publicação ou use nossa plataforma clicando <Link to="/contato" style={{color: '#f50057', fontWeight: 600, textDecoration: 'underline'}}>aqui</Link>.</p>
                 <p>Nosso material é 100% gratuíto para o leitor, não será necessário criar contas ou fornecer informações para consumir nosso material.</p>
                 <p>Para efeitos comerciais, academicos, profissionais ou quaisquer outros é gratuíto, desde que seja feita a devida menção ao nosso trabalho, esta pode ser feita de diversas formas. Desde compartilhando nossa plataforma em um final de material, ou realizando menções durante.</p>
                 <p>Para melhor compreendimento podemos citar 2 ocasiões:</p>

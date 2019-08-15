@@ -24,7 +24,7 @@ class Faq extends Component {
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                     <p>
-                        Sim, você pode estar acessando clicando no logotipo do youtube ao lado <a href="https://youtube.com/"> <FontAwesomeIcon icon={faYoutube} size="1x" color="red"/></a> <br/>
+                        Sim, você pode estar acessando clicando no logotipo do youtube ao lado <a href="https://www.youtube.com/channel/UCfUbeeEVPxNFPgQ2vij6YwA" target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faYoutube} size="1x" color="red"/></a> <br/>
                         Porém, nosso youtube trabalha em comunhão ao site, isto é, o canal serve como um <strong><i>repositório</i></strong> de videos para melhorar o nosso material publicado aqui.
                     </p>
                     </ExpansionPanelDetails>
@@ -39,7 +39,7 @@ class Faq extends Component {
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                     <p>
-                        Sim, você pode estar acessando esses códigos clicando no octocat ao lado <a href="https://github.com/"> <FontAwesomeIcon icon={faGithub} size="1x" color="black"/></a>
+                        Sim, você pode estar acessando esses códigos clicando no octocat ao lado <a href="https://github.com/coder-mind" target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faGithub} size="1x" color="black"/></a>
                     </p>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>

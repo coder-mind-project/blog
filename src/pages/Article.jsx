@@ -298,7 +298,7 @@ class Article extends Component {
 
     render() { 
         return ( 
-            <Grid className="article-wrapper">
+            <Grid className={ this.state.article && !this.state.article.bigImg ? "article-wrapper" : ""}>
                 { this.state.article && !this.state.loadingArticle &&
                     <Grid item xs={12} className="article-content">
                         { this.state.article.bigImg && 

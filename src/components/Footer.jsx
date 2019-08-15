@@ -21,7 +21,7 @@ const Footer = (props) => {
             <footer className={classes.footerContainer}>
                 <Grid item xs={12} className={classes.footerContainerTop}>
                     <Grid item xs={12} md={4}>
-                        <a href="https://github.com/" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
+                        <a href="https://github.com/coder-mind" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faGithub}/>
                             </Box>
@@ -29,7 +29,7 @@ const Footer = (props) => {
                         </a>
                     </Grid>
                     <Grid item xs={12} md={4}>
-                        <a href="https://youtube.com/" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
+                        <a href="https://www.youtube.com/channel/UCfUbeeEVPxNFPgQ2vij6YwA" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faYoutube} color="red"/>
                             </Box>
