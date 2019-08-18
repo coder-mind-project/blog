@@ -271,13 +271,17 @@ class Article extends Component {
 
     async like(){
         await this.setState({liked: !this.state.liked})
-
+        
         const idle = await this.verifyIdleMode()
         const authorize = await this.analizeBehavior()
         
         if(idle && authorize){
+            const ipify = await axios('https://api.ipify.org?format=json')
+            
             const url = `${api_cm_web_service}/articles`
             const article = this.state.article
+            article.reader = ipify.data.ip || undefined
+            
             axios.post(url, article)
         }else{
 

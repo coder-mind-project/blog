@@ -28,6 +28,7 @@ export const styles = theme => ({
         cursor: 'pointer',
         padding: 10,
         borderRadius: '20px',
+        fontSize: '1.1rem',
         '&:hover':{
             backgroundColor: 'rgba(255,255,255,.05)'
         }

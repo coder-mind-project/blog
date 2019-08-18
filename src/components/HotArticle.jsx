@@ -24,9 +24,9 @@ class HotArticle extends Component {
                             {this.article.title}
                         </h4>
                     </Box>
-                    <Box display="flex" justifyContent="center">
+                    {/*<Box display="flex" justifyContent="center">
                         <small><strong>{this.article.theme.name}</strong></small>
-                    </Box>
+                    </Box>*/}
                     <Box display="flex" justifyContent="center">
                         <small className="hot-article-short-description">{this.article.shortDescription}</small>
                     </Box>

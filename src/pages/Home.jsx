@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Button, Box, Tabs, Tab } from '@material-ui/core'
+import { Grid, Button, Box, Tabs, Tab, Icon } from '@material-ui/core'
 import SearchBar from 'material-ui-search-bar'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -27,6 +27,7 @@ class Home extends Component {
     }
 
     searchArticles(){
+        if(this.state.search.trim().length === 0) return
         window.location.href=`/artigos?q=${this.state.search}`
     }
 
@@ -119,6 +120,7 @@ class Home extends Component {
                                     placeholder="O que vem na sua mente?"
                                     width="100%"
                                     className="search-input"
+                                    searchIcon={<Icon className="search-input-button">search</Icon>}
                                 />
                             </Box>
                         </Box>
