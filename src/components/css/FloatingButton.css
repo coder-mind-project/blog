@@ -2,7 +2,7 @@
     position: fixed !important;
     z-index: 1;
     left: 90%;
-    top: 80%;
+    top: 85%;
     overflow: hidden;
 }
 
@@ -15,8 +15,18 @@
     .floatingButton{
         position: fixed !important;
         z-index: 1;
+        left: 80%;
+        top: 85%;
+        overflow: hidden;
+    }
+}
+
+@media(max-width: 400px){
+    .floatingButton{
+        position: fixed !important;
+        z-index: 1;
         left: 75%;
-        top: 80%;
+        top: 85%;
         overflow: hidden;
     }
 }

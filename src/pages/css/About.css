@@ -27,9 +27,15 @@ figure{
     margin-bottom: 10px;
 }
 
+
+#email{
+    font-size: 1.2rem;
+}
+
 .input-message textarea{
     height: 150px !important;
     overflow-y: scroll !important;
+    font-size: 1.2rem;
 }
 
 .button-base-equal-button{

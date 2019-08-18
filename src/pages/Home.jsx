@@ -125,14 +125,14 @@ class Home extends Component {
                     </Box>    
                 </Grid>
                 <Grid item xs={12} className="about_project">
-                    <Box display="flex" flexDirection="column">
-                        <Box display="flex" alignItems="baseline" justifyContent="flex-start" flexWrap="wrap" width="100%">
-                            <h1>Projeto</h1>
-                            <small className="small-text">Saiba mais sobre o propósito deste projeto</small>
-                        </Box>
+                    <Box display="flex" alignItems="baseline" justifyContent="flex-start" flexWrap="wrap" width="100%">
+                        <h1>Projeto</h1>
+                        <small className="small-text">Saiba mais sobre o propósito deste projeto</small>
+                    </Box>
+                    <Box display="flex" flexDirection="column" p={5}>
                         <Box display="flex" alignItems="center" flexWrap="wrap">
                             <Grid item xs={12} md={6} className="about_project_one">
-                                <Box mr={2}>
+                                <Box mr={2} display="flex" alignItems="center">
                                     <FontAwesomeIcon icon={faPeopleCarry} size="5x" />
                                 </Box>
                                 <Box>
@@ -146,7 +146,7 @@ class Home extends Component {
                                     <p>
                                         Afim de realizar uma boa leitura? Fique a vontade para procurar bons artigos em nosso site!
                                     </p>
-                                    <Box mt={2} mb={2}>
+                                    <Box mt={2} mb={2} display="flex" justifyContent="center">
                                         <Link to="/artigos">
                                             <Button color="secondary" variant="contained" size="small">
                                                 Ver mais
@@ -156,6 +156,9 @@ class Home extends Component {
                                 </Box>
                             </Grid>
                             <Grid item xs={12} md={6} className="about_project_two">
+                                <Box mr={2} display="flex" alignItems="center">
+                                    <FontAwesomeIcon icon={faQuestionCircle} size="5x" />
+                                </Box>
                                 <Box>
                                     <p>Dúvidas? Bugs na platafoma? Quer falar conosco?</p>
                                     <p>
@@ -163,16 +166,13 @@ class Home extends Component {
                                         mensagem clicando no botão abaixo,
                                         estamos ansiosos para respondê-lo!
                                     </p>
-                                    <Box mt={2} mb={2}>
+                                    <Box mt={2} mb={2} display="flex" justifyContent="center">
                                         <a href="/sobre#contact">
                                             <Button color="secondary" variant="contained" size="small">
                                                 Ver mais
                                             </Button>
                                         </a>
                                     </Box>
-                                </Box>
-                                <Box ml={2}>
-                                    <FontAwesomeIcon icon={faQuestionCircle} size="5x" />
                                 </Box>
                             </Grid>
                         </Box>

@@ -113,7 +113,7 @@ class About extends Component {
                     <form onSubmit={(event) => this.sendMessage(event)} autoComplete="on">
                         <Box mt={4}>
                             <Box mb={2}>
-                                <TextField id="email" fullWidth placeholder="Informe o seu e-mail" value={this.state.email} onChange={(event) => this.handleChange(event, 'email')} error={this.state.email.length > 100} helperText={this.state.email.length > 100 ? "Quantidade de caracteres acima do permitido" : ""}></TextField>
+                                <TextField id="email" fullWidth placeholder="Informe seu e-mail" value={this.state.email} onChange={(event) => this.handleChange(event, 'email')} error={this.state.email.length > 100} helperText={this.state.email.length > 100 ? "Quantidade de caracteres acima do permitido" : ""} />
                             </Box>
                             <Box mb={5}>
                                 <TextField id="message" multiline className="input-message" fullWidth placeholder="Digite sua mensagem" value={this.state.msg} onChange={(event) => this.handleChange(event, 'msg')} error={this.state.msg.length > 1000} helperText={this.state.msg.length > 1000 ? "Quantidade de caracteres acima do permitido, se necessário nos envie um e-mail" : ""} />

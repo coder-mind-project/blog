@@ -50,12 +50,12 @@ const Menu = props => {
                         <Box display="flex" alignItems="center">
                             <Link to="/artigos" className={classes.menuLink}>
                                 <span className={classes.menuItem}>
-                                    Artigos
+                                    ARTIGOS
                                 </span>
                             </Link>
                             <Link to="/sobre" className={classes.menuLink}>
                                 <span className={classes.menuItem}>
-                                    Sobre
+                                    SOBRE
                                 </span>
                             </Link>
                             <Link to="/faq" className={classes.menuLink}>
@@ -97,7 +97,7 @@ const Menu = props => {
                                     <Icon  className={classes.iconButtonMenu}>
                                         library_books
                                     </Icon>
-                                    Artigos
+                                    ARTIGOS
                                 </strong>
                             </ListItem>
                         </Link>
@@ -111,7 +111,7 @@ const Menu = props => {
                                     <Icon  className={classes.iconButtonMenu}>
                                         security
                                     </Icon>
-                                    Políticas de uso
+                                    POLÍTICAS DE USO
                                 </strong>
                             </ListItem>
                         </Link>
@@ -139,7 +139,7 @@ const Menu = props => {
                                     <Icon  className={classes.iconButtonMenu}>
                                         info
                                     </Icon>
-                                    Sobre
+                                    SOBRE
                                 </strong>
                             </ListItem>
                         </Link>

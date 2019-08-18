@@ -22,15 +22,14 @@ const ArticleBox = props => {
         <Box width="100%" className={classes.articleBox}>
             <Grid item xs={12} md={3} className={classes.articleImg}>
                 <figure>
-                    <img src={`${api_cm_management}/${props.article.smallImg}`} className={classes.logoArticle} 
+                    { props.article && props.article.smallImg && <img src={`${api_cm_management}/${props.article.smallImg}`} className={classes.logoArticle} 
                     
-                    alt={props.article.title}/>
-                    <figcaption>{props.article.author.name}</figcaption>
+                    alt={props.article.title}/>}
                 </figure>
             </Grid>
             <Grid item xs={12} md={8} className={matches ? classes.articleContentXs : classes.articleContent}>
                 <Box>
-                    <h2>
+                    <h2 className={classes.title}>
                         <Link to={`/artigos/${props.article.customURL}`} className={matches ? classes.linkXs : classes.link}>
                             {props.article.title}
                         </Link>

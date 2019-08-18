@@ -9,6 +9,10 @@
     box-shadow: 0px 4px 4px gray;
 }
 
+.avatar-font span{
+    font-size: 1rem !important;
+}
+
 .article-header img {
     width: 100%;
 }
@@ -75,7 +79,7 @@
 .more_related_content{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
 }
 

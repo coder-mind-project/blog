@@ -25,6 +25,9 @@ export const styles = theme => ({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    title:{
+        textTransform: 'uppercase',
+    },
     link: {
         textDecoration: 'underline',
         color: '#f50057',

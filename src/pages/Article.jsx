@@ -315,7 +315,7 @@ class Article extends Component {
                         <Grid item xs={12} className="header-hud-bar">
                             <Box display="flex" justifyContent="center" alignItems="center" mr={1} ml={1}>
                                 <Box mr={1} display="flex" alignItems="center">
-                                    <Avatar src={`${api_cm_management}/${this.state.article.author.profilePhoto}`} name={this.state.article.author.name} size={30} round={true} />
+                                    <Avatar src={`${api_cm_management}/${this.state.article.author.profilePhoto}`} name={this.state.article.author.name} size={30} round={true}/>
                                 </Box>
                                 <p>{this.state.article.author.name}</p>
                             </Box>
@@ -487,7 +487,7 @@ class Article extends Component {
                 }
                 { this.state.loadingArticle && 
                     <Grid className="article-wrapper">
-                        <Box display="flex" flexDirection="column" justifyContent="start" height="100vh">
+                        <Box display="flex" flexDirection="column" justifyContent="start" alignItems="center" height="100vh">
                             <figure>
                                 <img src={LoadingEllipsis} alt="Carregando..."/>
                                 <p>Carregando seu artigo, por favor aguarde...</p>
@@ -520,7 +520,7 @@ class Article extends Component {
                         </Box>
                     </Grid>
                 }
-                <FloatingButton action={() => document.documentElement.scrollTop = 0}/>
+                <FloatingButton action={() => window.scrollTo(0,0)}/>
                 <Snackbar
                         anchorOrigin={{
                         vertical: 'bottom',

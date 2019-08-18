@@ -65,3 +65,13 @@
     align-items: center;
     padding: 15px;
 }
+
+@media(max-width: 768px){
+    .about_project_one, .about_project_two{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+}

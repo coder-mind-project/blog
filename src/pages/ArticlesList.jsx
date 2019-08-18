@@ -141,7 +141,7 @@ class ArticlesList extends Component {
             <Grid container className="articles-container">
                 <Drawer className="drawer" open={this.state.drawer} onClose={() => this.setState({drawer: false})} >
                     { this.state.loadingThemes && 
-                        <Box p={2} display="flex" flexDirection="column" justifyContent="space-between" height="100%">
+                        <Box p={2} display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" height="100%">
                             <figure>
                                 <img src={LoadingEllipsis} width="100%" alt="Carregando..."/>
                                 <p>Carregando filtros, por favor aguarde...</p>
@@ -271,7 +271,7 @@ class ArticlesList extends Component {
                             </Box>
                         </Grid>
                     }
-                    <FloatingButton action={() => document.documentElement.scrollTop = 0}/>
+                    <FloatingButton action={() => window.scrollTo(0,0)}/>
                     {
                         this.state.loadingArticles &&
                             <Grid item xs={12}>

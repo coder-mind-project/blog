@@ -22,14 +22,11 @@ export const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
     },
-    menuItem: {
+    /* menuItem: {
         color: '#ccc',
         fontSize: '1.1rem',
-        '&:hover': {
-            color: '#fff',
-        },
         fontWeight: 'bold', 
-    },
+    },*/
     iconButtonMenu: {
         marginRight: '10px',
         color: '#f50057'
@@ -43,11 +40,14 @@ export const styles = theme => ({
         textDecoration: 'none',
     },
     menuLink: {
-        color: 'inherit',
+        color: '#ccc',
+        fontSize: '1.1rem',
+        fontWeight: 'bold',
         textDecoration: 'none',
         padding: 23,
         '&:hover': {
-            backgroundColor: 'rgba(0,0,0,.1)'
+            backgroundColor: 'rgba(255, 255, 255, .2)',
+            color: 'rgba(255, 255, 255, .8)' 
         }
     },
     buttonLink:{
