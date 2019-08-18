@@ -1,13 +1,13 @@
-export const version = '1.0.3'
+export const version = '1.0.4'
 export const build = 'Beta'
 
-export const url = 'http://localhost:3000'
+export const url = 'https://codermind.com.br'
 
 // API Gestão | Management
-export const api_cm_management = 'http://localhost:3001'
+export const api_cm_management = 'https://cm-gestao-v1.allanalves23.top'
 
 // Apps API
-export const api_cm_web_service = 'http://localhost:3010'
+export const api_cm_web_service = 'https://cm-api-v1.allanalves23.top'
 
 /*
     Produção | Production
