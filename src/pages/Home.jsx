@@ -177,7 +177,7 @@ class Home extends Component {
                             </Grid>
                         </Box>
                     </Box>  
-                <FloatingButton action={() => document.documentElement.scrollTop = 0} />
+                <FloatingButton action={() => window.scrollTo(0,0)} />
                 </Grid>
             </div>
         )
