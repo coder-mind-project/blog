@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Box, Icon } from '@material-ui/core'
 
+import './css/Comment.css'
+
 class Answer extends Component {
 
     state = {
@@ -21,7 +23,7 @@ class Answer extends Component {
         return ( 
             <Box width="100%" display="flex" flexDirection="column" mt={2} mb={2}>
                 <Box width="100%" display="flex" flexWrap="wrap" alignItems="center">
-                    <Box mr={1} display="flex" alignItems="center">
+                    <Box mr={1} display="flex" alignItems="center" className="comment">
                         { this.props.answer.article.author.email === this.props.answer.userEmail && 
                             <Icon fontSize="small" color="secondary">star</Icon>
                         }
@@ -34,7 +36,7 @@ class Answer extends Component {
                 <Box>
                 
                 </Box>
-                <Box p={1}>
+                <Box p={1} className="comment">
                     {this.props.answer.comment}
                 </Box>
             </Box>

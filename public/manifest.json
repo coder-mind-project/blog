@@ -1,6 +1,6 @@
 {
   "short_name": "Coder Mind",
-  "name": "Coder Mind - Artigos e publicações de tecnologia",
+  "name": "Coder Mind",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,5 +11,5 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#f50057",
-  "background_color": "#ffffff"
+  "background_color": "#eeeeee"
 }

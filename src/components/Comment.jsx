@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Box, Divider, Button } from '@material-ui/core'
 
+import './css/Comment.css'
 import Answer from './Answer.jsx'
 
 class Comment extends Component {
@@ -23,14 +24,14 @@ class Comment extends Component {
         return ( 
             <Box width="100%" display="flex" flexDirection="column" mt={2} mb={2}>
                 <Box width="100%" display="flex" flexWrap="wrap" alignItems="center">
-                    <Box mr={1}>
+                    <Box mr={1} className="comment">
                         <strong>{this.props.comment.userName}</strong>
                     </Box>
                     <Box mr={1}>
                         <small>{this.formatDate(this.props.comment.createdAt)}</small>
                     </Box>
                 </Box>
-                <Box p={1}>
+                <Box p={1} className="comment">
                     {this.props.comment.comment}
                 </Box>
                 <Box p={1}>
@@ -41,7 +42,7 @@ class Comment extends Component {
                     }
                 </Box>
                 { this.state.displayComments && this.props.comment.answers &&
-                    <Box p={3}>
+                    <Box p={3} className="comment">
                         { this.props.comment.answers.map(answer => 
                             ( <Answer answer={answer} key={answer._id} /> )) 
                         }

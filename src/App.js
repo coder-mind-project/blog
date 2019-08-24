@@ -21,7 +21,7 @@ function App() {
       <Router>
           <Menu />
           <ScrollToTop>
-            <Switch >
+            <Switch>
               <Route path="/" exact component={Home}></Route>     
               <Route path="/artigos" exact component={ArticlesList}></Route>     
               <Route path="/artigos/:resource" exact component={Article}></Route>

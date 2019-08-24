@@ -3,7 +3,7 @@ import { Grid, Box, Divider, TextField,
         Button, Zoom, Snackbar, Icon, IconButton,
         CircularProgress } from '@material-ui/core'
 
-import { api_cm_web_service, api_cm_management, url } from '../config/appConfig'
+import { api_cm_web_service, api_cm_management, url, ipify } from '../config/appConfig'
 import axios from 'axios'
 
 import ReCAPTCHA from "react-google-recaptcha"
@@ -17,9 +17,9 @@ import LoadingEllipsis from '../assets/loading-ellipsis.gif'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faCommentDots, faPaperclip, faShareAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faFileCode, faCommentDots as faCommentDotsRegular } from '@fortawesome/free-regular-svg-icons'
-import { faFacebookSquare, faTwitterSquare, faWhatsapp, faLinkedin, faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookSquare, faTwitterSquare, faWhatsapp, faTelegram, faGithub } from '@fortawesome/free-brands-svg-icons'
 
-import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton, LinkedinShareButton  } from 'react-share'
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share'
 
 import FloatingButton from '../components/FloatingButton.jsx'
 
@@ -72,10 +72,13 @@ class Article extends Component {
 
     async getArticle(){
         const customURL = this.props.match.params.resource
-        const url = `${api_cm_web_service}/articles/${customURL}`
+        const pack = await axios(ipify)
 
+        const uip = pack.data.ip || ''
+        const url = `${api_cm_web_service}/articles/${customURL}?uip=${uip}`
 
         await this.toogleLoadingArticle()
+
         await axios(url).then( async res => {
             let liked = false
 
@@ -276,18 +279,27 @@ class Article extends Component {
         const authorize = await this.analizeBehavior()
         
         if(idle && authorize){
-            const ipify = await axios('https://api.ipify.org?format=json')
+            const pack = await axios(ipify)
             
             const url = `${api_cm_web_service}/articles`
             const article = this.state.article
-            article.reader = ipify.data.ip || undefined
+            article.reader = pack.data.ip || undefined
             
             axios.post(url, article)
+        
+            const like = {
+                createdAt: new Date(),
+                confirmed: this.state.liked,
+                idle: false
+            }
+
+            localStorage.setItem(`${this.state.article._id}`, JSON.stringify(like))
         }else{
 
             const like = {
                 createdAt: new Date(),
                 confirmed: this.state.liked,
+                idle: true
             }
 
             localStorage.setItem(`${this.state.article._id}`, JSON.stringify(like))
@@ -302,7 +314,7 @@ class Article extends Component {
 
     render() { 
         return ( 
-            <Grid className={ this.state.article && !this.state.article.bigImg ? "article-wrapper" : ""}>
+            <Grid className={ this.state.article && !this.state.article.bigImg ? "article-wrapper" : "article-container"}>
                 { this.state.article && !this.state.loadingArticle &&
                     <Grid item xs={12} className="article-content">
                         { this.state.article.bigImg && 
@@ -349,8 +361,8 @@ class Article extends Component {
                                     <FacebookShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} quote={`Veja mais sobre ${this.state.article.title}`} children={<FontAwesomeIcon icon={faFacebookSquare} size="2x" color="#3C5A99"/>} />
                                     <TwitterShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`${this.state.article.title}`} hashtags={[`${this.state.article.theme.name}`, `${this.state.article.title}`, 'Coder Mind']} children={<FontAwesomeIcon icon={faTwitterSquare} size="2x" color="#1da1f2"/>} />
                                     <WhatsappShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} separator=" | " children={<FontAwesomeIcon icon={faWhatsapp} size="2x" color="#58e870"/>} />
-                                    <LinkedinShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} children={<FontAwesomeIcon icon={faLinkedin} size="2x" color="#0077B5"/>} />
                                     <TelegramShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} children={<FontAwesomeIcon icon={faTelegram} size="2x" color="#0088cc"/>} />
+                                    { this.state.article.github && <FontAwesomeIcon icon={faGithub} className="share-button" size="2x" tabIndex="-1" onClick={() => window.open(this.state.article.github)}/>}
                                 </Box>
                             </Grid>
                         }
@@ -442,9 +454,9 @@ class Article extends Component {
                                                             <Icon>clear</Icon>
                                                     </IconButton>
                                                 </Box>
-                                                    <TextField className="comments-input" id="user-name" label="Nome *" value={this.state.comment.userName} onChange={(event) => this.handleComment(event, 'userName')} color="secondary"/>
-                                                    <TextField className="comments-input" id="user-email" label="E-mail *" value={this.state.comment.userEmail} onChange={(event) => this.handleComment(event, 'userEmail')}/>
-                                                    <TextField className="comments-input comments-comment" id="user-comment" label="Comentário *" multiline={true} value={this.state.comment.comment} onChange={(event) => this.handleComment(event, 'comment')}/>
+                                                    <TextField className="comments-input" id="user-name" label="Nome *" value={this.state.comment.userName} onChange={(event) => this.handleComment(event, 'userName')} color="secondary" error={Boolean(this.state.comment.userName.length > 50)} helperText={this.state.comment.userName.length > 50 ? "Máximo permitido 50 caracteres" : ""}/>
+                                                    <TextField className="comments-input" id="user-email" label="E-mail *" value={this.state.comment.userEmail} onChange={(event) => this.handleComment(event, 'userEmail')} error={Boolean(this.state.comment.userEmail.length > 80)} helperText={this.state.comment.userEmail.length > 80 ? "Máximo permitido 80 caracteres" : ""}/>
+                                                    <TextField className="comments-input comments-comment" id="user-comment" label="Comentário *" multiline={true} value={this.state.comment.comment} onChange={(event) => this.handleComment(event, 'comment')} error={Boolean(this.state.comment.userEmail.length > 1000)} helperText={this.state.comment.userEmail.length > 1000 ? "Máximo permitido 1000 caracteres" : ""}/>
                                                     <Box mt={2} mb={2}>
                                                         <ReCAPTCHA
                                                             sitekey="6LePkK8UAAAAACKAocqyAEB2YQr4cnd3j8Ya2b2U"
@@ -452,6 +464,7 @@ class Article extends Component {
                                                                 ...this.state.comment,
                                                                 response 
                                                             }})}
+                                                            size="compact"
                                                         />
                                                     </Box>
                                                     <Button color="secondary" variant="contained" disabled={this.state.sendingComment} onClick={() => this.sendComment()}>{this.state.sendingComment ? <Box display="flex" alignItems="center"><Box mr={1} display="flex" alignItems="center" ><CircularProgress size={20} color="inherit"/></Box>Enviando...</Box> : <Box>Enviar</Box>}</Button>
@@ -491,13 +504,13 @@ class Article extends Component {
                 }
                 { this.state.loadingArticle && 
                     <Grid className="article-wrapper">
-                        <Box display="flex" flexDirection="column" justifyContent="start" alignItems="center" height="100vh">
+                        <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="100vh">
                             <figure>
                                 <img src={LoadingEllipsis} alt="Carregando..."/>
                                 <p>Carregando seu artigo, por favor aguarde...</p>
                             </figure>
                             <Box display="flex" justifyContent="center" alignItems="center">
-                                <small>Loading ellipsis by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small>
+                                <small className="refer">Loading ellipsis by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small>
                             </Box>
                         </Box>
                     </Grid>

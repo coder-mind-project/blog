@@ -22,6 +22,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    font-size: .9rem;
 }
 
 .share-button{
@@ -34,8 +35,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px 15px 2px 15px;
+    padding: 20px 15px 2px 15px;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .article-short-description{
@@ -57,7 +59,7 @@
 }
 
 .short-description{
-    font-size: 1rem !important;
+    font-size: 1.2rem !important;
     font-weight: 400;
 }
 
@@ -85,16 +87,22 @@
 
 .comments-content{
     margin-top: 20px;
-    padding: px;
+    padding: 10px;
 }
 
 .comments-input{
     margin: 10px 0px !important;
 }
 
+.comments-input input, .comments-input label{
+    font-size: 1.2rem;
+
+}
+
 .comments-comment textarea{
     height: 120px !important;
     overflow-y: scroll !important;
+    font-size: 1.2rem;
 }
 
 .info_comment{
@@ -113,8 +121,19 @@
 
 #article-content{
     padding: 20px;
-    height: 70%;
+}
+
+#article-content p > span, #article-content blockquote > span{
+    font-size: 1.3rem !important; 
+}
+
+#article-content pre{
     font-size: 1.1rem !important;
+    line-height: 1.5;
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 15px;
+    color: #fff;
 }
 
 .ql-align-center{
@@ -156,6 +175,10 @@
     font-size: 5rem !important;
 }
 
+.article-container{
+    min-height: 100vh !important;
+}
+
 @media(max-width: 1055px){
     
     .article-header{
@@ -173,6 +196,16 @@
 }
 
 @media(max-width: 768px){
+
+    .header-hud-bar{
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: .9rem;
+        min-height: 150px;
+    }
+
     .error-icon-area{
         width: 100%;
     }
@@ -186,17 +219,15 @@
 
     #article-content pre::-webkit-scrollbar{
         display: block;
-        height: 5px;
+        height: 3px;
     }
     
     #article-content pre::-webkit-scrollbar-track{
         background-color: #f5f5f5;
-        border-radius: 10px;
     }
     
     #article-content pre::-webkit-scrollbar-thumb{
         background-color: #f50057;
-        border-radius: 10px;
     }
 
     .article-title{

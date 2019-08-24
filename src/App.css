@@ -6,7 +6,7 @@ body p, body span{
 }
 
 body small, body li{
-    font-size: 1.1rem !important;
+    font-size: 1.1rem;
 }
 
 body, div, button, li {
@@ -36,6 +36,10 @@ button > span{
 
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
+}
+
+.refer{
+    font-size: .9rem;
 }
 
 body {

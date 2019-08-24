@@ -1,7 +1,9 @@
-export const version = '1.0.4'
+export const version = '1.0.5'
 export const build = 'Beta'
 
 export const url = 'https://codermind.com.br'
+
+export const ipify = 'https://api.ipify.org?format=json'
 
 // API Gestão | Management
 export const api_cm_management = 'https://cm-gestao-v1.allanalves23.top'
@@ -29,4 +31,4 @@ export const api_cm_web_service = 'https://cm-api-v1.allanalves23.top'
 
 */
 
-export default { version, url, api_cm_management, api_cm_web_service }
+export default { version, url, api_cm_management, api_cm_web_service, ipify }
