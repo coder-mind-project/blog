@@ -288,7 +288,7 @@ class Article extends Component {
             axios.post(url, article)
         
             const like = {
-                createdAt: new Date(),
+                created_at: new Date(),
                 confirmed: this.state.liked,
                 idle: false
             }
@@ -297,7 +297,7 @@ class Article extends Component {
         }else{
 
             const like = {
-                createdAt: new Date(),
+                created_at: new Date(),
                 confirmed: this.state.liked,
                 idle: true
             }
