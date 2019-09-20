@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Box, Divider, TextField,
         Button, Zoom, Snackbar, Icon, IconButton,
-        CircularProgress } from '@material-ui/core'
+        CircularProgress, Tooltip } from '@material-ui/core'
 
 import { api_cm_web_service, api_cm_management, url, ipify } from '../config/appConfig'
 import axios from 'axios'
@@ -17,7 +17,7 @@ import LoadingEllipsis from '../assets/loading-ellipsis.gif'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faCommentDots, faPaperclip, faShareAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faFileCode, faCommentDots as faCommentDotsRegular } from '@fortawesome/free-regular-svg-icons'
-import { faFacebookSquare, faTwitterSquare, faWhatsapp, faTelegram, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faFacebookSquare, faTwitterSquare, faWhatsapp, faTelegram, faGithub, faYoutube  } from '@fortawesome/free-brands-svg-icons'
 
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share'
 
@@ -72,12 +72,12 @@ class Article extends Component {
 
     async getArticle(){
         const customURL = this.props.match.params.resource
-        const pack = await axios(ipify)
+        await this.toogleLoadingArticle()
+        const pack = await axios(ipify).catch(() => console.log('erro'))
 
-        const uip = pack.data.ip || ''
+        const uip = pack.data && pack.data.ip ? pack.data.ip : ''
         const url = `${api_cm_web_service}/articles/${customURL}?uip=${uip}`
 
-        await this.toogleLoadingArticle()
 
         await axios(url).then( async res => {
             let liked = false
@@ -283,7 +283,7 @@ class Article extends Component {
             
             const url = `${api_cm_web_service}/articles`
             const article = this.state.article
-            article.reader = pack.data.ip || undefined
+            article.reader = pack.data && pack.data.ip ? pack.data.ip : undefined
             
             axios.post(url, article)
         
@@ -362,7 +362,8 @@ class Article extends Component {
                                     <TwitterShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`${this.state.article.title}`} hashtags={[`${this.state.article.theme.name}`, `${this.state.article.title}`, 'Coder Mind']} children={<FontAwesomeIcon icon={faTwitterSquare} size="2x" color="#1da1f2"/>} />
                                     <WhatsappShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} separator=" | " children={<FontAwesomeIcon icon={faWhatsapp} size="2x" color="#58e870"/>} />
                                     <TelegramShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} children={<FontAwesomeIcon icon={faTelegram} size="2x" color="#0088cc"/>} />
-                                    { this.state.article.github && <FontAwesomeIcon icon={faGithub} className="share-button" size="2x" tabIndex="-1" onClick={() => window.open(this.state.article.github)}/>}
+                                    { this.state.article.github && <Tooltip title={<span>Este artigo possui código em nosso repositório, clique para visualizá-lo</span>} placement="bottom-start"><div><FontAwesomeIcon icon={faGithub} className="share-button" size="2x" tabIndex="-1" onClick={() => window.open(this.state.article.github)}/></div></Tooltip>}
+                                    { this.state.article.youtube && <Tooltip title={<span>Este artigo possui um vídeo, clique para assisti-lo</span>} placement="bottom-start"><div><FontAwesomeIcon icon={faYoutube} className="share-button" size="2x" tabIndex="-1" color="red" onClick={() => window.open(this.state.article.youtube)}/></div></Tooltip>}
                                 </Box>
                             </Grid>
                         }

@@ -1,4 +1,4 @@
-export const version = '1.0.6'
+export const version = '1.0.7'
 export const build = 'Beta'
 
 export const url = 'http://localhost:3000'
