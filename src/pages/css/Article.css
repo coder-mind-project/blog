@@ -17,6 +17,10 @@
     width: 100%;
 }
 
+.tooltip-hud-top-article{
+    font-size: 3rem !important;
+}
+
 .header-hud-bar{
     padding: 15px;
     display: flex;
