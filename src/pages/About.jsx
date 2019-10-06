@@ -68,7 +68,7 @@ class About extends Component {
             <Grid item xs={12} className="container">
                 <h1>Sobre o projeto</h1>
                 <p>Fala pessoal, beleza?</p>
-                <p>Meu nome é Allan, tenho 21 anos e sou o idealizador deste projeto. Sempre gostei de ensinar conhecimentos que julgo dominar e por vontade de colocar a mão na massa resolvi começar esse projeto.</p>
+                <p>Meu nome é Allan, tenho 22 anos e sou o idealizador deste projeto. Sempre gostei de ensinar conhecimentos que julgo dominar e por vontade de colocar a mão na massa resolvi começar esse projeto.</p>
                 <p>Não existe nada comercial por trás desta iniciativa e sim uma vontade de persistir um conteúdo bom e principalmente de graça!</p>
                 <p>Fiquem a vontade para me conhecer ai embaixo e acima de tudo vamos trocar conhecimento, se você estar aqui então quer dizer que se minimamente se interessou. Então vamos lá, dê aquela força e compartilhe o material com quem possa estar precisando. Caso queira tirar dúvidas ou simplesmente trocar uma idéia basta entrar em contato pela plataforma que quiser, prometo que te respondo o mais rápido possível.</p>
                 <p>Então é isso, forte abraço e espero que a experiência tenha sido excelente!</p>

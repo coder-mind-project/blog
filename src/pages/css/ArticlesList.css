@@ -1,5 +1,5 @@
 .drawer .MuiDrawer-paperAnchorLeft{
-    width: 235px;
+    width: 285px;
 }
 
 .articles-container{
@@ -71,6 +71,6 @@
 
 @media(max-width: 768px){
     .drawer .MuiDrawer-paperAnchorLeft{
-        width: 50%;
+        width: 70%;
     }
 }

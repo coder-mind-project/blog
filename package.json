@@ -1,10 +1,15 @@
 {
   "name": "coder-mind",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "app for management articles powered by coder mind",
   "private": true,
   "license": "self-funding",
-  "keywords": ["Coder Mind", "CM-APP", "CM-Web-APP", "Coder Mind WEB APP"],
+  "keywords": [
+    "Coder Mind",
+    "CM-APP",
+    "CM-Web-APP",
+    "Coder Mind WEB APP"
+  ],
   "author": "Allan Wanderley Alves",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",

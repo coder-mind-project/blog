@@ -75,7 +75,7 @@ class Article extends Component {
         await this.toogleLoadingArticle()
         const pack = await axios(ipify).catch(() => console.log('erro'))
 
-        const uip = pack.data && pack.data.ip ? pack.data.ip : ''
+        const uip = pack && pack.data && pack.data.ip ? pack.data.ip : ''
         const url = `${api_cm_web_service}/articles/${customURL}?uip=${uip}`
 
 
