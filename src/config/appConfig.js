@@ -1,5 +1,5 @@
-export const version = '1.0.7'
-export const build = 'Beta'
+export const version = '1.0.8'
+export const build = 'Stable'
 
 export const url = 'https://codermind.com.br'
 
