@@ -38,7 +38,7 @@ return (
             </Box>
             <CardActions>
                 <a href={`/artigos/${props.article.customURL}`}>
-                    <Button size="small" color="secondary">
+                    <Button size="small" style={{color: '#8a05be'}}>
                         Ver mais
                     </Button>
                 </a>

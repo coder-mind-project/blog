@@ -3,14 +3,29 @@ export const styles = theme => ({
         display: 'flex',
         paddingLeft: 10,
         paddingRight: 10,
-        background: 'linear-gradient(to right, #414345, #232526)',
-        backgroundColor: 'rgb(0,0,0)',
-        borderBottom: '1px solid #ccc',
+        backgroundColor: '#fff',
+        borderBottom: '1px solid #42275a',
     },
     menuItems:{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    menuItem:{
+        fontSize: '1.3rem'
+    },
+    menuASideItems: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    menuASideItemsXs: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100vw'
+    },
+    searchArea: {
+        minWidth: '40%'
     },
     menuLogo: {
         color: 'white'
@@ -22,14 +37,14 @@ export const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
     },
-    /* menuItem: {
-        color: '#ccc',
-        fontSize: '1.1rem',
-        fontWeight: 'bold', 
-    },*/
+    menuTitle: {
+        color: '#42275a',
+        display: 'flex',
+        fontWeight: 400,
+    },
     iconButtonMenu: {
         marginRight: '10px',
-        color: '#f50057'
+        color: '#8a05be'
     },
     link: {
         color: 'inherit',
@@ -40,14 +55,13 @@ export const styles = theme => ({
         textDecoration: 'none',
     },
     menuLink: {
-        color: '#ccc',
+        color: '#42275a',
         fontSize: '1.1rem',
-        fontWeight: 'bold',
+        fontWeight: '500',
         textDecoration: 'none',
         padding: 23,
         '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, .2)',
-            color: 'rgba(255, 255, 255, .8)' 
+            backgroundColor: 'rgba(66, 39, 90, .2)',
         }
     },
     buttonLink:{
@@ -65,7 +79,7 @@ export const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         height: 100,
-        fontSize: '1.3rem',
+        fontSize: '1.5rem',
     },
     drawerFooter: {
         display: 'flex',
@@ -77,8 +91,8 @@ export const styles = theme => ({
         justifyContent: 'center',
         paddingTop: 15,
         paddingBottom: 15,
-        background: 'linear-gradient(to right, #414345, #232526)',
-        backgroundColor: '#000',
+        background: 'linear-gradient(to right, #734b6d, #42275a)',
+        backgroundColor: '#42275a',
         height: 100
     },
     hide: {

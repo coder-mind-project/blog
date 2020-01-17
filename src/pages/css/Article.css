@@ -166,7 +166,7 @@
 }
 
 #article-content a{
-    color: #f50057 !important;
+    color: #8a05be !important;
     font-weight: 600 !important;
     text-decoration: underline !important;
 }
@@ -181,6 +181,10 @@
 
 .article-container{
     min-height: 100vh !important;
+}
+
+h2 > span, h2, h3 > span, h3{
+    font-size: 1.5rem !important;
 }
 
 @media(max-width: 1055px){
@@ -231,7 +235,7 @@
     }
     
     #article-content pre::-webkit-scrollbar-thumb{
-        background-color: #f50057;
+        background-color: #8a05be;
     }
 
     .article-title{

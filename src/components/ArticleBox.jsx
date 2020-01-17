@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Grid, Box, useMediaQuery } from '@material-ui/core'
+import { Grid, Box, useMediaQuery, Divider } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faStar } from '@fortawesome/free-solid-svg-icons'
 import { makeStyles } from '@material-ui/core/styles'
@@ -19,7 +19,7 @@ const ArticleBox = props => {
     const matches = useMediaQuery('(max-width: 1055px)')
 
     return (
-        <Box width="100%" className={classes.articleBox}>
+        <Box width="100%" className={matches ? classes.articleBoxXs : classes.articleBox}>
             <Grid item xs={12} md={3} className={classes.articleImg}>
                 <figure>
                     { props.article && props.article.smallImg && <img src={`${api_cm_management}/${props.article.smallImg}`} className={classes.logoArticle} 
@@ -48,9 +48,9 @@ const ArticleBox = props => {
                     <p className={matches ? classes.textXs : ''}>
                         {props.article.shortDescription}
                     </p>
-                    <p className={matches ? classes.textXs : ''}>
+                    {/* <p className={matches ? classes.textXs : ''}>
                         {props.article.longDescription}
-                    </p>
+                    </p> */}
                 </Box>
                 <Box display="flex" alignItems="center" justifyContent={matches ? 'center':'flex-start'}  width="100%">
                     <Box display="flex" alignItems="center">

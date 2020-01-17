@@ -28,7 +28,7 @@ class Comment extends Component {
                         <strong>{this.props.comment.userName}</strong>
                     </Box>
                     <Box mr={1}>
-                        <small>{this.formatDate(this.props.comment.createdAt)}</small>
+                        <small>{this.formatDate(this.props.comment.created_at)}</small>
                     </Box>
                 </Box>
                 <Box p={1} className="comment">
