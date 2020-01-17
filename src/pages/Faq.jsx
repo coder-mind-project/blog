@@ -25,7 +25,7 @@ class Faq extends Component {
                     <ExpansionPanelDetails>
                     <p>
                         Sim, você pode estar acessando clicando no logotipo do youtube ao lado <a href="https://www.youtube.com/channel/UCfUbeeEVPxNFPgQ2vij6YwA" target="_blank" rel="noopener noreferrer"> <FontAwesomeIcon icon={faYoutube} size="1x" color="red"/></a> <br/>
-                        Porém, nosso youtube trabalha em comunhão ao site, isto é, o canal serve como um <strong><i>repositório</i></strong> de videos para melhorar o nosso material publicado aqui.
+                        Porém, nosso youtube trabalha em comunhão ao site, isto é, o canal serve como um <strong>repositório</strong> de videos para melhorar o nosso material publicado aqui.
                     </p>
                     </ExpansionPanelDetails>
                 </ExpansionPanel>

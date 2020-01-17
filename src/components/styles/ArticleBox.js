@@ -8,6 +8,15 @@ export const styles = theme => ({
         marginBottom: '20px',
         flexWrap: 'wrap',
     },
+    articleBoxXs: {
+        display: 'flex',
+        marginTop: '20px',
+        marginBottom: '20px',
+        flexWrap: 'wrap',
+        margin: '10px', 
+        padding: '20px',
+        boxShadow: '0px 2px 4px #ccc'
+    },
     articleImg:{
         display: 'flex',
         justifyContent: 'center',
@@ -30,17 +39,20 @@ export const styles = theme => ({
     },
     link: {
         textDecoration: 'underline',
-        color: '#f50057',
+        color: '#8a05be',
     },
     linkXs:{
         textDecoration: 'underline',
-        color: '#f50057',
+        color: '#8a05be',
         display: 'flex',
         justifyContent: 'center',
         padding: '15px',
     },
     textXs:{
-        padding: '15px',
+        paddingTop: '50px',
+        paddingLeft: '50px',
+        paddingRight: '50px',
+        paddingBottom: '10px',
         display: 'flex',
         justifyContent: 'center',
     }

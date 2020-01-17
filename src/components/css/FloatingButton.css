@@ -7,7 +7,7 @@
 }
 
 .defaultButtonColor{
-    background-color: #f50057 !important;
+    background-color: #8a05be !important;
     color: #fff !important;
 }
 
@@ -15,7 +15,7 @@
     .floatingButton{
         position: fixed !important;
         z-index: 1;
-        left: 80%;
+        left: 85%;
         top: 85%;
         overflow: hidden;
     }

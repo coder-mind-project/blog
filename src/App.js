@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Box } from "@material-ui/core";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Box} from '@material-ui/core';
 
 import Menu from './components/Menu.jsx';
 import Footer from './components/Footer.jsx';
@@ -23,22 +23,23 @@ const App = () => {
   return (
     <Box className="App">
       <Router>
-          <Menu />
-          <ScrollToTop>
-            <Switch>
-              <Route path="/" exact component={Home}></Route>     
-              <Route path="/artigos" exact component={ArticlesList}></Route>     
-              <Route path="/artigos/:resource" exact component={Article}></Route>
-              <Route path="/privacidade" exact component={Privacity}></Route>
-              <Route path="/faq" exact component={Faq}></Route>
-              <Route path="/sobre" exact component={About}></Route>
-              <Route component={NotFound}></Route>
-            </Switch>
-          </ScrollToTop>
-          <Footer />     
+        <Menu />
+        <ScrollToTop>
+          <Switch>
+            <Route path="/" exact component={Home}></Route>
+            <Route path="/artigos" exact component={ArticlesList}></Route>
+            <Route path="/artigos/:resource" exact component={Article}></Route>
+            <Route path="/privacidade" exact component={Privacity}></Route>
+            <Route path="/faq" exact component={Faq}></Route>
+            <Route path="/sobre" exact component={About}></Route>
+            <Route path="/autor/:id" exact component={Author}></Route>
+            <Route component={NotFound}></Route>
+          </Switch>
+        </ScrollToTop>
+        <Footer />
       </Router>
     </Box>
   );
-}
+};
 
 export default App;

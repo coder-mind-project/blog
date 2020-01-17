@@ -9,7 +9,7 @@ import { Box, Grid, Drawer, Icon, Button,
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faFilter, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
-import LoadingEllipsis from '../assets/loading-ellipsis.gif'
+import Loading from '../assets/loading.gif'
 
 import ArticleBox from '../components/ArticleBox.jsx'
 import FloatingButton from '../components/FloatingButton.jsx'
@@ -144,11 +144,11 @@ class ArticlesList extends Component {
                     { this.state.loadingThemes && 
                         <Box p={2} display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" height="100%">
                             <figure>
-                                <img src={LoadingEllipsis} width="100%" alt="Carregando..."/>
+                                <img src={Loading} width="100%" alt="Carregando..."/>
                                 <p>Carregando filtros, por favor aguarde...</p>
                             </figure>
                             <Box display="flex" justifyContent="center" alignItems="center">
-                                <small>Loading ellipsis by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small>
+                                <small>Powered by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small>
                             </Box>
                         </Box>
                     }
@@ -156,10 +156,11 @@ class ArticlesList extends Component {
                         <Box display="flex" flexDirection="column" justifyContent="space-between" height="100%">
                             <Box display="flex" flexDirection="column">
                                 <Box className="drawer-header" display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="150px">
-                                    <h3 className="coder-mind"><span style={{color: '#fff'}}>Coder Mind</span></h3>
-                                    <Box display="flex" mt={2}>
-                                        <Icon color="secondary">filter_list</Icon>
-                                        <small className="light-color">Filtros de pesquisa</small>
+                                    <Box display="flex">
+                                        <Icon style={{marginRight: '5px', color: '#fff'}}>code</Icon>
+                                        <h3 className="coder-mind">
+                                            <span style={{color: '#fff'}}>Coder Mind</span>
+                                        </h3>
                                     </Box>
                                 </Box>
                                 <Box p={2}>
@@ -190,7 +191,7 @@ class ArticlesList extends Component {
                             </Box>
                             <Box p={2} mt={3} mb={3}> 
                                 <Box mb={2}>
-                                    <Button color="secondary" variant="contained" size="small" fullWidth onClick={() => {this.searchArticles(false, true); this.toogleDrawer();}}>
+                                    <Button style={{color: '#fff'}} variant="contained" size="small" fullWidth onClick={() => {this.searchArticles(false, true); this.toogleDrawer();}} className="coder-mind-button">
                                         <Box display="flex" justifyContent="center" alignItems="center">
                                             <Box mr={1} display="flex" alignItems="center">
                                                 <Icon>done</Icon>
@@ -202,7 +203,7 @@ class ArticlesList extends Component {
                                     </Button>
                                 </Box>
                                 <Box>
-                                    <Button color="secondary" variant="outlined" size="small" fullWidth onClick={() => this.toogleDrawer()}>
+                                    <Button className="coder-mind-button-outlined" variant="outlined" size="small" fullWidth onClick={() => this.toogleDrawer()}>
                                         <Box display="flex" justifyContent="center" alignItems="center">
                                             <Box mr={1} display="flex" alignItems="center">
                                                 <Icon>exit_to_app</Icon>
@@ -220,7 +221,7 @@ class ArticlesList extends Component {
                 <Grid item xs={12} className="hud-top-bar">
                     <Grid item xs={2} sm={1} className="hud-top-bar-icon">
                         <IconButton onClick={() => this.toogleDrawer()}>
-                            <Icon>filter_list</Icon>
+                            <Icon style={{color: '#8a05be'}}>filter_list</Icon>
                         </IconButton>
                     </Grid>
                     <Grid item xs={10} sm={11} className="hud-top-bar-search">
@@ -238,7 +239,7 @@ class ArticlesList extends Component {
                 <Grid item xs={12}>
                     <Box display="flex" justifyContent="center" alignItems="center" mr={3} ml={3}>
                         <Box display="flex" alignItems="center" mr={1}>
-                            <FontAwesomeIcon icon={faQuestionCircle} size="1x" color="rgba(245, 0, 87,1)" />
+                            <FontAwesomeIcon icon={faQuestionCircle} size="1x" color="#8a05be" />
                         </Box>
                         <Box display="flex" alignItems="center">
                             <small>Informe o assunto desejado e pressione o enter do seu teclado para confirmar a busca.</small>
@@ -266,7 +267,7 @@ class ArticlesList extends Component {
                                 </Box>
                             }
                             <Box display="flex" justifyContent="center" alignItems="center">
-                                <Button color="secondary" variant="outlined" size="medium" disabled={this.state.loadingMoreArticles} onClick={() => this.searchArticles(true)}>
+                                <Button className="coder-mind-button-outlined" variant="outlined" size="medium" disabled={this.state.loadingMoreArticles} onClick={() => this.searchArticles(true)}>
                                     Ver mais
                                 </Button>
                             </Box>
@@ -278,8 +279,8 @@ class ArticlesList extends Component {
                             <Grid item xs={12}>
                                 <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                                     <figure>
-                                            <img src={LoadingEllipsis} alt="Carregando..."/>
-                                            <figcaption><small>Loading ellipsis by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small></figcaption>
+                                            <img src={Loading} alt="Carregando..."/>
+                                            <figcaption><small>Powered by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small></figcaption>
                                     </figure>
                                     <p>Carregando artigos, por favor aguarde...</p>
                                 </Box>
@@ -289,7 +290,7 @@ class ArticlesList extends Component {
                         this.state.articles.length === 0 && !this.state.loadingArticles && !this.state.error &&
                             <Grid item xs={12}>
                                 <Box display="flex" justifyContent="center" alignItems="center" flexWrap="wrap" mt={4} mb={4} p={3}>
-                                    <FontAwesomeIcon icon={faFilter} size="5x" color="rgba(245, 0, 87,0.5)" />
+                                    <FontAwesomeIcon icon={faFilter} size="5x" color="#8a05be" />
                                     <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                                         <h3>Ops! parece que não conseguimos encontrar nenhum resultado</h3>
                                         <h3>Caso necessário você pode alterar seus <strong className="high_light_text" onClick={() => this.toogleDrawer()}>filtros de busca</strong> ou alterar a informação no <strong className="high_light_text" onClick={() => {document.documentElement.scrollTop = 0; document.querySelector('#search-input').focus();}}>campo de pesquisa</strong>.</h3>
