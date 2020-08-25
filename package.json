@@ -19,7 +19,6 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "@react-pdf/renderer": "^1.6.3",
     "axios": "^0.20.0",
     "material-auto-rotating-carousel": "^3.0.2",
     "material-ui-search-bar": "^1.0.0",
@@ -37,7 +36,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
