@@ -30,7 +30,7 @@ class Answer extends Component {
                         <strong>{this.props.answer.userName}</strong>
                     </Box>
                     <Box mr={1}>
-                        <small>{this.formatDate(this.props.answer.createdAt)}</small>
+                        <small>{this.formatDate(this.props.answer.created_at)}</small>
                     </Box>
                 </Box>
                 <Box>
