@@ -78,19 +78,19 @@ class About extends Component {
                         <figcaption>Allan Wanderley - Idealizador do projeto</figcaption>
                     </figure>
                     <Box className="social-media">
-                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('https://allanalves23.top/')}>
+                        <Button className="coder-mind-button" style={{color: '#fff'}} variant="contained" size="small" onClick={() => this.goTo('https://allanalves23.top/')}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faUserTie}/>
                             </Box>
                             Website
                         </Button>
-                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('https://github.com/coder-mind')}>
+                        <Button className="coder-mind-button" style={{color: '#fff'}} variant="contained" size="small" onClick={() => this.goTo('https://github.com/coder-mind')}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faGithubAlt}/>
                             </Box>
                             Github Coder Mind
                         </Button>
-                        <Button color="secondary" variant="contained" size="small" onClick={() => this.goTo('mailto:allan.codermind@gmail.com')}>
+                        <Button className="coder-mind-button" style={{color: '#fff'}} variant="contained" size="small" onClick={() => this.goTo('mailto:allan.codermind@gmail.com')}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faEnvelope}/>
                             </Box>
@@ -101,7 +101,7 @@ class About extends Component {
                 <Box mt={3} mb={1}>
                     <Box display="flex" alignItems="center">
                         <Box m={1}>
-                            <FontAwesomeIcon icon={faPaperclip} size="1x" color="#f50057" id="contact" tabIndex="-1" />
+                            <FontAwesomeIcon icon={faPaperclip} size="1x" color="#8a05be" id="contact" tabIndex="-1" />
                         </Box>
                         <Box m={1}>
                             <h2>Prefere falar conosco de outra forma?</h2>
@@ -144,11 +144,8 @@ class About extends Component {
                         ContentProps={{
                         'aria-describedby': 'message-id',
                         }}
-                        message={<h3 id="message-id">Mensagem enviada com sucesso! Agora é com a gente, prometemos te responder rapidinho ;)</h3>}
+                        message={<span id="message-id">Mensagem enviada com sucesso! Agora é com a gente, prometemos te responder rapidinho ;)</span>}
                         action={[
-                        <Button key="undo" color="secondary" size="small" onClick={() => this.handleClose()}>
-                            Fechar
-                        </Button>,
                         <IconButton
                             key="close"
                             aria-label="close"
@@ -172,11 +169,8 @@ class About extends Component {
                         ContentProps={{
                         'aria-describedby': 'message-id',
                         }}
-                        message={<h3 id="message-id">{this.state.showErrorSend}</h3>}
+                        message={<span id="message-id">{this.state.showErrorSend}</span>}
                         action={[
-                        <Button key="undo" color="secondary" size="small" onClick={() => this.handleClose()}>
-                            Fechar
-                        </Button>,
                         <IconButton
                             key="close"
                             aria-label="close"

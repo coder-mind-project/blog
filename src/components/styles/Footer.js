@@ -1,9 +1,9 @@
 export const styles = theme => ({
     footerContainer: {
         width: '100%',
-        background: 'linear-gradient(to right, #414345, #232526)',
-        backgroundColor: '#000',
-        minHeight: 160,
+        background: 'linear-gradient(to right, #8a05be, #42275a)',
+        backgroundColor: '#8a05be',
+        minHeight: 260,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center'
@@ -11,12 +11,20 @@ export const styles = theme => ({
     footerContainerTop: {
         display: 'flex',
         flexWrap: 'wrap',
+        alignItems: 'start'
     },
-    footerContainerBottom: {
+    topicTitle: {
+        color: '#fff',
+        textDecoration: 'underline',
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        flexWrap: 'wrap',
+        justifyContent: 'center',
+        marginTop: '10px',
+        marginBottom: '10px',
+        fontWeight: 400
+    },
+    iconArea: {
+        display: 'flex',
+        justifyContent: 'center'
     },
     fakeLink: {
         display: 'flex',
@@ -26,11 +34,9 @@ export const styles = theme => ({
         marginTop: 2,
         marginBottom: 2,
         cursor: 'pointer',
-        padding: 10,
-        borderRadius: '20px',
         fontSize: '1.1rem',
         '&:hover':{
-            backgroundColor: 'rgba(255,255,255,.05)'
+            color: 'rgba(255,255,255,.8)'
         }
     },
     footerText:{

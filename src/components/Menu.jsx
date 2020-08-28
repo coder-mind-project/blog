@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link, Redirect } from 'react-router-dom'
+import SearchBar from 'material-ui-search-bar'
 
 
 import { AppBar, Toolbar, IconButton, Drawer, List, ListItem,
@@ -14,12 +15,18 @@ const useStyles = makeStyles(styles)
 
 const Menu = props => {
     const classes = useStyles()
-    const matches = useMediaQuery('(min-width: 820px)')
+    const matches = useMediaQuery('(min-width: 955px)')
 
     const [state, setState] = React.useState({
         drawerMenu: false,
-        redirectTo: ''
+        redirectTo: '',
+        search: ''
     })
+
+    const searchArticles = () => {
+        if(state.search.trim().length === 0) return
+        window.location.href=`/artigos?q=${state.search}`
+    }
 
     return (
         
@@ -29,46 +36,64 @@ const Menu = props => {
             }
             <AppBar className={classes.menu}>
                 <Toolbar className={classes.menuItems}>
-                    { !matches && 
+                    <Box className={ matches ? classes.menuASideItems : classes.menuASideItemsXs}>
+                        { !matches && 
+                            <Box display="flex" alignItems="center">
+                                <IconButton onClick={() => setState({drawerMenu: true})} 
+                                    edge="start" className={classes.menuButton}
+                                    color="inherit" aria-label="Menu"
+                                >
+                                    <Icon style={{color: "#42275a"}}>menu</Icon>
+                                </IconButton>
+                            </Box>
+                        }
                         <Box display="flex" alignItems="center">
-                            <IconButton onClick={() => setState({drawerMenu: true})} 
-                                edge="start" className={classes.menuButton}
-                                color="inherit" aria-label="Menu"
-                            >
-                                <Icon>menu</Icon>
-                            </IconButton>
+                            <Link className={classes.menuTitle} to="/">
+                                <h1 className="coder-mind" style={{display: 'flex', alignItems: 'center', fontSize: matches ? '1.5rem !important' : 'default'}}>
+                                    <Icon fontSize="large" >
+                                        code
+                                    </Icon>
+                                    Coder Mind
+                                </h1>
+                            </Link>
                         </Box>
-                    }
-                    <Box display="flex" alignItems="center">
-                        <Link className={classes.link} to="/">
-                            <h1 className="coder-mind">
-                                Coder Mind
-                            </h1>
-                        </Link>
+                        { matches && 
+                            <Box display="flex" alignItems="center" marginLeft="20px" marginRight="20px">
+                                <Link to="/artigos" className={classes.menuLink}>
+                                    <span className={classes.menuItem}>
+                                        Artigos
+                                    </span>
+                                </Link>
+                                <Link to="/sobre" className={classes.menuLink}>
+                                    <span className={classes.menuItem}>
+                                        Sobre
+                                    </span>
+                                </Link>
+                                <Link to="/faq" className={classes.menuLink}>
+                                    <span className={classes.menuItem}>
+                                        FAQ
+                                    </span>
+                                </Link>
+                            </Box>
+                        }
                     </Box>
-                    { matches && 
-                        <Box display="flex" alignItems="center">
-                            <Link to="/artigos" className={classes.menuLink}>
-                                <span className={classes.menuItem}>
-                                    ARTIGOS
-                                </span>
-                            </Link>
-                            <Link to="/sobre" className={classes.menuLink}>
-                                <span className={classes.menuItem}>
-                                    SOBRE
-                                </span>
-                            </Link>
-                            <Link to="/faq" className={classes.menuLink}>
-                                <span className={classes.menuItem}>
-                                    FAQ
-                                </span>
-                            </Link>
+                    {matches && 
+                        <Box className={classes.searchArea}>
+                            <SearchBar
+                                value={state.search}
+                                onChange={(search) => setState({ search })}
+                                onRequestSearch={() => searchArticles()}
+                                placeholder="Pesquise por qualquer conteúdo!"
+                                width="100%"
+                                className="search-input"
+                                searchIcon={<Icon className="search-input-button-menu">search</Icon>}
+                            />
                         </Box>
                     }
                 </Toolbar>
             </AppBar>
             <Drawer open={state.drawerMenu} 
-                onClose={() => setState({drawerMenu: false  })}
+                onClose={() => setState({drawerMenu: false})}
                 anchor="top"
             >
                 <Box className={classes.drawerLink} onClick={() => setState({drawerMenu: false})}>
@@ -80,7 +105,7 @@ const Menu = props => {
                                 </h1>
                             </Box>
                         </Grid>
-                        <Grid item xs={2} sm={1} className={classes.fakeLink}>
+                        <Grid item xs={1} sm={1} className={classes.fakeLink}>
                             <Icon fontSize="large" onClick={() => setState({drawerMenu: false})}>clear</Icon>
                         </Grid>
                     </Box>
@@ -94,10 +119,7 @@ const Menu = props => {
                                 className={classes.drawerButton}
                             >
                                 <strong className={classes.menuButtonContent}>
-                                    <Icon  className={classes.iconButtonMenu}>
-                                        library_books
-                                    </Icon>
-                                    ARTIGOS
+                                    Artigos
                                 </strong>
                             </ListItem>
                         </Link>
@@ -108,10 +130,7 @@ const Menu = props => {
                                 className={classes.drawerButton}
                             >
                                 <strong className={classes.menuButtonContent}>
-                                    <Icon  className={classes.iconButtonMenu}>
-                                        security
-                                    </Icon>
-                                    POLÍTICAS DE USO
+                                    Políticas de uso
                                 </strong>
                             </ListItem>
                         </Link>
@@ -122,9 +141,6 @@ const Menu = props => {
                                 className={classes.drawerButton}
                             >
                                 <strong className={classes.menuButtonContent}>
-                                    <Icon  className={classes.iconButtonMenu}>
-                                        question_answer
-                                    </Icon>
                                     FAQ
                                 </strong>
                             </ListItem>
@@ -136,22 +152,19 @@ const Menu = props => {
                                 className={classes.drawerButton}
                             >
                                 <strong className={classes.menuButtonContent}>
-                                    <Icon  className={classes.iconButtonMenu}>
-                                        info
-                                    </Icon>
-                                    SOBRE
+                                    Sobre
                                 </strong>
                             </ListItem>
                         </Link>
                     </List>
                     <List className={classes.list}>
                         <ListItem className={classes.drawerFooter} key={'version'}>
-                            <span className={classes.menuButtonContent}>
+                            <Box display="flex" alignItems="center">
                                 <Icon  className={classes.iconButtonMenu}>
                                     code
                                 </Icon>
                                 {version} - {build}
-                            </span>
+                            </Box>
                         </ListItem>
                     </List>
                 </div>  
