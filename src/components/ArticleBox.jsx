@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Grid, Box, useMediaQuery, Divider } from '@material-ui/core'
+import { Grid, Box, useMediaQuery } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faStar } from '@fortawesome/free-solid-svg-icons'
 import { makeStyles } from '@material-ui/core/styles'

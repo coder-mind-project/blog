@@ -38,8 +38,9 @@ class Home extends Component {
         await this.toogleLoading()
         const url = `/articles?home=yes`
         await axios(url).then(res => {
-            this.setState({hotArticles: res.data.boostedArticles.articles})
-        }).catch(error => console.log('Ocorreu um erro'))
+            this.setState({hotArticles: res.data.articles})
+        })
+
         this.toogleLoading()
     }
 
@@ -100,8 +101,8 @@ class Home extends Component {
                                         scrollButtons="auto"
                                     >
                                         {/*<Box display="flex" alignItems="center" className="top-articles-content" id='top-articles-content'>*/}
-                                            { this.state.hotArticles.map((article, key) => 
-                                                <Tab key={article._id} label={( 
+                                            { this.state.hotArticles.map((article) => 
+                                                <Tab key={article.uri} label={( 
                                                     <Link to={`/artigos/${article.customURL}`} className="top-article">
                                                         <HotArticle article={article} />
                                                     </Link>
