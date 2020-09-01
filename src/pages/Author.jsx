@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import Loading from '../assets/loading.gif'
 
-import { api_cm_web_service } from '../config/appConfig'
+import { environment } from '../config/environment'
 
 class Author extends Component{
 
@@ -21,7 +21,7 @@ class Author extends Component{
     }
 
     async getAuthor(){
-        const url = `${api_cm_web_service}/authors/${this.props.match.params.id}`
+        const url = `${environment.api}/authors/${this.props.match.params.id}`
         
         this.toogleLoading()
 
