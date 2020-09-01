@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Box, useMediaQuery, Icon } from '@material-ui/core'
+import { Grid, Box, Icon } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { Link } from 'react-router-dom'
