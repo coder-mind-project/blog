@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { Grid, Box, useMediaQuery, Divider } from '@material-ui/core'
+import { Grid, Box, useMediaQuery } from '@material-ui/core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faStar } from '@fortawesome/free-solid-svg-icons'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { api_cm_management } from '../config/appConfig'
 import { Link } from 'react-router-dom'
 
 import {styles} from './styles/ArticleBox'
@@ -22,7 +21,7 @@ const ArticleBox = props => {
         <Box width="100%" className={matches ? classes.articleBoxXs : classes.articleBox}>
             <Grid item xs={12} md={3} className={classes.articleImg}>
                 <figure>
-                    { props.article && props.article.smallImg && <img src={`${api_cm_management}/${props.article.smallImg}`} className={classes.logoArticle} 
+                    { props.article && props.article.logoImg && <img src={`${props.article.logoImg}`} className={classes.logoArticle} 
                     
                     alt={props.article.title}/>}
                 </figure>

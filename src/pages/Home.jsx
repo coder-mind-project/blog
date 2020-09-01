@@ -8,7 +8,7 @@ import { faPeopleCarry, faQuestionCircle } from '@fortawesome/free-solid-svg-ico
 import { Link } from 'react-router-dom'
 
 import axios from 'axios'
-import { api_cm_web_service } from '../config/appConfig'
+import { environment } from '../config/environment'
 
 import HotArticle from '../components/HotArticle.jsx'
 import FloatingButton from '../components/FloatingButton.jsx'
@@ -36,11 +36,13 @@ class Home extends Component {
     }
 
     async getHotArticles(){
-        await this.toogleLoading()
-        const url = `${api_cm_web_service}/articles?home=yes`
+        this.toogleLoading()
+
+        const url = `${environment.api}/articles/boosted`
         await axios(url).then(res => {
-            this.setState({hotArticles: res.data.boostedArticles.articles})
-        }).catch(error => console.log('Ocorreu um erro'))
+            this.setState({hotArticles: res.data.articles})
+        })
+
         this.toogleLoading()
     }
 
@@ -101,8 +103,8 @@ class Home extends Component {
                                         scrollButtons="auto"
                                     >
                                         {/*<Box display="flex" alignItems="center" className="top-articles-content" id='top-articles-content'>*/}
-                                            { this.state.hotArticles.map((article, key) => 
-                                                <Tab key={article._id} label={( 
+                                            { this.state.hotArticles.map((article) => 
+                                                <Tab key={article.uri} label={( 
                                                     <Link to={`/artigos/${article.customURL}`} className="top-article">
                                                         <HotArticle article={article} />
                                                     </Link>

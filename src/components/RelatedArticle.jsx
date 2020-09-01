@@ -4,7 +4,6 @@ import { Card, CardActions,
         CardContent, CardMedia, Button, Box } from '@material-ui/core'
 
 import Logo from '../assets/img_not_found_768.png'
-import { api_cm_management } from '../config/appConfig'
 
 const useStyles = makeStyles({
     card: {
@@ -24,7 +23,7 @@ return (
             <Box>
                 <CardMedia
                     className={classes.media}
-                    image={props.article.mediumImg ? `${api_cm_management}/${props.article.mediumImg}`: `${Logo}`}
+                    image={props.article.mediumImg || Logo}
                     title={props.article.title}
                 />
                 <CardContent>

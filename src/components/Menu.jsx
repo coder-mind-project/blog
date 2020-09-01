@@ -5,11 +5,11 @@ import SearchBar from 'material-ui-search-bar'
 
 
 import { AppBar, Toolbar, IconButton, Drawer, List, ListItem,
-    useMediaQuery, Icon, Box, Grid } from '@material-ui/core'
+    useMediaQuery, Icon, Box, Grid, Typography } from '@material-ui/core'
     
 import { styles } from './styles/Menu'
 
-import { version, build } from '../config/appConfig'
+import { environment } from '../config/environment'
 
 const useStyles = makeStyles(styles)
 
@@ -49,12 +49,16 @@ const Menu = props => {
                         }
                         <Box display="flex" alignItems="center">
                             <Link className={classes.menuTitle} to="/">
-                                <h1 className="coder-mind" style={{display: 'flex', alignItems: 'center', fontSize: matches ? '1.5rem !important' : 'default'}}>
-                                    <Icon fontSize="large" >
-                                        code
-                                    </Icon>
-                                    Coder Mind
-                                </h1>
+                                <Box display="flex" alignItems="center">
+                                    <Box mr={1} display="flex" alignItems="center">
+                                        <Icon fontSize="large" >
+                                            code
+                                        </Icon>
+                                    </Box>
+                                    <Typography component="h1" variant="h5" className="coder-mind">
+                                            Coder Mind
+                                    </Typography>
+                                </Box>
                             </Link>
                         </Box>
                         { matches && 
@@ -163,7 +167,7 @@ const Menu = props => {
                                 <Icon  className={classes.iconButtonMenu}>
                                     code
                                 </Icon>
-                                {version} - {build}
+                                {environment.version} - {environment.build}
                             </Box>
                         </ListItem>
                     </List>

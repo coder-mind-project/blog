@@ -9,14 +9,11 @@ import { faYoutube, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faImages } from '@fortawesome/free-regular-svg-icons'
 import {styles} from './styles/Footer'
 
-import { api_cm_web_service } from '../config/appConfig'
-
 
 const useStyles = makeStyles(styles)
 
 const Footer = (props) => {
     const classes = useStyles()
-    const matches = useMediaQuery('(max-width: 768px)')
 
     return (
         <Grid item xs={12}>
@@ -36,7 +33,7 @@ const Footer = (props) => {
                             </Box>
                             Youtube
                         </a>
-                        <Box className={classes.fakeLink} onClick={() => window.location.href = `${api_cm_web_service}/public/media/coder-mind.zip`}>
+                        <Box className={classes.fakeLink}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faImages}/>
                             </Box>
