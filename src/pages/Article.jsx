@@ -24,10 +24,6 @@ import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramS
 
 import FloatingButton from '../components/FloatingButton.jsx'
 
-// import { PDFDownloadLink } from '@react-pdf/renderer'
-
-// import {PDFSample} from '../components/PDFSample.jsx'
-
 import './css/Article.css'
 
 class Article extends Component {
