@@ -123,7 +123,7 @@ class Home extends Component {
                                     placeholder="O que vem na sua mente?"
                                     width="100%"
                                     className="search-input"
-                                    searchIcon={<Icon className="search-input-button">search</Icon>}
+                                    searchIcon={<Icon className="search-input-button" color="primary">search</Icon>}
                                 />
                             </Box>
                         </Box>
@@ -153,7 +153,7 @@ class Home extends Component {
                                     </p>
                                     <Box mt={2} mb={2} display="flex" justifyContent="center">
                                         <Link to="/artigos">
-                                            <Button color="secondary" variant="contained" size="small" className="coder-mind-button">
+                                            <Button color="primary" variant="contained" size="small" className="coder-mind-button">
                                                 Ver mais
                                             </Button>
                                         </Link>
@@ -173,7 +173,7 @@ class Home extends Component {
                                     </p>
                                     <Box mt={2} mb={2} display="flex" justifyContent="center">
                                         <a href="/sobre#contact">
-                                            <Button color="secondary" variant="contained" size="small" className="coder-mind-button">
+                                            <Button color="primary" variant="contained" size="small" className="coder-mind-button">
                                                 Ver mais
                                             </Button>
                                         </a>
