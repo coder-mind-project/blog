@@ -1,23 +1,27 @@
-import React from 'react'
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import ScrollToTop from './config/ScrollToTop'
+import React from 'react';
 
-import Menu from './components/Menu.jsx'
-import Footer from './components/Footer.jsx'
-import Home from './pages/Home.jsx'
-import ArticlesList from './pages/ArticlesList.jsx'
-import Article from './pages/Article.jsx'
-import Privacity from './pages/Privacity.jsx'
-import Faq from './pages/Faq.jsx'
-import About from './pages/About.jsx'
-import NotFound from './pages/NotFound.jsx'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Box } from "@material-ui/core";
 
-import './App.css'
+import Menu from './components/Menu.jsx';
+import Footer from './components/Footer.jsx';
+import Home from './pages/Home.jsx';
+import ArticlesList from './pages/ArticlesList.jsx';
+import Article from './pages/Article.jsx';
+import Privacity from './pages/Privacity.jsx';
+import Faq from './pages/Faq.jsx';
+import About from './pages/About.jsx';
+import NotFound from './pages/NotFound.jsx';
+
+import ScrollToTop from './config/ScrollToTop';
+
+import './App.css';
+import './config/axios';
 
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <Box className="App">
       <Router>
           <Menu />
           <ScrollToTop>
@@ -33,8 +37,8 @@ function App() {
           </ScrollToTop>
           <Footer />     
       </Router>
-    </div>
+    </Box>
   );
 }
 
-export default App
+export default App;
