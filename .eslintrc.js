@@ -11,12 +11,19 @@ module.exports = {
     'ecmaFeatures': {
       'jsx': true,
     },
-    'ecmaVersion': 12,
+    'ecmaVersion': 2020,
     'sourceType': 'module',
   },
   'plugins': [
     'react',
   ],
   'rules': {
+    'no-underscore-dangle': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'no-plusplus': 'off',
+    'react/jsx-curly-newline': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/react-in-jsx-scope': 'off',
+
   },
 };

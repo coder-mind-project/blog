@@ -28,7 +28,7 @@ const Menu = props => {
 
     return (
         
-        <div>
+        <Box>
             {state.redirectTo && 
                 <Redirect to={`/${state.redirectTo}`}/>
             }
@@ -112,7 +112,7 @@ const Menu = props => {
                         </Grid>
                     </Box>
                 </Box>
-                <div className={classes.drawer}>
+                <Box className={classes.drawer}>
                     <List className={classes.list}>
                         <Link to="/artigos" className={classes.buttonLink}
                             onClick={() => setState({drawerMenu: false})}
@@ -165,12 +165,12 @@ const Menu = props => {
                                 <Icon  className={classes.iconButtonMenu}>
                                     code
                                 </Icon>
-                            </span>
+                            </Box>
                         </ListItem>
                     </List>
-                </div>  
+                </Box>  
             </Drawer>
-        </div>
+        </Box>
         )
 }
 
