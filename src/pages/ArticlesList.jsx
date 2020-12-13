@@ -72,14 +72,16 @@ class ArticlesList extends Component {
         await this.toogleLoadingThemes()
         const url = `${api_cm_web_service}/themes`
         await axios(url).then(res => {
-            const themes = res.data.themes.map(theme => {
-                return {
-                    value: theme.name,
-                    label: theme.name,
-                }
-            })
+            if (res.data && res.data.themes) {
+                const themes = res.data.themes.map(theme => {
+                    return {
+                        value: theme.name,
+                        label: theme.name,
+                    }
+                });
 
-            this.setState({themes})
+                this.setState({themes})
+            }
         })
         this.toogleLoadingThemes()
     }
@@ -251,7 +253,7 @@ class ArticlesList extends Component {
                 </Grid>
                 <Grid item xs={12} className="search-results">
                     { this.state.articles.length > 0 && !this.state.loadingArticles && this.state.articles.map(article => (
-                            <ArticleBox article={article} key={article._id}/>
+                            <ArticleBox article={article} key={article.uri}/>
                         ))
                     }
                     { this.state.articles.length > 0 && this.state.articles.length !== this.state.count && !this.state.loadingArticles &&
