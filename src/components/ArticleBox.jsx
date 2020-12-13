@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faStar } from '@fortawesome/free-solid-svg-icons'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { api_cm_management } from '../config/appConfig'
 import { Link } from 'react-router-dom'
 
 import {styles} from './styles/ArticleBox'
@@ -22,7 +21,7 @@ const ArticleBox = props => {
         <Box width="100%" className={classes.articleBox}>
             <Grid item xs={12} md={3} className={classes.articleImg}>
                 <figure>
-                    { props.article && props.article.smallImg && <img src={`${api_cm_management}/${props.article.smallImg}`} className={classes.logoArticle} 
+                    { props.article && props.article.logoImg && <img src={`${props.article.logoImg}`} className={classes.logoArticle} 
                     
                     alt={props.article.title}/>}
                 </figure>
@@ -30,7 +29,7 @@ const ArticleBox = props => {
             <Grid item xs={12} md={8} className={matches ? classes.articleContentXs : classes.articleContent}>
                 <Box>
                     <h2 className={classes.title}>
-                        <Link to={`/artigos/${props.article.customURL}`} className={matches ? classes.linkXs : classes.link}>
+                        <Link to={`/artigos/${props.article.uri}`} className={matches ? classes.linkXs : classes.link}>
                             {props.article.title}
                         </Link>
                     </h2>
@@ -57,14 +56,14 @@ const ArticleBox = props => {
                         <Box mr={1}>
                             <FontAwesomeIcon icon={faTag} />
                         </Box> 
-                        {props.article.theme.name}
+                        {props.article.theme.description}
                     </Box>
                     { props.article.category && props.article.category._id && 
                         <Box display="flex" flexWrap="wrap" ml={2} alignItems="center">
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faTags} />
                             </Box>
-                            {props.article.category.name}
+                            {props.article.category.description}
                         </Box>
                     }
                 </Box>

@@ -8,7 +8,6 @@ import { faPeopleCarry, faQuestionCircle, faMobileAlt, faLaptop, faDatabase } fr
 import { Link } from 'react-router-dom'
 
 import axios from 'axios'
-import { api_cm_web_service } from '../config/appConfig'
 
 import HotArticle from '../components/HotArticle.jsx'
 import FloatingButton from '../components/FloatingButton.jsx'
@@ -37,7 +36,7 @@ class Home extends Component {
 
     async getHotArticles(){
         await this.toogleLoading()
-        const url = `${api_cm_web_service}/articles?home=yes`
+        const url = `/articles?home=yes`
         await axios(url).then(res => {
             this.setState({hotArticles: res.data.boostedArticles.articles})
         }).catch(error => console.log('Ocorreu um erro'))

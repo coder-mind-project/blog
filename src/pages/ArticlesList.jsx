@@ -19,7 +19,6 @@ import SearchBar from 'material-ui-search-bar'
 import queryString from 'query-string'
 
 import axios from 'axios'
-import { api_cm_web_service } from '../config/appConfig'
 
 import './css/ArticlesList.css'
 
@@ -70,7 +69,7 @@ class ArticlesList extends Component {
     
     async getThemes(){
         await this.toogleLoadingThemes()
-        const url = `${api_cm_web_service}/themes`
+        const url = `/themes`
         await axios(url).then(res => {
             if (res.data && res.data.themes) {
                 const themes = res.data.themes.map(theme => {
@@ -98,7 +97,7 @@ class ArticlesList extends Component {
         if(forQuery) this.setState({page: 1})
 
         
-        const url = `${api_cm_web_service}/articles?query=${this.state.search}&page=${this.state.page}&limit=${this.state.limit}&theme=${this.state.theme}&category=${this.state.theme}&author=${this.state.author}`
+        const url = `/articles?query=${this.state.search}&page=${this.state.page}&limit=${this.state.limit}&theme=${this.state.theme}&category=${this.state.theme}&author=${this.state.author}`
         await axios(url).then(res => {
             let articles = res.data.articles
             
