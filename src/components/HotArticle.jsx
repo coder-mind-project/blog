@@ -16,7 +16,7 @@ class HotArticle extends Component {
             <Grid item xs={12}>
                 <Box display="flex" flexDirection="column" alignItems="space-between" width="250px" height="300px">
                     <Box display="flex" justifyContent="center">
-                        <img src={ this.article.logoImg ? `${this.article.logoImg}` : `${DefaultImg}`}  height="150px" alt={this.article.title} />
+                        <img src={ this.article.logoImg || DefaultImg}  height="150px" alt={this.article.title} />
                     </Box>
                     <Box display="flex" justifyContent="center" height="50px">
                         <h4>

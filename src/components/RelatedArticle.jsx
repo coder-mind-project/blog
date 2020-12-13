@@ -23,7 +23,7 @@ return (
             <Box>
                 <CardMedia
                     className={classes.media}
-                    image={props.article.mediumImg || Logo}
+                    image={props.article.mediumImg ? `/${props.article.mediumImg}`: `${Logo}`}
                     title={props.article.title}
                 />
                 <CardContent>

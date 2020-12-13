@@ -8,7 +8,6 @@ import { faPeopleCarry, faQuestionCircle } from '@fortawesome/free-solid-svg-ico
 import { Link } from 'react-router-dom'
 
 import axios from 'axios'
-import { environment } from '../config/environment'
 
 import HotArticle from '../components/HotArticle.jsx'
 import FloatingButton from '../components/FloatingButton.jsx'
@@ -36,9 +35,8 @@ class Home extends Component {
     }
 
     async getHotArticles(){
-        this.toogleLoading()
-
-        const url = `${environment.api}/articles/boosted`
+        await this.toogleLoading()
+        const url = `/articles?home=yes`
         await axios(url).then(res => {
             this.setState({hotArticles: res.data.articles})
         })

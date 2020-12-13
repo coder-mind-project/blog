@@ -19,7 +19,6 @@ import SearchBar from 'material-ui-search-bar'
 import queryString from 'query-string'
 
 import axios from 'axios'
-import { environment } from '../config/environment'
 
 import './css/ArticlesList.css'
 
@@ -70,16 +69,18 @@ class ArticlesList extends Component {
     
     async getThemes(){
         await this.toogleLoadingThemes()
-        const url = `${environment.api}/themes`
+        const url = `/themes`
         await axios(url).then(res => {
-            const themes = res.data.themes.map(theme => {
-                return {
-                    value: theme.name,
-                    label: theme.name,
-                }
-            })
+            if (res.data && res.data.themes) {
+                const themes = res.data.themes.map(theme => {
+                    return {
+                        value: theme.name,
+                        label: theme.name,
+                    }
+                });
 
-            this.setState({themes})
+                this.setState({themes})
+            }
         })
         this.toogleLoadingThemes()
     }
@@ -96,7 +97,7 @@ class ArticlesList extends Component {
         if(forQuery) this.setState({page: 1})
 
         
-        const url = `${environment.api}/articles?query=${this.state.search}&page=${this.state.page}&limit=${this.state.limit}&theme=${this.state.theme}&category=${this.state.theme}&author=${this.state.author}`
+        const url = `/articles?query=${this.state.search}&page=${this.state.page}&limit=${this.state.limit}&theme=${this.state.theme}&category=${this.state.theme}&author=${this.state.author}`
         await axios(url).then(res => {
             let articles = res.data.articles
             
@@ -252,7 +253,7 @@ class ArticlesList extends Component {
                 </Grid>
                 <Grid item xs={12} className="search-results">
                     { this.state.articles.length > 0 && !this.state.loadingArticles && this.state.articles.map(article => (
-                            <ArticleBox article={article} key={article._id}/>
+                            <ArticleBox article={article} key={article.uri}/>
                         ))
                     }
                     { this.state.articles.length > 0 && this.state.articles.length !== this.state.count && !this.state.loadingArticles &&

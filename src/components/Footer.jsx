@@ -33,7 +33,9 @@ const Footer = (props) => {
                             </Box>
                             Youtube
                         </a>
-                        <Box className={classes.fakeLink}>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <Box className={classes.fakeLink} onClick={() => window.location.href = `/public/media/coder-mind.zip`}>
                             <Box mr={1}>
                                 <FontAwesomeIcon icon={faImages}/>
                             </Box>

@@ -9,8 +9,6 @@ import { AppBar, Toolbar, IconButton, Drawer, List, ListItem,
     
 import { styles } from './styles/Menu'
 
-import { environment } from '../config/environment'
-
 const useStyles = makeStyles(styles)
 
 const Menu = props => {
@@ -167,8 +165,7 @@ const Menu = props => {
                                 <Icon  className={classes.iconButtonMenu}>
                                     code
                                 </Icon>
-                                {environment.version} - {environment.build}
-                            </Box>
+                            </span>
                         </ListItem>
                     </List>
                 </div>  

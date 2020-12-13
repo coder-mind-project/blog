@@ -7,7 +7,6 @@ import { Grid, Box, TextField, Button, ButtonBase, Icon,
         CircularProgress, Snackbar, IconButton } from '@material-ui/core'
 
 import axios from 'axios'
-import { environment } from '../config/environment'
 import './css/About.css'
 class About extends Component {
     state = { 
@@ -43,7 +42,7 @@ class About extends Component {
     async sendMessage(event){
         event.preventDefault()
         await this.changeStateSending()
-        const url = `${environment}/contact`
+        const url = `/contact`
         const message = {
             email: this.state.email,
             message: this.state.msg
