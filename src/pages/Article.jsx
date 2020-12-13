@@ -5,8 +5,6 @@ import { Grid, Box, Divider, TextField,
 
 import axios from 'axios'
 
-import {Link} from 'react-router-dom'
-
 import ReCAPTCHA from "react-google-recaptcha"
 
 import Avatar from 'react-avatar'
@@ -330,7 +328,7 @@ class Article extends Component {
                                 <Box mr={1} display="flex" alignItems="center">
                                     <Avatar src={`/${this.state.article.author.profilePhoto}`} name={this.state.article.author.name} size={30} round={true}/>
                                 </Box>
-                            </Link>
+                            </Box>
                             {this.state.article.theme && this.state.article.theme.name &&
                                 <Box display="flex" alignItems="center" justifyContent="center" mr={1} ml={1}>
                                     <Box mr={1}>
