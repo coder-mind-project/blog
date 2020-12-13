@@ -3,11 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #232526;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-color: black;
-    min-height: 70vh;
+    background: #8a05be;  /* fallback for old browsers */
+    /* color: #8a05be; */
+    background: -webkit-linear-gradient(to right, #8a05be, #42275a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8a05be, #42275a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    min-height: 80vh;
     padding-top: 20vh;
     padding-bottom: 20vh;
     padding-right: 15%;
@@ -19,7 +19,7 @@
     font-weight: 800;
     text-align: center;
     margin-bottom: 50px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .main-container-img{
@@ -54,6 +54,10 @@
 
 .search-input-button{
     color: #f50057;
+}
+
+.search-input-button-menu{
+    color: #8a05be;
 }
 
 .small-text{

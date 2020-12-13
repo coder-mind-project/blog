@@ -5,13 +5,15 @@ import { Grid, Box, Divider, TextField,
 
 import axios from 'axios'
 
+import {Link} from 'react-router-dom'
+
 import ReCAPTCHA from "react-google-recaptcha"
 
 import Avatar from 'react-avatar'
 import RelatedArticle from '../components/RelatedArticle.jsx'
 import Comment from '../components/Comment.jsx'
 
-import LoadingEllipsis from '../assets/loading-ellipsis.gif'
+import Loading from '../assets/loading.gif'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faCommentDots, faPaperclip, faShareAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
@@ -332,8 +334,7 @@ class Article extends Component {
                                 <Box mr={1} display="flex" alignItems="center">
                                     <Avatar src={`/${this.state.article.author.profilePhoto}`} name={this.state.article.author.name} size={30} round={true}/>
                                 </Box>
-                                <p>{this.state.article.author.name}</p>
-                            </Box>
+                            </Link>
                             {this.state.article.theme && this.state.article.theme.name &&
                                 <Box display="flex" alignItems="center" justifyContent="center" mr={1} ml={1}>
                                     <Box mr={1}>
@@ -372,7 +373,7 @@ class Article extends Component {
                             <Box p={3} display="flex" alignItems="center">
                                 <Box mr={2} ml={2}>
                                     <Box>
-                                        <FontAwesomeIcon icon={faHeart} className="foot-button" color={ this.state.liked ? "#f50057":'gray'} size="2x" onClick={() => this.like()}/>
+                                        <FontAwesomeIcon icon={faHeart} className="foot-button" color={ this.state.liked ? "#8a05be":'gray'} size="2x" onClick={() => this.like()}/>
                                     </Box>
                                 </Box>
                                 { /* this.state.enableDownload &&<Box mr={2} ml={2}>
@@ -389,11 +390,11 @@ class Article extends Component {
                                 */}
                                 <Box mr={2} ml={2}>
                                     <Box>
-                                        <FontAwesomeIcon icon={faShareAlt} className="foot-button" color="gray" size="2x" onClick={() => this.goToShareOptions()}/>
+                                        <FontAwesomeIcon icon={faShareAlt} className="foot-button" color="#8a05be" size="2x" onClick={() => this.goToShareOptions()}/>
                                     </Box>
                                 </Box>
                                 <Box mr={2} ml={2}>
-                                    <FontAwesomeIcon icon={faCommentDots} className="foot-button" color="gray" size="2x" onClick={() => this.goToComments()}/>
+                                    <FontAwesomeIcon icon={faCommentDots} className="foot-button" color="#8a05be" size="2x" onClick={() => this.goToComments()}/>
                                 </Box>
                             </Box>
                         </Grid>
@@ -405,10 +406,10 @@ class Article extends Component {
                                 <Box className="more_related_title" display="flex" alignItems="center">
                                     <Box display="flex" alignItems="center" mr={1}>
                                         <Box m={1}>
-                                            <FontAwesomeIcon icon={faPaperclip} size="1x" color="#f50057" id="related-articles" tabIndex="-1" />
+                                            <FontAwesomeIcon icon={faPaperclip} size="1x" color="#8a05be" id="related-articles" tabIndex="-1" />
                                         </Box>
                                         <Box m={1}>
-                                            <FontAwesomeIcon icon={faFileCode} size="2x" color="#f50057" />
+                                            <FontAwesomeIcon icon={faFileCode} size="2x" color="#8a05be" />
                                         </Box>
                                     </Box>
                                     <h2>Conteúdos relacionados</h2>
@@ -423,10 +424,10 @@ class Article extends Component {
                             <Box className="comments_title" display="flex" alignItems="center">
                                 <Box display="flex" alignItems="center" mr={1}>
                                     <Box m={1}>
-                                        <FontAwesomeIcon icon={faPaperclip} size="1x" color="#f50057" id="form-comment" tabIndex="-1" />
+                                        <FontAwesomeIcon icon={faPaperclip} size="1x" color="#8a05be" id="form-comment" tabIndex="-1" />
                                     </Box>
                                     <Box m={1}>
-                                        <FontAwesomeIcon icon={faCommentDotsRegular} size="2x" color="#f50057" />
+                                        <FontAwesomeIcon icon={faCommentDotsRegular} size="2x" color="#8a05be" />
                                     </Box>
                                 </Box>
                                 <h2>Comentários</h2>
@@ -436,10 +437,10 @@ class Article extends Component {
                                 <Zoom in={!this.state.showFormComment}>
                                     <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
                                         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" mb={3}>
-                                            <p>Para visualizar os demais comentários, basta descer a página um <strong>pouquinho</strong> mais...</p>
+                                            <p>Para visualizar os demais comentários, basta descer a página um <strong style={{color: '#8a05be'}}>pouquinho</strong> mais...</p>
                                             <p>Que deixar um comentário? basta clicar no botão abaixo!</p>
                                         </Box>
-                                        <Button color="secondary" variant="contained" onClick={() => this.setState({showFormComment: true})}>Quero enviar um comentário</Button>
+                                        <Button className="coder-mind-button" variant="contained" onClick={() => this.setState({showFormComment: true})}><span style={{color: '#fff'}}>Quero enviar um comentário</span></Button>
                                     </Box>
                                 </Zoom>
                                 }
@@ -448,7 +449,7 @@ class Article extends Component {
                                             <Box display="flex" flexDirection="column" width="100%" >
                                                 <Box display="flex" justifyContent="flex-end" alignItems="center">
                                                     <IconButton
-                                                        color="inherit"
+                                                        style={{color: '#8a05be'}}
                                                         onClick={() => this.setState({showFormComment: false})}
                                                     >
                                                             <Icon>clear</Icon>
@@ -467,7 +468,7 @@ class Article extends Component {
                                                             size="compact"
                                                         />
                                                     </Box>
-                                                    <Button color="secondary" variant="contained" disabled={this.state.sendingComment} onClick={() => this.sendComment()}>{this.state.sendingComment ? <Box display="flex" alignItems="center"><Box mr={1} display="flex" alignItems="center" ><CircularProgress size={20} color="inherit"/></Box>Enviando...</Box> : <Box>Enviar</Box>}</Button>
+                                                    <Button className="coder-mind-button" style={{color: '#fff'}} variant="contained" disabled={this.state.sendingComment} onClick={() => this.sendComment()}>{this.state.sendingComment ? <Box display="flex" alignItems="center"><Box mr={1} display="flex" alignItems="center" ><CircularProgress size={20} color="inherit"/></Box>Enviando...</Box> : <Box>Enviar</Box>}</Button>
                                             </Box>
                                     </Zoom>
                                 }
@@ -480,22 +481,21 @@ class Article extends Component {
                                 { this.state.comments.length > 0 && this.state.countComments > this.state.comments.length &&
                                     <Grid item xs={12}>
                                         <Box width="100%" display="flex" justifyContent="center" alignItems="center">
-                                            <Button color="secondary" variant="contained" onClick={() => this.getMoreComments()}>Ver mais</Button>
+                                            <Button className="coder-mind-button" variant="contained" onClick={() => this.getMoreComments()}>Ver mais</Button>
                                         </Box>
                                     </Grid>
                                 }
                                 { this.state.comments.length === 0 && !this.state.loadingArticle &&
                                     <Box display="flex" justifyContent="center" alignItems="center" mt={5} mb={5}>
-                                        <Icon fontSize="large" color="secondary">priority_high</Icon>
-                                        <p>Ops, este artigo não possui comentários. Seja o primeiro a </p>
-                                        <Box>
-                                            <Button color="secondary" variant="text" size="small" onClick={async () => {
+                                        <Icon fontSize="large" style={{color: '#8a05be'}}>priority_high</Icon>
+                                        <p>Ops, este artigo não possui comentários. Seja o primeiro a&nbsp;
+                                            <span style={{color: '#8a05be', fontWeight: 'bold', cursor: 'pointer'}} variant="text" size="small" onClick={async () => {
                                                 await this.setState({showFormComment: true})
                                                 document.querySelector('#form-comment').focus()
                                             }}>
                                                 comentar
-                                            </Button>
-                                        </Box>
+                                            </span>
+                                        </p>
                                     </Box>
                                 }
                             </Grid>
@@ -506,11 +506,11 @@ class Article extends Component {
                     <Grid className="article-wrapper">
                         <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="100vh">
                             <figure>
-                                <img src={LoadingEllipsis} alt="Carregando..."/>
+                                <img src={Loading} alt="Carregando..."/>
                                 <p>Carregando seu artigo, por favor aguarde...</p>
                             </figure>
                             <Box display="flex" justifyContent="center" alignItems="center">
-                                <small className="refer">Loading ellipsis by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small>
+                                <small className="refer">Powered by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small>
                             </Box>
                         </Box>
                     </Grid>
@@ -549,7 +549,7 @@ class Article extends Component {
                         ContentProps={{
                             'aria-describedby': 'message-id',
                         }}
-                        message={<h3 id="message-id">Comentário enviado, em 24 horas ele estará publico para outros usuários</h3>}
+                        message={<span id="message-id">Comentário enviado, em 24 horas ele estará publico para outros usuários</span>}
                         action={[
                         <Button key="undo" color="secondary" size="small" onClick={() => this.handleClose()}>
                             Fechar
@@ -577,7 +577,7 @@ class Article extends Component {
                         ContentProps={{
                         'aria-describedby': 'message-id',
                         }}
-                        message={<h3 id="message-id">{this.state.showErrorComment}</h3>}
+                        message={<span id="message-id">{this.state.showErrorComment}</span>}
                         action={[
                         <Button key="undo" color="secondary" size="small" onClick={() => this.handleClose()}>
                             Fechar

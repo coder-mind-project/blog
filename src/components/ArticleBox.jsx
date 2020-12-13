@@ -18,7 +18,7 @@ const ArticleBox = props => {
     const matches = useMediaQuery('(max-width: 1055px)')
 
     return (
-        <Box width="100%" className={classes.articleBox}>
+        <Box width="100%" className={matches ? classes.articleBoxXs : classes.articleBox}>
             <Grid item xs={12} md={3} className={classes.articleImg}>
                 <figure>
                     { props.article && props.article.logoImg && <img src={`${props.article.logoImg}`} className={classes.logoArticle} 
@@ -47,9 +47,9 @@ const ArticleBox = props => {
                     <p className={matches ? classes.textXs : ''}>
                         {props.article.shortDescription}
                     </p>
-                    <p className={matches ? classes.textXs : ''}>
+                    {/* <p className={matches ? classes.textXs : ''}>
                         {props.article.longDescription}
-                    </p>
+                    </p> */}
                 </Box>
                 <Box display="flex" alignItems="center" justifyContent={matches ? 'center':'flex-start'}  width="100%">
                     <Box display="flex" alignItems="center">

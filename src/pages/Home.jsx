@@ -3,7 +3,7 @@ import { Grid, Button, Box, Tabs, Tab, Icon } from '@material-ui/core'
 import SearchBar from 'material-ui-search-bar'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPeopleCarry, faQuestionCircle, faMobileAlt, faLaptop, faDatabase } from '@fortawesome/free-solid-svg-icons'
+import { faPeopleCarry, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ import axios from 'axios'
 import HotArticle from '../components/HotArticle.jsx'
 import FloatingButton from '../components/FloatingButton.jsx'
 
-import LoadingEllipsis from '../assets/loading-ellipsis.gif'
+import Loading from '../assets/loading.gif'
 
 import './css/Home.css'
 
@@ -38,8 +38,9 @@ class Home extends Component {
         await this.toogleLoading()
         const url = `/articles?home=yes`
         await axios(url).then(res => {
-            this.setState({hotArticles: res.data.boostedArticles.articles})
-        }).catch(error => console.log('Ocorreu um erro'))
+            this.setState({hotArticles: res.data.articles})
+        })
+
         this.toogleLoading()
     }
 
@@ -53,22 +54,25 @@ class Home extends Component {
                 <Grid item xs={12} className="main-container">
                         <Box display="flex" alignItems="center" mb={2}>
                             <Box p={1}>
-                                <FontAwesomeIcon icon={faMobileAlt} size="8x" className="main-container-img" />
+                                <Icon className="main-container-img">phone_iphone</Icon>
+                                {/* <FontAwesomeIcon icon={faMobileAlt} size="8x" className="main-container-img" /> */}
                             </Box>
                             <Box p={1}>
-                                <FontAwesomeIcon icon={faLaptop} size="8x" className="main-container-img" />
+                                <Icon className="main-container-img">computer</Icon>
+                                {/* <FontAwesomeIcon icon={faLaptop} className="main-container-img" /> */}
                             </Box>
                             <Box p={1}>
-                                <FontAwesomeIcon icon={faDatabase} size="8x" className="main-container-img" />
+                                <Icon className="main-container-img">widgets</Icon>
+                                {/* <FontAwesomeIcon icon={faDatabase} className="main-container-img" /> */}
                             </Box>
                         </Box>
                         <h3 className="main-container-msg">
                             Programação, banco de dados, e tecnologia em geral. De fundamentos a ferramentas, <br/>na
-                            &nbsp;<span style={{color: '#22E1C7'}} className="coder-mind">Coder</span> <span style={{color: '#f50057'}} className="coder-mind">Mind</span>&nbsp;
+                            &nbsp;<span className="coder-mind" style={{fontSize: '1.4rem'}}>Coder Mind</span>&nbsp;
                             você irá acompanhar bons conteúdos de tecnologia.
                         </h3>
                         <Link to="/artigos">
-                            <Button color="secondary" variant="contained">Ver Mais</Button>
+                            <Button variant="contained">Ver Mais</Button>
                         </Link>
                 </Grid>
                 <Grid item xs={12} className="best_articles">
@@ -82,7 +86,7 @@ class Home extends Component {
                                 { this.state.loading && 
                                     <Box display="flex" justifyContent="center" alignItems="center" width="100%">
                                         <figure className="text-center">
-                                            <img className="loading-ellipsis" src={LoadingEllipsis} alt="Carregando..."/>
+                                            <img className="loading-ellipsis" src={Loading} alt="Carregando..."/>
                                             <figcaption><small>Loading ellipsis by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small></figcaption>
                                         </figure>
                                     </Box>
@@ -91,14 +95,14 @@ class Home extends Component {
                                     <Tabs
                                         value={this.state.value}
                                         onChange={(event, value) => this.setState({value})}
-                                        indicatorColor="secondary"
+                                        indicatorColor="primary"
                                         textColor="inherit"
                                         variant="scrollable"
                                         scrollButtons="auto"
                                     >
                                         {/*<Box display="flex" alignItems="center" className="top-articles-content" id='top-articles-content'>*/}
-                                            { this.state.hotArticles.map((article, key) => 
-                                                <Tab key={article._id} label={( 
+                                            { this.state.hotArticles.map((article) => 
+                                                <Tab key={article.uri} label={( 
                                                     <Link to={`/artigos/${article.customURL}`} className="top-article">
                                                         <HotArticle article={article} />
                                                     </Link>
@@ -149,7 +153,7 @@ class Home extends Component {
                                     </p>
                                     <Box mt={2} mb={2} display="flex" justifyContent="center">
                                         <Link to="/artigos">
-                                            <Button color="secondary" variant="contained" size="small">
+                                            <Button color="secondary" variant="contained" size="small" className="coder-mind-button">
                                                 Ver mais
                                             </Button>
                                         </Link>
@@ -163,13 +167,13 @@ class Home extends Component {
                                 <Box>
                                     <p>Dúvidas? Bugs na platafoma? Quer falar conosco?</p>
                                     <p>
-                                        Acesse nosso <Link to="/faq"><strong style={{color: '#f50057', textDecoration: 'underline'}}>FAQ</strong></Link> ou mande uma 
+                                        Acesse nosso <Link to="/faq"><strong style={{color: '#8a05be', textDecoration: 'underline'}}>FAQ</strong></Link> ou mande uma 
                                         mensagem clicando no botão abaixo,
                                         estamos ansiosos para respondê-lo!
                                     </p>
                                     <Box mt={2} mb={2} display="flex" justifyContent="center">
                                         <a href="/sobre#contact">
-                                            <Button color="secondary" variant="contained" size="small">
+                                            <Button color="secondary" variant="contained" size="small" className="coder-mind-button">
                                                 Ver mais
                                             </Button>
                                         </a>

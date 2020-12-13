@@ -32,6 +32,7 @@ const App = () => {
               <Route path="/privacidade" exact component={Privacity}></Route>
               <Route path="/faq" exact component={Faq}></Route>
               <Route path="/sobre" exact component={About}></Route>
+              <Route path="/autor/:id" exact component={Author}></Route>
               <Route component={NotFound}></Route>
             </Switch>
           </ScrollToTop>
