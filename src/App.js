@@ -9,7 +9,6 @@ import Home from './pages/Home.jsx';
 import ArticlesList from './pages/ArticlesList.jsx';
 import Article from './pages/Article.jsx';
 import Privacity from './pages/Privacity.jsx';
-import Faq from './pages/Faq.jsx';
 import About from './pages/About.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -36,7 +35,6 @@ const App = () => {
               <Route path="/artigos" exact component={ArticlesList} />
               <Route path="/artigos/:resource" exact component={Article} />
               <Route path="/privacidade" exact component={Privacity} />
-              <Route path="/faq" exact component={Faq} />
               <Route path="/sobre" exact component={About} />
               <Route component={NotFound} />
             </Switch>

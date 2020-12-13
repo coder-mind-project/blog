@@ -167,7 +167,7 @@ class Home extends Component {
                                 <Box>
                                     <p>Dúvidas? Bugs na platafoma? Quer falar conosco?</p>
                                     <p>
-                                        Acesse nosso <Link to="/faq"><strong style={{color: '#8a05be', textDecoration: 'underline'}}>FAQ</strong></Link> ou mande uma 
+                                        Mande uma 
                                         mensagem clicando no botão abaixo,
                                         estamos ansiosos para respondê-lo!
                                     </p>

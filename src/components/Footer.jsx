@@ -65,7 +65,6 @@ const Footer = () => {
                 políticas de uso
             </Link>
             <Link to="/sobre" className={classes.fakeLink}>Sobre</Link>
-            <Link to="/faq" className={classes.fakeLink}>FAQ</Link>
           </Grid>
           <Grid item xs={12} md={4} className={classes.iconArea}>
             <Icon style={{color: '#fff', fontSize: '8rem'}}>code</Icon>
