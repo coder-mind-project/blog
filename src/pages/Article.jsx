@@ -3,7 +3,6 @@ import { Grid, Box, Divider, TextField,
         Button, Zoom, Snackbar, Icon, IconButton,
         CircularProgress, Tooltip } from '@material-ui/core'
 
-import { api_cm_web_service, api_cm_management, url, ipify } from '../config/appConfig'
 import axios from 'axios'
 
 import {Link} from 'react-router-dom'
@@ -75,10 +74,10 @@ class Article extends Component {
     async getArticle(){
         const customURL = this.props.match.params.resource
         await this.toogleLoadingArticle()
-        const pack = await axios(ipify).catch(() => console.log('erro'))
+        // const pack = await axios(ipify).catch(() => console.log('erro'))
 
-        const uip = pack && pack.data && pack.data.ip ? pack.data.ip : ''
-        const url = `${api_cm_web_service}/articles/${customURL}?uip=${uip}`
+        // const uip = pack && pack.data && pack.data.ip ? pack.data.ip : ''
+        const url = `/articles/${customURL}`
 
 
         await axios(url).then( async res => {
@@ -111,7 +110,7 @@ class Article extends Component {
         const page = this.state.pageComments + 1
         const limit = this.state.limitComments
 
-        const url = `${api_cm_web_service}/comments/article?article=${idArticle}&page=${page}&limit=${limit}`
+        const url = `/comments/article?article=${idArticle}&page=${page}&limit=${limit}`
 
         axios(url).then( async res => {
 
@@ -144,7 +143,7 @@ class Article extends Component {
     }
 
     async getRelateds(customURL){
-        const url = `${api_cm_web_service}/articles/relateds/${customURL}`
+        const url = `/articles/relateds/${customURL}`
         await this.toogleLoadingRelatedArticles()
         await axios(url).then(res => {
             this.setState({relatedArticles: res.data})
@@ -170,7 +169,7 @@ class Article extends Component {
 
     async sendComment(){
         await this.toogleSendingComment()
-        const url = `${api_cm_web_service}/comments/article`
+        const url = `/comments/article`
         const comment = {
             ...this.state.comment,
             article: this.state.article
@@ -230,7 +229,7 @@ class Article extends Component {
         
         if(!idle){
             const article = this.state.article
-            const url = `${api_cm_web_service}/articles`
+            const url = `/articles`
 
             axios.post(url, article).then(res => {
                 this.setState({liked: res.data.confirmed})
@@ -281,11 +280,11 @@ class Article extends Component {
         const authorize = await this.analizeBehavior()
         
         if(idle && authorize){
-            const pack = await axios(ipify)
+            // const pack = await axios(ipify)
             
-            const url = `${api_cm_web_service}/articles`
+            const url = `/articles`
             const article = this.state.article
-            article.reader = pack.data && pack.data.ip ? pack.data.ip : undefined
+            // article.reader = pack.data && pack.data.ip ? pack.data.ip : undefined
             
             axios.post(url, article)
         
@@ -321,7 +320,7 @@ class Article extends Component {
                     <Grid item xs={12} className="article-content">
                         { this.state.article.bigImg && 
                             <Grid item xs={12} className="article-header">
-                                <img src={`${api_cm_management}/${this.state.article.bigImg}`} alt={this.state.article.longDescription}/>
+                                <img src={`/${this.state.article.bigImg}`} alt={this.state.article.longDescription}/>
                             </Grid>
                         }
                         <Grid item xs={12} className="article-title">
@@ -331,12 +330,9 @@ class Article extends Component {
                             <h2 className="short-description">{this.state.article.shortDescription}</h2>
                         </Grid>
                         <Grid item xs={12} className="header-hud-bar">
-                            <Link to={`/autor/${this.state.article.author._id}`}>
-                                <Box display="flex" justifyContent="center" alignItems="center" mr={1} ml={1}>
-                                    <Box mr={1} display="flex" alignItems="center">
-                                        <Avatar src={`${api_cm_management}/${this.state.article.author.profilePhoto}`} name={this.state.article.author.name} size={30} round={true}/>
-                                    </Box>
-                                    <p>{this.state.article.author.name}</p>
+                            <Box display="flex" justifyContent="center" alignItems="center" mr={1} ml={1}>
+                                <Box mr={1} display="flex" alignItems="center">
+                                    <Avatar src={`/${this.state.article.author.profilePhoto}`} name={this.state.article.author.name} size={30} round={true}/>
                                 </Box>
                             </Link>
                             {this.state.article.theme && this.state.article.theme.name &&
@@ -362,10 +358,10 @@ class Article extends Component {
                         { this.state.article && this.state.article._id &&
                             <Grid item xs={12}>
                                 <Box display="flex" justifyContent="center" alignItems="center" width="100%" id="share-options" tabIndex="-1">
-                                    <FacebookShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} quote={`Veja mais sobre ${this.state.article.title}`} children={<FontAwesomeIcon icon={faFacebookSquare} size="2x" color="#3C5A99"/>} />
-                                    <TwitterShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`${this.state.article.title}`} hashtags={[`${this.state.article.theme.name}`, `${this.state.article.title}`, 'Coder Mind']} children={<FontAwesomeIcon icon={faTwitterSquare} size="2x" color="#1da1f2"/>} />
-                                    <WhatsappShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} separator=" | " children={<FontAwesomeIcon icon={faWhatsapp} size="2x" color="#58e870"/>} />
-                                    <TelegramShareButton className="share-button" url={`${url}/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} children={<FontAwesomeIcon icon={faTelegram} size="2x" color="#0088cc"/>} />
+                                    <FacebookShareButton className="share-button" url={`/artigos/${this.props.match.params.resource}`} quote={`Veja mais sobre ${this.state.article.title}`} children={<FontAwesomeIcon icon={faFacebookSquare} size="2x" color="#3C5A99"/>} />
+                                    <TwitterShareButton className="share-button" url={`/artigos/${this.props.match.params.resource}`} title={`${this.state.article.title}`} hashtags={[`${this.state.article.theme.name}`, `${this.state.article.title}`, 'Coder Mind']} children={<FontAwesomeIcon icon={faTwitterSquare} size="2x" color="#1da1f2"/>} />
+                                    <WhatsappShareButton className="share-button" url={`/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} separator=" | " children={<FontAwesomeIcon icon={faWhatsapp} size="2x" color="#58e870"/>} />
+                                    <TelegramShareButton className="share-button" url={`/artigos/${this.props.match.params.resource}`} title={`Veja mais sobre ${this.state.article.title}`} children={<FontAwesomeIcon icon={faTelegram} size="2x" color="#0088cc"/>} />
                                     { this.state.article.github && <Tooltip title={<span>Este artigo possui código em nosso repositório, clique para visualizá-lo</span>} placement="bottom-start"><div><FontAwesomeIcon icon={faGithub} className="share-button" size="2x" tabIndex="-1" onClick={() => window.open(this.state.article.github)}/></div></Tooltip>}
                                     { this.state.article.youtube && <Tooltip title={<span>Este artigo possui um vídeo, clique para assisti-lo</span>} placement="bottom-start"><div><FontAwesomeIcon icon={faYoutube} className="share-button" size="2x" tabIndex="-1" color="red" onClick={() => window.open(this.state.article.youtube)}/></div></Tooltip>}
                                 </Box>
