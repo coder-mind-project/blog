@@ -25,6 +25,17 @@ export const styles = (theme) => ({
   iconArea: {
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
+    color: '#fff',
+  },
+  icon: {
+    fontSize: '5rem',
+    margin: '0 1rem',
+  },
+  iconDescription: {
+    color: '#fff',
+    width: '100%',
+    justifyContent: 'center',
   },
   fakeLink: {
     'display': 'flex',
@@ -34,7 +45,6 @@ export const styles = (theme) => ({
     'marginTop': 2,
     'marginBottom': 2,
     'cursor': 'pointer',
-    'fontSize': '1.1rem',
     '&:hover': {
       color: 'rgba(255,255,255,.8)',
     },
