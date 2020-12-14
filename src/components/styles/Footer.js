@@ -1,4 +1,4 @@
-export const styles = (theme) => ({
+export const styles = () => ({
   footerContainer: {
     width: '100%',
     background: 'linear-gradient(to right, #8a05be, #42275a)',
@@ -7,6 +7,8 @@ export const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    position: 'absolute',
+    top: '100%',
   },
   footerContainerTop: {
     display: 'flex',

@@ -5,7 +5,7 @@ import {Box} from '@material-ui/core';
 
 import Menu from './components/Menu.jsx';
 import Footer from './components/Footer.jsx';
-import Home from './pages/Home.jsx';
+import Home from './pages/Home/Home.jsx';
 import ArticlesList from './pages/ArticlesList.jsx';
 import Article from './pages/Article.jsx';
 import Privacity from './pages/Privacity.jsx';
