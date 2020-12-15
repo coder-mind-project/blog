@@ -1,13 +1,8 @@
 import React, {Component} from 'react'
-
 import { Grid, Box } from '@material-ui/core'
-
 import axios from 'axios'
-
 import Loading from '../assets/loading.gif'
-
 import { environment } from '../config/environment'
-
 class Author extends Component{
 
     state = {
