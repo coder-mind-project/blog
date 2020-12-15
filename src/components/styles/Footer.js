@@ -7,8 +7,6 @@ export const styles = () => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    position: 'absolute',
-    top: '100%',
   },
   footerContainerTop: {
     display: 'flex',
