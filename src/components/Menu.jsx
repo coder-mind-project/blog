@@ -147,9 +147,9 @@ const Menu = () => {
                 mr={5}
                 alignItems="center"
               >
-                <h1 className="coder-mind">
+                <Typography component="h1" variant="h4" className="codermind">
                   Coder Mind
-                </h1>
+                </Typography>
               </Box>
             </Grid>
             <Grid item xs={1} sm={1} className={classes.fakeLink}>
