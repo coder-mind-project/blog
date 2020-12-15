@@ -122,7 +122,7 @@ const Menu = () => {
                 width="100%"
                 className="search-input"
                 searchIcon={
-                  (<Icon className="search-input-button-menu">search</Icon>)
+                  (<Icon color="primary">search</Icon>)
                 }
               />
             </Box>
