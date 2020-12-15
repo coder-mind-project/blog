@@ -1,77 +1,59 @@
 import React from 'react';
-import {Grid, Box, Icon} from '@material-ui/core';
+import {Grid, Box, Icon, Typography, useMediaQuery} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-
 import {Link} from 'react-router-dom';
-
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faYoutube, faGithub} from '@fortawesome/free-brands-svg-icons';
-import {faImages} from '@fortawesome/free-regular-svg-icons';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import {styles} from './styles/Footer';
-
 
 const useStyles = makeStyles(styles);
 
 const Footer = () => {
   const classes = useStyles();
+  const matches = useMediaQuery('(min-width: 955px)');
 
   return (
     <Grid item xs={12}>
-      <footer className={classes.footerContainer}>
-        <Grid item xs={12} className={classes.footerContainerTop}>
-          <Grid item xs={12} md={4}>
-            <h4 className={classes.topicTitle}>
-              <span
-                style={{color: '#FFF'}}
-                className="coder-mind"
-              >
-                Saiba mais
-              </span>
-            </h4>
-            <a href="https://github.com/coder-mind" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
-              <Box mr={1}>
-                <FontAwesomeIcon icon={faGithub}/>
-              </Box>
-                            Nossos códigos
-            </a>
-            <a href="https://www.youtube.com/channel/UCfUbeeEVPxNFPgQ2vij6YwA" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
-              <Box mr={1}>
-                <FontAwesomeIcon icon={faYoutube} color="red"/>
-              </Box>
-                            Youtube
-            </a>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box
-              className={classes.fakeLink}
-              onClick={() => window.open(`/public/media/coder-mind.zip`)}
-            >
-              <Box mr={1}>
-                <FontAwesomeIcon icon={faImages}/>
-              </Box>
-                            Mídias
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <h4 className={classes.topicTitle}>
-              <span style={{color: '#FFF'}} className="coder-mind">
+      <Box
+        component="footer"
+        className={classes.footerContainer}
+      >
+        <Box
+          display="flex"
+          justifyContent="between"
+          flexWrap="wrap"
+          alignItems="center"
+          width="100%"
+        >
+          <Box
+            width={matches ? '50%' : '100%'}
+            marginBottom={matches ? 0 : '2rem'}
+          >
+            <Box className={classes.iconArea}>
+              <Icon className={classes.icon}>code</Icon>
+              <Typography className="codermind">
                 Coder Mind
-              </span>
-            </h4>
-            <Link to="/artigos" className={classes.fakeLink}>Artigos</Link>
-            <Link
-              to="/privacidade"
-              className={classes.fakeLink}>
-                políticas de uso
+              </Typography>
+            </Box>
+            <Box className={classes.iconDescription}>
+              <Typography align="center">
+                &copy; {new Date().getFullYear()}
+              </Typography>
+            </Box>
+          </Box>
+          <Box width={matches ? '50%' : '100%'}>
+            <a href="https://github.com/coder-mind-project" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
+              <FontAwesomeIcon icon={faGithub} size="2x"/>
+            </a>
+            <Link to="/privacidade" className={classes.fakeLink}>
+              <Typography component="span" variant="body1">
+                Políticas de Uso
+              </Typography>
             </Link>
-            <Link to="/sobre" className={classes.fakeLink}>Sobre</Link>
-            <Link to="/faq" className={classes.fakeLink}>FAQ</Link>
-          </Grid>
-          <Grid item xs={12} md={4} className={classes.iconArea}>
-            <Icon style={{color: '#fff', fontSize: '8rem'}}>code</Icon>
-          </Grid>
-        </Grid>
-      </footer>
+            <Link to="/sobre" className={classes.fakeLink}> Sobre </Link>
+          </Box>
+        </Box>
+      </Box>
     </Grid>
   );
 };

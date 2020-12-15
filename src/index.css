@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Offside&display=swap');
+
+body {
+    font-family: 'Darker Grotesque', sans-serif !important;
+    margin: 0;
+}
+
+.codermind {
+    font-family: 'Offside', sans-serif !important;
+}
+
+.overflow-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fake-link {
+    text-decoration: none;
+    cursor: pointer;
+}
