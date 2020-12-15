@@ -1,6 +1,6 @@
-import { withRouter } from "react-router";
+import {withRouter} from 'react-router';
 
-const ScrollToTop = ({ children, location: { pathname } }) => {
+const ScrollToTop = ({children}) => {
   window.scrollTo(0, 0);
   return children || null;
 };
