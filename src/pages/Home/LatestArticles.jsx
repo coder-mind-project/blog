@@ -1,24 +1,22 @@
 import React, {useState, useEffect} from 'react';
-import {Grid, Box, Tabs, Tab, Typography, makeStyles} from '@material-ui/core';
+
+import {Grid, Box, Typography, makeStyles} from '@material-ui/core';
 import {Link} from 'react-router-dom';
-import HotArticle from './HotArticle.jsx';
 import axios from 'axios';
-import Loading from '../../assets/loading.gif';
+
+import ArticleCard from './ArticleCard';
+import ArticleCardPlaceholder from './placeholders/ArticleCardPlaceholder';
 import {styles} from './styles/LatestArticles';
 
 const useStyles = makeStyles(styles);
 
-const BoostedArticles = () => {
+const LatestArticles = () => {
   const [articles, setArticles] = useState([]);
+  const [articlesPlaceholder] = useState([1, 2, 3, 4, 5, 6]);
   const [load, setLoad] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [currentTab, setCurrentTab] = useState(0);
-
   const classes = useStyles();
 
-  const changeCurrentTab = (evt, tab) => {
-    setCurrentTab(tab);
-  };
 
   useEffect(() => {
     const getLatestArticles = async () => {
@@ -38,62 +36,59 @@ const BoostedArticles = () => {
   }, [load, loading, articles]);
 
   return (
-    <Grid item xs={12} md={8} className={classes.latestArticlesGrid}>
-      <Box display="flex" alignItems="baseline" justifyContent="center">
+    <Grid item xs={12} md={7} className={classes.latestArticlesGrid}>
+      <Box display="flex" justifyContent="center">
         <Box
           display="flex"
           flexDirection="column"
-          alignItems="baseline"
           width="100%"
         >
           <Box
             display="flex"
             flexDirection="column"
-            alignItems="baseline"
             justifyContent="center" flexWrap="wrap"
           >
             <Typography component="h2" variant="h4">
               Publicações mais recentes
+            </Typography>
+            <Typography component="small" variant="body2">
+              Confira o que há de mais recente...
             </Typography>
           </Box>
           <Box mt={3} mb={3} width="100%">
             { loading &&
                 <Box
                   display="flex"
-                  justifyContent="center"
+                  justifyContent="flex-start"
                   alignItems="center"
-                  width="100%"
+                  flexWrap="wrap"
                 >
-                  <figure className="text-center">
-                    <img
-                      className="loading-ellipsis"
-                      src={Loading}
-                      alt="Carregando..."
-                    />
-                    <figcaption><small>Loading ellipsis by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small></figcaption>
-                  </figure>
+                  {articlesPlaceholder.map((elem) =>
+                    (
+                      <ArticleCardPlaceholder key={elem} />
+                    ),
+                  )}
                 </Box>
             }
             { !loading && Boolean(articles.length) &&
-                <Tabs
-                  value={currentTab}
-                  onChange={changeCurrentTab}
-                  indicatorColor="primary"
-                  textColor="inherit"
-                  variant="scrollable"
-                  scrollButtons="auto"
-                >
-                  { articles.map((article) =>
-                    <Tab key={article.uri} label={(
-                      <Link
-                        to={`/artigos/${article.uri}`}
-                        className="top-article"
-                      >
-                        <HotArticle article={article} />
-                      </Link>
-                    )}/>)
-                  }
-                </Tabs>
+              <Box
+                display="flex"
+                justifyContent="flex-start"
+                alignItems="center"
+                flexWrap="wrap"
+              >
+                {articles.map((article) =>
+                  (
+                    <Link
+                      key={article.uri}
+                      to={`/artigos/${article.uri}`}
+                      className="fake-link"
+                    >
+                      <ArticleCard article={article} />
+                    </Link>
+                  ),
+                )}
+              </Box>
             }
           </Box>
         </Box>
@@ -102,4 +97,4 @@ const BoostedArticles = () => {
   );
 };
 
-export default BoostedArticles;
+export default LatestArticles;

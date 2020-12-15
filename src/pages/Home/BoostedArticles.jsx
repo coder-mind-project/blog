@@ -1,25 +1,23 @@
 import React, {useState, useEffect} from 'react';
-import {Grid, Box, Tabs, Tab, Typography, makeStyles} from '@material-ui/core';
-import {Link} from 'react-router-dom';
-import HotArticle from './HotArticle.jsx';
-import axios from 'axios';
-import Loading from '../../assets/loading.gif';
 
+import {Grid, Box, Typography, makeStyles} from '@material-ui/core';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
+
+import ArticleCardPlaceholder from './placeholders/ArticleCardPlaceholder';
+
+import ArticleCard from './ArticleCard';
 import {styles} from './styles/BoostedArticles';
 
 const useStyles = makeStyles(styles);
 
 const BoostedArticles = () => {
   const [boostedArticles, setBoostedArticles] = useState([]);
+  const [articlesPlaceholder] = useState([1, 2, 3, 4]);
   const [load, setLoad] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [currentTab, setCurrentTab] = useState(0);
 
   const classes = useStyles();
-
-  const changeCurrentTab = (evt, tab) => {
-    setCurrentTab(tab);
-  };
 
   useEffect(() => {
     const getBoostedArticles = async () => {
@@ -39,18 +37,16 @@ const BoostedArticles = () => {
   }, [load, loading, boostedArticles]);
 
   return (
-    <Grid item xs={12} md={4} className={classes.boostedArticlesGrid}>
-      <Box display="flex" alignItems="baseline" justifyContent="center">
+    <Grid item xs={12} md={5} className={classes.boostedArticlesGrid}>
+      <Box display="flex" justifyContent="center">
         <Box
           display="flex"
           flexDirection="column"
-          alignItems="baseline"
           width="100%"
         >
           <Box
             display="flex"
             flexDirection="column"
-            alignItems="baseline"
             justifyContent="center" flexWrap="wrap"
           >
             <Typography component="h2" variant="h4">
@@ -60,44 +56,44 @@ const BoostedArticles = () => {
               Primeira leitura? Aqui vai umas sugestões...
             </Typography>
           </Box>
-          <Box mt={3} mb={3} width="100%">
+          <Box width="100%">
             { loading &&
                 <Box
                   display="flex"
-                  justifyContent="center"
+                  justifyContent="flex-start"
                   alignItems="center"
-                  width="100%"
+                  flexWrap="wrap"
                 >
-                  <figure className="text-center">
-                    <img
-                      className="loading-ellipsis"
-                      src={Loading}
-                      alt="Carregando..."
-                    />
-                    <figcaption><small>Loading ellipsis by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small></figcaption>
-                  </figure>
+                  {articlesPlaceholder.map((elem) =>
+                    (
+                      <ArticleCardPlaceholder
+                        key={elem}
+                        rectWidth={175}
+                        rectHeight={175}
+                      />
+                    ),
+                  )}
                 </Box>
             }
             { !loading && Boolean(boostedArticles.length) &&
-                <Tabs
-                  value={currentTab}
-                  onChange={changeCurrentTab}
-                  indicatorColor="primary"
-                  textColor="inherit"
-                  variant="scrollable"
-                  scrollButtons="auto"
-                >
-                  { boostedArticles.map((article) =>
-                    <Tab key={article.uri} label={(
-                      <Link
-                        to={`/artigos/${article.uri}`}
-                        className="top-article"
-                      >
-                        <HotArticle article={article} />
-                      </Link>
-                    )}/>)
-                  }
-                </Tabs>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                flexWrap="wrap"
+              >
+                {boostedArticles.map((article) =>
+                  (
+                    <Link
+                      key={article.uri}
+                      to={`/artigos/${article.uri}`}
+                      className="fake-link"
+                    >
+                      <ArticleCard article={article} />
+                    </Link>
+                  ),
+                )}
+              </Box>
             }
           </Box>
         </Box>

@@ -10,6 +10,7 @@ export const styles = () => ({
     '&:h3': {
       textDecoration: 'none',
     },
+    'margin': 20,
   },
 });
 

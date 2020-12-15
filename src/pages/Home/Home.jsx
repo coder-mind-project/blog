@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import {Grid, Box, Icon, makeStyles, Divider} from '@material-ui/core';
+import {Box, Typography, Icon, makeStyles} from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
 import SearchBar from 'material-ui-search-bar';
+
 import FloatingButton from '../../components/FloatingButton.jsx';
+
 import BoostedArticles from './BoostedArticles';
 import LatestArticles from './LatestArticles';
 import {styles} from './styles/Home';
@@ -26,7 +28,7 @@ const Home = () => {
   return (
     <Box>
       <Box className={classes.articlesGrid}>
-        <LatestArticles/>
+        <LatestArticles />
         <BoostedArticles />
       </Box>
       <Box
@@ -37,17 +39,15 @@ const Home = () => {
         mb={4}
       >
         <Box display="flex" justifyContent="center" mb={2}>
-          <span
-            className="search-label"
-          >
-                  Ou se prefirir, pode buscar o conteúdo desejado
-          </span>
+          <Typography component="span" variant="body1">
+            Nada de interesse? Tente pesquisar aqui em baixo ...
+          </Typography>
         </Box>
         <SearchBar
           value={search}
           onChange={setSearch}
           onRequestSearch={searchArticles}
-          placeholder="O que vem na sua mente?"
+          placeholder="O que vem em sua mente?"
           width="100%"
           className="search-input"
           searchIcon={
