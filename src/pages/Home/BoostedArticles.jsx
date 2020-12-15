@@ -14,6 +14,8 @@ const useStyles = makeStyles(styles);
 const BoostedArticles = () => {
   const [boostedArticles, setBoostedArticles] = useState([]);
   const [articlesPlaceholder] = useState([1, 2, 3, 4]);
+  const [skip] = useState(0);
+  const [limit] = useState(4);
   const [load, setLoad] = useState(true);
   const [loading, setLoading] = useState(true);
 
@@ -22,7 +24,7 @@ const BoostedArticles = () => {
   useEffect(() => {
     const getBoostedArticles = async () => {
       setLoading(true);
-      const url = `/articles/boosted`;
+      const url = `/articles/boosted?skip=${skip}&limit=${limit}`;
       await axios(url).then((res) => {
         setLoad(false);
         setBoostedArticles(res.data.articles);
@@ -34,7 +36,7 @@ const BoostedArticles = () => {
     if (load) {
       getBoostedArticles();
     }
-  }, [load, loading, boostedArticles]);
+  }, [load, loading, boostedArticles, skip, limit]);
 
   return (
     <Grid item xs={12} md={5} className={classes.boostedArticlesGrid}>

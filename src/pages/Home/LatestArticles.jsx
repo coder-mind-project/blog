@@ -13,6 +13,8 @@ const useStyles = makeStyles(styles);
 const LatestArticles = () => {
   const [articles, setArticles] = useState([]);
   const [articlesPlaceholder] = useState([1, 2, 3, 4, 5, 6]);
+  const [skip] = useState(0);
+  const [limit] = useState(8);
   const [load, setLoad] = useState(true);
   const [loading, setLoading] = useState(true);
   const classes = useStyles();
@@ -21,7 +23,7 @@ const LatestArticles = () => {
   useEffect(() => {
     const getLatestArticles = async () => {
       setLoading(true);
-      const url = `/articles`;
+      const url = `/articles?&skip=${skip}&limit=${limit}`;
       await axios(url).then((res) => {
         setLoad(false);
         setArticles(res.data.articles);
@@ -33,7 +35,7 @@ const LatestArticles = () => {
     if (load) {
       getLatestArticles();
     }
-  }, [load, loading, articles]);
+  }, [load, loading, articles, skip, limit]);
 
   return (
     <Grid item xs={12} md={7} className={classes.latestArticlesGrid}>
