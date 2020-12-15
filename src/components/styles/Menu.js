@@ -65,6 +65,9 @@ export const styles = (theme) => ({
       backgroundColor: 'rgba(66, 39, 90, .2)',
     },
   },
+  activeLink: {
+    textDecoration: 'underline !important',
+  },
   buttonLink: {
     color: 'inherit',
     textDecoration: 'none',

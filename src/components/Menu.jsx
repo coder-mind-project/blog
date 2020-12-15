@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {Link, useHistory} from 'react-router-dom';
+import {Link, NavLink, useHistory} from 'react-router-dom';
 import SearchBar from 'material-ui-search-bar';
 import {
   AppBar,
@@ -86,16 +86,24 @@ const Menu = () => {
                 marginLeft="20px"
                 marginRight="20px"
               >
-                <Link to="/artigos" className={classes.menuLink}>
+                <NavLink
+                  to="/artigos"
+                  className={classes.menuLink}
+                  activeClassName={classes.activeLink}
+                >
                   <Box className={classes.menuItem}>
                     Artigos
                   </Box>
-                </Link>
-                <Link to="/sobre" className={classes.menuLink}>
+                </NavLink>
+                <NavLink
+                  to="/sobre"
+                  className={classes.menuLink}
+                  activeClassName={classes.activeLink}
+                >
                   <Box className={classes.menuItem}>
                     Sobre
                   </Box>
-                </Link>
+                </NavLink>
                 <a href={environment.panel} className={classes.menuLink}>
                   <Box className={classes.menuItem}>
                     Painel
@@ -155,7 +163,10 @@ const Menu = () => {
         </Box>
         <Box className={classes.drawer}>
           <List className={classes.list}>
-            <Link to="/artigos" className={classes.buttonLink}
+            <NavLink
+              to="/artigos"
+              className={classes.buttonLink}
+              activeClassName={classes.activeLink}
               onClick={toogleDrawerMenu}
             >
               <ListItem
@@ -171,8 +182,11 @@ const Menu = () => {
                   Artigos
                 </Typography>
               </ListItem>
-            </Link>
-            <Link to="/sobre" className={classes.buttonLink}
+            </NavLink>
+            <NavLink
+              to="/sobre"
+              className={classes.buttonLink}
+              activeClassName={classes.activeLink}
               onClick={toogleDrawerMenu}
             >
               <ListItem
@@ -188,7 +202,7 @@ const Menu = () => {
                   Sobre
                 </Typography>
               </ListItem>
-            </Link>
+            </NavLink>
             <a href={environment.panel} className={classes.buttonLink}>
               <ListItem
                 button
@@ -204,7 +218,10 @@ const Menu = () => {
                 </Typography>
               </ListItem>
             </a>
-            <Link to="/privacidade" className={classes.buttonLink}
+            <NavLink
+              to="/privacidade"
+              className={classes.buttonLink}
+              activeClassName={classes.activeLink}
               onClick={toogleDrawerMenu}
             >
               <ListItem
@@ -220,7 +237,7 @@ const Menu = () => {
                   Políticas de uso
                 </Typography>
               </ListItem>
-            </Link>
+            </NavLink>
           </List>
           <List className={classes.list}>
             <ListItem className={classes.drawerFooter} key={'version'}>
