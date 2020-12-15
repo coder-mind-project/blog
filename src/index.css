@@ -9,3 +9,14 @@ body {
 .codermind {
     font-family: 'Offside', sans-serif !important;
 }
+
+.overflow-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fake-link {
+    text-decoration: none;
+    cursor: pointer;
+}
