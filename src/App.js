@@ -9,7 +9,7 @@ import Home from './pages/Home/Home.jsx';
 import ArticlesList from './pages/ArticlesList.jsx';
 import Article from './pages/Article.jsx';
 import Privacity from './pages/Privacity.jsx';
-import About from './pages/About.jsx';
+import About from './pages/About/About.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 import ScrollToTop from './config/ScrollToTop';
