@@ -8,7 +8,14 @@
     "Coder Mind",
     "Coder Mind Blog"
   ],
+  "engines": {
+    "yarn": "1.x"
+  },
   "author": "Allan Wanderley Alves",
+  "repository": {
+    "url": "https://github.com/coder-mind-project/blog",
+    "type": "GIT"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
