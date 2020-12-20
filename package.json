@@ -3,7 +3,7 @@
   "version": "0.0",
   "description": "App for read articles powered by coder mind",
   "private": true,
-  "license": "self-funding",
+  "license": "BSD-3-Clause",
   "keywords": [
     "Coder Mind",
     "CM-APP",
