@@ -11,8 +11,6 @@ import Avatar from 'react-avatar'
 import RelatedArticle from '../components/RelatedArticle.jsx'
 import Comment from '../components/Comment.jsx'
 
-import Loading from '../assets/loading.gif'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faCommentDots, faPaperclip, faShareAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faFileCode, faCommentDots as faCommentDotsRegular } from '@fortawesome/free-regular-svg-icons'
@@ -500,7 +498,7 @@ class Article extends Component {
                     <Grid className="article-wrapper">
                         <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="100vh">
                             <figure>
-                                <img src={Loading} alt="Carregando..."/>
+                                <img src={null} alt="Carregando..."/>
                                 <p>Carregando seu artigo, por favor aguarde...</p>
                             </figure>
                             <Box display="flex" justifyContent="center" alignItems="center">
