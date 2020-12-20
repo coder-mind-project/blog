@@ -1,5 +1,6 @@
 ![Coder Mind Blog](https://imgur.com/tGf53m3.png)
 
+[![Build status](https://dev.azure.com/codermindproject/Coder%20Mind/_apis/build/status/Production/Blog-production)](https://dev.azure.com/codermindproject/Coder%20Mind/_build/latest?definitionId=12)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/coder-mind-project/blog.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/coder-mind-project/blog/context:javascript)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/coder-mind-project/blog.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/coder-mind-project/blog/alerts/)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-blue.svg?style=flat-square)](#contributors)
