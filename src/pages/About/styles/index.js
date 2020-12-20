@@ -1,4 +1,4 @@
-import {styled, Button, Grid, Box} from '@material-ui/core';
+import {styled, Button, Box} from '@material-ui/core';
 
 export const Links = styled(Box)({
   margin: '40px 0',
@@ -11,9 +11,3 @@ export const Links = styled(Box)({
 export const ButtonLink = styled(Button)({
   margin: 10,
 });
-
-export const Container = styled(Grid)({
-  padding: '15vh 10vw',
-  minHeight: '100vh',
-});
-

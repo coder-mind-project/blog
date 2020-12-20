@@ -22,7 +22,9 @@ import CustomSnackbar from '../../components/Snackbar';
 import Profile from './Profile';
 
 import axios from 'axios';
-import {Links, ButtonLink, Container} from './styles';
+
+import {Container} from '../styles';
+import {Links, ButtonLink} from './styles';
 
 
 const About = () => {
