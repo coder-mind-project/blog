@@ -1,7 +1,7 @@
 {
-  "name": "coder-mind",
-  "version": "1.0.8",
-  "description": "app for management articles powered by coder mind",
+  "name": "blog",
+  "version": "0.0",
+  "description": "App for read articles powered by coder mind",
   "private": true,
   "license": "self-funding",
   "keywords": [
