@@ -1,5 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Offside&display=swap');
+/* Define your global styles here */
+
+@import url('./assets/css/darker-grotesque.css');
+@import url('./assets/css/offside.css');
+@import url('./assets/css/material-icons.css');
 
 body {
     font-family: 'Darker Grotesque', sans-serif !important;
