@@ -1,16 +1,21 @@
 {
-  "name": "coder-mind",
-  "version": "1.0.8",
-  "description": "app for management articles powered by coder mind",
+  "name": "blog",
+  "version": "0.0",
+  "description": "App for read articles powered by coder mind",
   "private": true,
-  "license": "self-funding",
+  "license": "BSD-3-Clause",
   "keywords": [
     "Coder Mind",
-    "CM-APP",
-    "CM-Web-APP",
-    "Coder Mind WEB APP"
+    "Coder Mind Blog"
   ],
+  "engines": {
+    "yarn": "1.x"
+  },
   "author": "Allan Wanderley Alves",
+  "repository": {
+    "url": "https://github.com/coder-mind-project/blog",
+    "type": "GIT"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
