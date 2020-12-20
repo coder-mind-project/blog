@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
-import {Box, Typography, Icon, makeStyles} from '@material-ui/core';
+import React from 'react';
+import {
+  Box,
+  makeStyles,
+  useMediaQuery,
+} from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
-import SearchBar from 'material-ui-search-bar';
 
-import FloatingButton from '../../components/FloatingButton.jsx';
-
+import FloatingButton from '../../components/FloatingButton';
+import Divider from '../../components/Divider';
+import HomeSearch from './HomeSearch';
 import BoostedArticles from './BoostedArticles';
 import LatestArticles from './LatestArticles';
+
 import {styles} from './styles/Home';
 
 
@@ -14,14 +19,12 @@ const useStyles = makeStyles(styles);
 
 const Home = () => {
   const history = useHistory();
-
+  const matches = useMediaQuery('(max-width: 768px)');
   const classes = useStyles();
 
-  const [search, setSearch] = useState('');
-
-  const searchArticles = () => {
-    if (search) {
-      history.push(`/artigos?q=${search}`);
+  const searchArticles = (searchValue) => {
+    if (searchValue) {
+      history.push(`/artigos?q=${searchValue}`);
     }
   };
 
@@ -29,37 +32,16 @@ const Home = () => {
     <Box>
       <Box className={classes.articlesGrid}>
         <LatestArticles />
+        {matches && <Divider />}
+        {matches &&
+          <Box width="100%">
+            <HomeSearch onRequestSearch={searchArticles} />
+          </Box>
+        }
+        {matches && <Divider />}
         <BoostedArticles />
       </Box>
-      <Box
-        display="flex"
-        flexDirection="column"
-        p={3}
-        mt={4}
-        mb={4}
-      >
-        <Box display="flex" justifyContent="center" mb={2}>
-          <Typography component="span" variant="body1">
-            Nada de interesse? Tente pesquisar aqui em baixo ...
-          </Typography>
-        </Box>
-        <SearchBar
-          value={search}
-          onChange={setSearch}
-          onRequestSearch={searchArticles}
-          placeholder="O que vem em sua mente?"
-          width="100%"
-          className="search-input"
-          searchIcon={
-            (<Icon
-              className="search-input-button"
-              color="primary"
-            >
-                    search
-            </Icon>)
-          }
-        />
-      </Box>
+      {!matches && <HomeSearch onRequestSearch={searchArticles} />}
       <FloatingButton action={() => window.scrollTo(0, 0)} />
     </Box>
   );

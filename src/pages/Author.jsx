@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Grid, Box } from '@material-ui/core'
 import axios from 'axios'
-import Loading from '../assets/loading.gif'
 import { environment } from '../config/environment'
 class Author extends Component{
 
@@ -40,7 +39,7 @@ class Author extends Component{
                     <Grid className="author-wrapper">
                         <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="100vh">
                             <figure>
-                                <img src={Loading} alt="Carregando..."/>
+                                <img src={null} alt="Carregando..."/>
                                 <p>Obtendo as informações do autor, por favor aguarde...</p>
                             </figure>
                             <Box display="flex" justifyContent="center" alignItems="center">

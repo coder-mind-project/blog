@@ -9,8 +9,6 @@ import { Box, Grid, Drawer, Icon, Button,
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faFilter, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
-import Loading from '../assets/loading.gif'
-
 import ArticleBox from '../components/ArticleBox.jsx'
 import FloatingButton from '../components/FloatingButton.jsx'
 
@@ -144,7 +142,7 @@ class ArticlesList extends Component {
                     { this.state.loadingThemes && 
                         <Box p={2} display="flex" flexDirection="column" justifyContent="space-between" alignItems="center" height="100%">
                             <figure>
-                                <img src={Loading} width="100%" alt="Carregando..."/>
+                                <img src={null} width="100%" alt="Carregando..."/>
                                 <p>Carregando filtros, por favor aguarde...</p>
                             </figure>
                             <Box display="flex" justifyContent="center" alignItems="center">
@@ -279,7 +277,7 @@ class ArticlesList extends Component {
                             <Grid item xs={12}>
                                 <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                                     <figure>
-                                            <img src={Loading} alt="Carregando..."/>
+                                            <img src={null} alt="Carregando..."/>
                                             <figcaption><small>Powered by <a href="https://loading.io" rel="noopener noreferrer" target="_blank">loading.io</a></small></figcaption>
                                     </figure>
                                     <p>Carregando artigos, por favor aguarde...</p>
