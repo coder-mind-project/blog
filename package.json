@@ -6,9 +6,7 @@
   "license": "BSD-3-Clause",
   "keywords": [
     "Coder Mind",
-    "CM-APP",
-    "CM-Web-APP",
-    "Coder Mind WEB APP"
+    "Coder Mind Blog"
   ],
   "author": "Allan Wanderley Alves",
   "dependencies": {
