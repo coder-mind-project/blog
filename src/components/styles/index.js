@@ -1,6 +1,8 @@
 import {styled, Box, Icon} from '@material-ui/core';
 import {Alert} from '@material-ui/lab';
 
+import {devices} from '../../config/constants/devices';
+
 export const CustomAlert = styled(Alert)({
   alignItems: 'center',
 });
@@ -13,6 +15,14 @@ export const FooterContainer = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+});
+
+export const FooterBox = styled(Box)({
+  width: '50%',
+  [`${devices.laptop}`]: {
+    width: '100%',
+    margin: (props) => props.disablemargin === 'true' ? 0 : '2rem',
+  },
 });
 
 export const FooterIconArea = styled(Box)({

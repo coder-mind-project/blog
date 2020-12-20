@@ -1,23 +1,23 @@
 import React from 'react';
-import {Grid, Box, Typography, useMediaQuery} from '@material-ui/core';
+import {Grid, Box, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
-import {styles} from './styles/Footer';
 
+import {styles} from './styles/Footer';
 import {
   FooterContainer,
   FooterIconArea,
   FooterIconDescription,
   FooterIcon,
+  FooterBox,
 } from './styles';
 
 const useStyles = makeStyles(styles);
 
 const Footer = () => {
   const classes = useStyles();
-  const matches = useMediaQuery('(min-width: 955px)');
 
   return (
     <Grid item xs={12}>
@@ -29,10 +29,7 @@ const Footer = () => {
           alignItems="center"
           width="100%"
         >
-          <Box
-            width={matches ? '50%' : '100%'}
-            marginBottom={matches ? 0 : '2rem'}
-          >
+          <FooterBox disablemargin="true">
             <FooterIconArea>
               <FooterIcon>code</FooterIcon>
               <Typography className="codermind">
@@ -44,8 +41,8 @@ const Footer = () => {
                 &copy; {new Date().getFullYear()}
               </Typography>
             </FooterIconDescription>
-          </Box>
-          <Box width={matches ? '50%' : '100%'}>
+          </FooterBox>
+          <FooterBox>
             <a href="https://github.com/coder-mind-project" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
               <FontAwesomeIcon icon={faGithub} size="2x"/>
             </a>
@@ -55,7 +52,7 @@ const Footer = () => {
               </Typography>
             </Link>
             <Link to="/sobre" className={classes.fakeLink}> Sobre </Link>
-          </Box>
+          </FooterBox>
         </Box>
       </FooterContainer>
     </Grid>
