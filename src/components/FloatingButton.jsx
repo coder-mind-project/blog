@@ -1,27 +1,38 @@
-import React, { Component } from 'react'
-import { Slide, Fab, Icon, useScrollTrigger, Box } from '@material-ui/core'
+import React from 'react';
+import PropTypes from 'prop-types';
+import {Slide, Icon, useScrollTrigger} from '@material-ui/core';
 
-import './css/FloatingButton.css'
-const Float = (props) => {
+import {CustomFloatingButton} from './styles';
 
-    const {window, action} = props
+const FloatingButton = (props) => {
+  const {window, action, icon} = props;
 
-    const trigger = useScrollTrigger({target: window ? window() : undefined, disableHysteresis: true})
-    
-    return trigger ? (
-        <Slide direction="up" in={true} mountOnEnter unmountOnExit>
-                <Fab className={`floatingButton defaultButtonColor`} 
-                    onClick={action}>
-                    <Icon>{props.icon || 'keyboard_arrow_up'}</Icon>
-                </Fab>
+  const trigger = useScrollTrigger(
+      {
+        target: window ? window() : undefined,
+        disableHysteresis: true,
+      },
+  );
+
+  return trigger ? (
+        <Slide direction="up" in mountOnEnter unmountOnExit>
+          <CustomFloatingButton onClick={action}>
+            <Icon>{icon || 'keyboard_arrow_up'}</Icon>
+          </CustomFloatingButton>
         </Slide>
-    ) : null
-}
+    ) : null;
+};
 
-class FloatingButton extends Component {
-    render() { 
-        return ( <Box><Float action={this.props.action} icon={this.props.icon} /></Box> )
-    }
-}
+FloatingButton.propTypes = {
+  window: PropTypes.node,
+  action: PropTypes.func,
+  icon: PropTypes.string,
+};
 
-export default FloatingButton
+FloatingButton.defaultProps = {
+  window: null,
+  action: () => null,
+  icon: '',
+};
+
+export default FloatingButton;
