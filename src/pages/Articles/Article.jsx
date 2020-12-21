@@ -8,8 +8,8 @@ import axios from 'axios'
 import ReCAPTCHA from "react-google-recaptcha"
 
 import Avatar from 'react-avatar'
-import RelatedArticle from '../components/RelatedArticle.jsx'
-import Comment from '../components/Comment.jsx'
+import RelatedArticle from '../../components/RelatedArticle.jsx'
+import Comment from '../../components/Comment.jsx'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag, faTags, faCommentDots, faPaperclip, faShareAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
@@ -18,9 +18,9 @@ import { faFacebookSquare, faTwitterSquare, faWhatsapp, faTelegram, faGithub, fa
 
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share'
 
-import FloatingButton from '../components/FloatingButton.jsx'
+import FloatingButton from '../../components/FloatingButton.jsx'
 
-import './css/Article.css'
+import '../css/Article.css'
 
 class Article extends Component {
     state = { 
