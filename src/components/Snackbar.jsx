@@ -7,13 +7,9 @@ import {
   Box,
   Icon,
   Typography,
-  makeStyles,
 } from '@material-ui/core';
-import {Alert} from '@material-ui/lab';
 
-import {styles} from './styles/Snackbar';
-
-const useStyles = makeStyles(styles);
+import {CustomAlert} from './styles';
 
 const CustomSnackbar = (props) => {
   const {
@@ -24,8 +20,6 @@ const CustomSnackbar = (props) => {
     autoHideDuration,
     handleClose,
   } = props;
-
-  const classes = useStyles();
 
   return (
     <Snackbar
@@ -50,10 +44,9 @@ const CustomSnackbar = (props) => {
       ]}
     >
 
-      <Alert
+      <CustomAlert
         severity={variant}
         onClose={handleClose}
-        className={classes.alert}
       >
         <Typography
           component="span"
@@ -61,7 +54,7 @@ const CustomSnackbar = (props) => {
         >
           {text}
         </Typography>
-      </Alert>
+      </CustomAlert>
     </Snackbar>
   );
 };
