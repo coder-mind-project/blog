@@ -6,7 +6,6 @@ import {
   Box,
   Grid,
   Icon,
-  IconButton,
   Typography,
 } from '@material-ui/core';
 
@@ -29,7 +28,6 @@ import {locationType} from '../../types/location';
 import {
   ArticlesListContainer,
   HudTopBar,
-  HudTopBarIcon,
   HudTopBarSearch,
   ArticleListContainer,
 } from './styles';
@@ -102,12 +100,7 @@ const ArticlesList = (props) => {
   return (
     <ArticlesListContainer container>
       <HudTopBar item xs={12}>
-        <HudTopBarIcon item xs={2} sm={1}>
-          <IconButton>
-            <Icon color="primary">filter_list</Icon>
-          </IconButton>
-        </HudTopBarIcon>
-        <HudTopBarSearch item xs={10} sm={11}>
+        <HudTopBarSearch item xs={12}>
           <SearchBar
             value={search}
             onChange={setSearch}

@@ -35,7 +35,7 @@ export const HudTopBarSearch = styled(Grid)({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  padding: ' 0 25px 25px 0',
+  padding: '0 20px',
   minHeight: '100px',
 });
 
