@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Box, Button, Icon} from '@material-ui/core';
+import {Box, Button, Icon, Typography} from '@material-ui/core';
 
 import {SampleContainer} from './styles';
 
@@ -15,13 +15,14 @@ const ErrorResult = (props) => {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
+        minHeight="450px"
       >
         <Box
           display="flex"
           alignItems="baseline"
           justifyContent="center"
           flexDirection="column"
-          p={2}
+          m={2}
         >
           <Box display="flex" alignItems="center" flexWrap="wrap">
             <Box
@@ -30,18 +31,18 @@ const ErrorResult = (props) => {
               alignItems="center"
               className="error-icon-area"
             >
-              <Icon color="secondary" className="error-icon">healing</Icon>
+              <Icon color="primary" className="error-icon">healing</Icon>
             </Box>
             <Box display="flex" justifyContent="center" alignItems="center">
-              <h2 className="message-error">
+              <Typography component="h2" variant="h4">
                 Ops! ocorreu um erro ao buscar nossos artigos.
                 Já tentou atualizar a página?
-              </h2>
+              </Typography>
             </Box>
           </Box>
           <Box display="flex" flexDirection="column" width="100%" mt={3}>
             <Button
-              color="secondary"
+              color="primary"
               fullWidth
               variant="outlined"
               onClick={() => window.location.reload()}
@@ -51,7 +52,7 @@ const ErrorResult = (props) => {
           </Box>
           <Box display="flex" flexDirection="column" width="100%" mt={3}>
             <Button
-              color="secondary"
+              color="primary"
               fullWidth
               variant="contained"
               onClick={() => window.location.href = '/sobre#contact'}
