@@ -31,6 +31,7 @@ import {
   HudTopBar,
   HudTopBarIcon,
   HudTopBarSearch,
+  ArticleListContainer,
 } from './styles';
 
 const ArticlesList = (props) => {
@@ -127,7 +128,7 @@ const ArticlesList = (props) => {
         </Box>
       </Grid>
       <CustomDivider />
-      <Grid item xs={12}>
+      <ArticleListContainer item xs={12}>
         { Boolean(articles.length) &&
             <Box>
               { articles.map((article) => (
