@@ -54,6 +54,16 @@ const ArticlesList = (props) => {
     setLoad(true);
   };
 
+  const changeSearchState = () => {
+    setArticles([]);
+    setLoad(true);
+  };
+
+  const resetSearchState = () => {
+    setSearch('');
+    changeSearchState();
+  };
+
   useEffect(() => {
     const getQueryStringKey = () => queryString.parse(location.search).q;
 
@@ -101,8 +111,8 @@ const ArticlesList = (props) => {
           <SearchBar
             value={search}
             onChange={setSearch}
-            onRequestSearch={() => setLoad(true)}
-            onCancelSearch={() => setSearch('')}
+            onRequestSearch={changeSearchState}
+            onCancelSearch={resetSearchState}
             placeholder="O que você está procurando?"
             searchIcon={
               (<Icon color="primary">search</Icon>)
