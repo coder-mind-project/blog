@@ -23,7 +23,7 @@ const LatestArticles = () => {
   useEffect(() => {
     const getLatestArticles = async () => {
       setLoading(true);
-      const url = `/articles?&skip=${skip}&limit=${limit}`;
+      const url = `/articles/published?&skip=${skip}&limit=${limit}`;
       await axios(url).then((res) => {
         setLoad(false);
         setArticles(res.data.articles);
