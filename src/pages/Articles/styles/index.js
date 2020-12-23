@@ -43,6 +43,13 @@ export const IconButton = styled(Icon)({
   marginRight: 5,
 });
 
+export const ArticleListContainer = styled(Grid)({
+  minHeight: '450px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+});
+
 export const ArticleBox = styled(Box)({
   display: 'flex',
   marginTop: '20px',
