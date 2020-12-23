@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {Box, Typography} from '@material-ui/core';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faFilter} from '@fortawesome/free-solid-svg-icons';
 
-import {SampleContainer} from './styles';
+import {SampleContainer, NoResultIcon} from './styles';
 
 const NoResultsFound = (props) => {
   const {visible} = props;
@@ -17,13 +15,11 @@ const NoResultsFound = (props) => {
         justifyContent="center"
         alignItems="center"
         flexWrap="wrap"
+        minHeight="300px"
         my={4}
         p={3}
       >
-        <FontAwesomeIcon
-          icon={faFilter}
-          size="5x"
-        />
+        <NoResultIcon color="primary">filter_alt</NoResultIcon>
         <Box
           display="flex"
           flexDirection="column"
