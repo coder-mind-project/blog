@@ -60,7 +60,7 @@ const ArticlesList = (props) => {
       setIsLoading(true);
       setLoad(false);
 
-      const searchTerm = search || getQueryStringKey();
+      const searchTerm = search || getQueryStringKey() || '';
       const url = `/articles?query=${searchTerm}&skip=${skip}&limit=${limit}`;
 
       await axios(url).then((res) => {
