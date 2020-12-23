@@ -150,7 +150,7 @@ const ArticlesList = (props) => {
         <ErrorResult visible={error && !isLoading} />
         <LoadMore
           isLoading={Boolean(isLoading && articles.length)}
-          visible={existMore && articles.length}
+          visible={Boolean(existMore && articles.length)}
           onLoad={loadMore}
         />
       </ArticleListContainer>
