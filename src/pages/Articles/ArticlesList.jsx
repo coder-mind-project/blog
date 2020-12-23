@@ -133,11 +133,6 @@ const ArticlesList = (props) => {
               { articles.map((article) => (
                 <ArticleItem article={article} key={article.uri}/>
               ))}
-              <LoadMore
-                isLoading={Boolean(isLoading && articles.length)}
-                visible={existMore}
-                onLoad={loadMore}
-              />
             </Box>
         }
         { isLoading && !Boolean(articles.length) &&
@@ -149,7 +144,12 @@ const ArticlesList = (props) => {
           visible={!isLoading && !Boolean(articles.length) && !error }
         />
         <ErrorResult visible={error && !isLoading} />
-      </Grid>
+        <LoadMore
+          isLoading={Boolean(isLoading && articles.length)}
+          visible={existMore && articles.length}
+          onLoad={loadMore}
+        />
+      </ArticleListContainer>
     </ArticlesListContainer>
   );
 };
