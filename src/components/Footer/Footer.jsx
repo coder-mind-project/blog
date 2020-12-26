@@ -1,24 +1,21 @@
 import React from 'react';
 import {Grid, Box, Typography} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
 
-import {styles} from './styles/Footer';
+import {fakeLink} from './styles/Footer';
+import FakeLink from './FakeLink';
+
 import {
   FooterContainer,
   FooterIconArea,
   FooterIconDescription,
   FooterIcon,
   FooterBox,
-} from './styles';
-
-const useStyles = makeStyles(styles);
+  FooterFakeLink,
+} from '../styles';
 
 const Footer = () => {
-  const classes = useStyles();
-
   return (
     <Grid item xs={12}>
       <FooterContainer component="footer">
@@ -43,15 +40,15 @@ const Footer = () => {
             </FooterIconDescription>
           </FooterBox>
           <FooterBox>
-            <a href="https://github.com/coder-mind-project" rel="noopener noreferrer" target="_blank" className={classes.fakeLink}>
+            <FakeLink href="https://github.com/coder-mind-project" target="_blank" rel="noopener noreferrer" styles={fakeLink}>
               <FontAwesomeIcon icon={faGithub} size="2x"/>
-            </a>
-            <Link to="/privacidade" className={classes.fakeLink}>
+            </FakeLink>
+            <FooterFakeLink to="/privacidade">
               <Typography component="span" variant="body1">
                 Políticas de Uso
               </Typography>
-            </Link>
-            <Link to="/sobre" className={classes.fakeLink}> Sobre </Link>
+            </FooterFakeLink>
+            <FooterFakeLink to="/sobre"> Sobre </FooterFakeLink>
           </FooterBox>
         </Box>
       </FooterContainer>

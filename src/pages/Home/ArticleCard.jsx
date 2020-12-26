@@ -1,27 +1,21 @@
 import React from 'react';
 import {
-  Card,
   CardContent,
   Box,
   Typography,
   Divider,
-  makeStyles,
 } from '@material-ui/core';
 
 import DefaultImg from '../../assets/img_not_found_768.png';
 
-import {styles} from './styles/ArticleCard';
+import {ArticleCardContainer} from './styles';
 import {articleType} from '../../types';
-
-const useStyles = makeStyles(styles);
 
 const ArticleCard = (props) => {
   const {article} = props;
 
-  const classes = useStyles();
-
   return (
-    <Card className={classes.cardContainer} variant="outlined">
+    <ArticleCardContainer variant="outlined">
       <CardContent>
         <Box display="flex" justifyContent="center" alignItems="center" mb={2}>
           <img
@@ -41,7 +35,7 @@ const ArticleCard = (props) => {
           {article.description}
         </Typography>
       </CardContent>
-    </Card>
+    </ArticleCardContainer>
   );
 };
 
