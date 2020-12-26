@@ -1,4 +1,5 @@
 import {createMuiTheme} from '@material-ui/core';
+import {COLORS} from '../config/constants/colors';
 
 /**
  * The standard style for application
@@ -12,10 +13,10 @@ export function standard(theme) {
     palette: {
       type: theme || 'light',
       primary: {
-        main: '#8a05be',
+        main: COLORS.primary,
       },
       secondary: {
-        main: '#f44336',
+        main: COLORS.secondary,
       },
       action: {
         disabled: 'rgb(0,0,0)',
