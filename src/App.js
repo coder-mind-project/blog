@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <Box className="App">
+      <Box>
         <Router>
           <Menu />
           <ScrollToTop>
