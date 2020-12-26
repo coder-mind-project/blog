@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Box,
-  makeStyles,
   useMediaQuery,
 } from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
@@ -12,15 +11,12 @@ import HomeSearch from './HomeSearch';
 import BoostedArticles from './BoostedArticles';
 import LatestArticles from './LatestArticles';
 
-import {styles} from './styles/Home';
-
-
-const useStyles = makeStyles(styles);
+import {sizes} from '../../config/constants/devices';
+import {ArticlesContainer} from './styles';
 
 const Home = () => {
   const history = useHistory();
-  const matches = useMediaQuery('(max-width: 768px)');
-  const classes = useStyles();
+  const matches = useMediaQuery(`(max-width: ${sizes.tablet})`);
 
   const searchArticles = (searchValue) => {
     if (searchValue) {
@@ -30,7 +26,7 @@ const Home = () => {
 
   return (
     <Box>
-      <Box className={classes.articlesGrid}>
+      <ArticlesContainer>
         <LatestArticles />
         {matches && <Divider />}
         {matches &&
@@ -40,7 +36,7 @@ const Home = () => {
         }
         {matches && <Divider />}
         <BoostedArticles />
-      </Box>
+      </ArticlesContainer>
       {!matches && <HomeSearch onRequestSearch={searchArticles} />}
       <FloatingButton action={() => window.scrollTo(0, 0)} />
     </Box>

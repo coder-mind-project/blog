@@ -35,12 +35,19 @@ export const HudTopBarSearch = styled(Grid)({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  padding: ' 0 25px 25px 0',
+  padding: '0 20px',
   minHeight: '100px',
 });
 
 export const IconButton = styled(Icon)({
   marginRight: 5,
+});
+
+export const ArticleListContainer = styled(Grid)({
+  minHeight: '450px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
 });
 
 export const ArticleBox = styled(Box)({
@@ -101,4 +108,9 @@ export const ArticleDetails = styled(Box)({
   [devices.laptop]: {
     justifyContent: 'center',
   },
+});
+
+export const NoResultIcon = styled(Icon)({
+  fontSize: '5rem',
+  margin: '0 10px',
 });

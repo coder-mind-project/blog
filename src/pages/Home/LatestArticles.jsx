@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
 
-import {Grid, Box, Typography, makeStyles} from '@material-ui/core';
+import {Box, Typography} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 import ArticleCard from './ArticleCard';
 import ArticleCardPlaceholder from './placeholders/ArticleCardPlaceholder';
-import {styles} from './styles/LatestArticles';
 
-const useStyles = makeStyles(styles);
+import {LatestArticlesContainer, LatestArticlesCardContainer} from './styles';
 
 const LatestArticles = () => {
   const [articles, setArticles] = useState([]);
@@ -17,13 +16,12 @@ const LatestArticles = () => {
   const [limit] = useState(8);
   const [load, setLoad] = useState(true);
   const [loading, setLoading] = useState(true);
-  const classes = useStyles();
 
 
   useEffect(() => {
     const getLatestArticles = async () => {
       setLoading(true);
-      const url = `/articles?&skip=${skip}&limit=${limit}`;
+      const url = `/articles/published?&skip=${skip}&limit=${limit}`;
       await axios(url).then((res) => {
         setLoad(false);
         setArticles(res.data.articles);
@@ -38,7 +36,7 @@ const LatestArticles = () => {
   }, [load, loading, articles, skip, limit]);
 
   return (
-    <Grid item xs={12} md={7} className={classes.latestArticlesGrid}>
+    <LatestArticlesContainer item xs={12} md={7}>
       <Box display="flex" justifyContent="center">
         <Box
           display="flex"
@@ -73,7 +71,7 @@ const LatestArticles = () => {
                 </Box>
             }
             { !loading && Boolean(articles.length) &&
-              <Box
+              <LatestArticlesCardContainer
                 display="flex"
                 justifyContent="flex-start"
                 alignItems="center"
@@ -90,12 +88,12 @@ const LatestArticles = () => {
                     </Link>
                   ),
                 )}
-              </Box>
+              </LatestArticlesCardContainer>
             }
           </Box>
         </Box>
       </Box>
-    </Grid>
+    </LatestArticlesContainer>
   );
 };
 

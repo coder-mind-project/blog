@@ -6,7 +6,6 @@ import {
   Box,
   Grid,
   Icon,
-  IconButton,
   Typography,
 } from '@material-ui/core';
 
@@ -29,8 +28,8 @@ import {locationType} from '../../types/location';
 import {
   ArticlesListContainer,
   HudTopBar,
-  HudTopBarIcon,
   HudTopBarSearch,
+  ArticleListContainer,
 } from './styles';
 
 const ArticlesList = (props) => {
@@ -53,6 +52,16 @@ const ArticlesList = (props) => {
     setLoad(true);
   };
 
+  const changeSearchState = () => {
+    setArticles([]);
+    setLoad(true);
+  };
+
+  const resetSearchState = () => {
+    setSearch('');
+    changeSearchState();
+  };
+
   useEffect(() => {
     const getQueryStringKey = () => queryString.parse(location.search).q;
 
@@ -60,7 +69,7 @@ const ArticlesList = (props) => {
       setIsLoading(true);
       setLoad(false);
 
-      const searchTerm = search || getQueryStringKey();
+      const searchTerm = search || getQueryStringKey() || '';
       const url = `/articles?query=${searchTerm}&skip=${skip}&limit=${limit}`;
 
       await axios(url).then((res) => {
@@ -91,17 +100,12 @@ const ArticlesList = (props) => {
   return (
     <ArticlesListContainer container>
       <HudTopBar item xs={12}>
-        <HudTopBarIcon item xs={2} sm={1}>
-          <IconButton>
-            <Icon color="primary">filter_list</Icon>
-          </IconButton>
-        </HudTopBarIcon>
-        <HudTopBarSearch item xs={10} sm={11}>
+        <HudTopBarSearch item xs={12}>
           <SearchBar
             value={search}
             onChange={setSearch}
-            onRequestSearch={() => setLoad(true)}
-            onCancelSearch={() => setSearch('')}
+            onRequestSearch={changeSearchState}
+            onCancelSearch={resetSearchState}
             placeholder="O que você está procurando?"
             searchIcon={
               (<Icon color="primary">search</Icon>)
@@ -127,17 +131,12 @@ const ArticlesList = (props) => {
         </Box>
       </Grid>
       <CustomDivider />
-      <Grid item xs={12}>
+      <ArticleListContainer item xs={12}>
         { Boolean(articles.length) &&
             <Box>
               { articles.map((article) => (
                 <ArticleItem article={article} key={article.uri}/>
               ))}
-              <LoadMore
-                isLoading={Boolean(isLoading && articles.length)}
-                visible={existMore}
-                onLoad={loadMore}
-              />
             </Box>
         }
         { isLoading && !Boolean(articles.length) &&
@@ -149,7 +148,12 @@ const ArticlesList = (props) => {
           visible={!isLoading && !Boolean(articles.length) && !error }
         />
         <ErrorResult visible={error && !isLoading} />
-      </Grid>
+        <LoadMore
+          isLoading={Boolean(isLoading && articles.length)}
+          visible={Boolean(existMore && articles.length)}
+          onLoad={loadMore}
+        />
+      </ArticleListContainer>
     </ArticlesListContainer>
   );
 };
