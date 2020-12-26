@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
 
 import {
-  Grid,
   Box,
   Typography,
-  makeStyles,
 } from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
@@ -12,9 +10,7 @@ import axios from 'axios';
 import ArticleCardPlaceholder from './placeholders/ArticleCardPlaceholder';
 
 import ArticleCard from './ArticleCard';
-import {styles} from './styles/BoostedArticles';
-
-const useStyles = makeStyles(styles);
+import {BoostedArticleContainer} from './styles';
 
 const BoostedArticles = () => {
   const [boostedArticles, setBoostedArticles] = useState([]);
@@ -23,8 +19,6 @@ const BoostedArticles = () => {
   const [limit] = useState(4);
   const [load, setLoad] = useState(true);
   const [loading, setLoading] = useState(true);
-
-  const classes = useStyles();
 
   useEffect(() => {
     const getBoostedArticles = async () => {
@@ -44,7 +38,7 @@ const BoostedArticles = () => {
   }, [load, loading, boostedArticles, skip, limit]);
 
   return (
-    <Grid item xs={12} md={5} className={classes.boostedArticlesGrid}>
+    <BoostedArticleContainer item xs={12} md={5}>
       <Box display="flex" justifyContent="center">
         <Box
           display="flex"
@@ -105,7 +99,7 @@ const BoostedArticles = () => {
           </Box>
         </Box>
       </Box>
-    </Grid>
+    </BoostedArticleContainer>
   );
 };
 

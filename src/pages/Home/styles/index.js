@@ -1,4 +1,4 @@
-import {styled, Card} from '@material-ui/core';
+import {styled, Card, Grid} from '@material-ui/core';
 
 export const ArticleCardContainer = styled(Card)({
   'color': '#444',
@@ -12,4 +12,11 @@ export const ArticleCardContainer = styled(Card)({
     textDecoration: 'none',
   },
   'margin': 20,
+});
+
+export const BoostedArticleContainer = styled(Grid)({
+  display: 'flex',
+  justifyContent: 'end',
+  flexWrap: 'wrap',
+  padding: '1rem 2.5rem',
 });
