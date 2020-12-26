@@ -33,6 +33,7 @@ const About = () => {
   const [isSending, setIsSending] = useState(false);
   const [showSuccessSend, setShowSuccessSend] = useState(false);
   const [showErrorSend, setShowErrorSend] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const dismissSnackBar = () => {
     setShowErrorSend(false);
@@ -52,7 +53,6 @@ const About = () => {
   };
 
   const sendMessage = async (event) => {
-    debugger;
     if (event) {
       event.preventDefault();
     }
@@ -66,10 +66,11 @@ const About = () => {
     }).catch((error) => {
       const msg =
         error.response && error.response.data ?
-            error.response.data :
+            error.response.data.message :
             'Ops, ocorreu um erro desconhecido. Que tal tentar novamente?';
 
-      setShowErrorSend(msg);
+      setShowErrorSend(true);
+      setErrorMessage(msg);
     });
 
     setIsSending(false);
@@ -190,6 +191,7 @@ const About = () => {
         </Box>
         <Typography component="p" variant="body1">
           Basta nos informar seu e-mail de contato e incluir sua mensagem.
+          Você receberá uma resposta através do endereço de e-mail informado.
         </Typography>
         <Typography component="p" variant="body1">
           Pode ficar tranquilo, qualquer tipo de dado fornecido
@@ -250,10 +252,7 @@ const About = () => {
           isOpen={Boolean(showErrorSend)}
           handleClose={handleClose}
           variant="error"
-          text={`
-            Ocorreu um erro ao enviar a mensagem,
-            tente novamente mais tarde
-          `}
+          text={errorMessage}
         />
       </Box>
     </Container>
