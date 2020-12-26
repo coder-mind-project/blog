@@ -113,5 +113,4 @@ export const ArticleDetails = styled(Box)({
 export const NoResultIcon = styled(Icon)({
   fontSize: '5rem',
   margin: '0 10px',
-})
-;
+});
