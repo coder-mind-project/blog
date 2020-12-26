@@ -1,7 +1,11 @@
 import {styled, Box, Icon, Fab} from '@material-ui/core';
 import {Alert} from '@material-ui/lab';
 
+import {Link} from 'react-router-dom';
+
 import {devices} from '../../config/constants/devices';
+
+import {fakeLink} from '../Footer/styles/Footer';
 
 export const CustomAlert = styled(Alert)({
   alignItems: 'center',
@@ -23,6 +27,10 @@ export const FooterBox = styled(Box)({
     width: '100%',
     margin: (props) => props.disablemargin === 'true' ? 0 : '2rem',
   },
+});
+
+export const FooterFakeLink = styled(Link)({
+  ...fakeLink,
 });
 
 export const FooterIconArea = styled(Box)({

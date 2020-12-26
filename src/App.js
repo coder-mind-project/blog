@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {Box} from '@material-ui/core';
 
 import Menu from './components/Menu.jsx';
-import Footer from './components/Footer.jsx';
+import Footer from './components/Footer/Footer.jsx';
 import Home from './pages/Home/Home.jsx';
 import ArticlesList from './pages/Articles/ArticlesList.jsx';
 import Article from './pages/Articles/Article.jsx';
