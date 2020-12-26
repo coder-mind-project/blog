@@ -35,3 +35,21 @@ export const ArticlesContainer = styled(Box)({
     flexDirection: 'column-reverse',
   },
 });
+
+export const LatestArticlesContainer = styled(Grid)({
+  'display': 'flex',
+  'flexWrap': 'wrap',
+  'padding': '1rem 2.5rem',
+});
+
+export const LatestArticlesCardContainer = styled(Box)({
+  'display': 'flex',
+  'justifyContent': 'flex-start',
+  'alignItems': 'center',
+  'flexWrap': 'wrap',
+  '@media (max-width: 678px)': {
+    justifyContent: 'center',
+  },
+});
+
+
