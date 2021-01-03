@@ -7,7 +7,6 @@ import {
   Snackbar,
   Icon,
   IconButton,
-  Typography,
 } from '@material-ui/core';
 
 import axios from 'axios';
@@ -18,13 +17,7 @@ import ArticleContent from './ArticleContent';
 import ArticleComments from './ArticleComments';
 import ArticleFooter from './ArticleFooter';
 
-import {
-  ArticleContainer,
-  ArticleTitleArea,
-  ArticleDescriptionArea,
-} from './styles';
-
-import '../css/Article.css';
+import {ArticleContainer} from './styles';
 
 const Article = (props) => {
   const {match} = props;
@@ -40,7 +33,8 @@ const Article = (props) => {
       const url = `/articles/${resource}`;
       setIsLoading(true);
       await axios(url).then((response) => {
-        setArticle(response.data);
+        const {data} = response;
+        setArticle({...data, publishedAt: new Date(data.publishedAt)});
         setIsError(false);
       }).catch(() => setIsError(true));
       setIsLoading(false);
@@ -56,12 +50,6 @@ const Article = (props) => {
     <ArticleContainer>
       { article && !isLoading &&
         <Grid item xs={12} className="article-content">
-          <ArticleTitleArea>
-            <Typography component="h1" variant="h3">{article.title}</Typography>
-          </ArticleTitleArea>
-          <ArticleDescriptionArea>
-            <Typography component="h2" variant="body1">{article.description}</Typography>
-          </ArticleDescriptionArea>
           <ArticleHeader article={article}/>
           <ArticleContent article={article} />
           <ArticleFooter />
