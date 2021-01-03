@@ -1,7 +1,9 @@
 import {styled, Grid, Icon, Box} from '@material-ui/core';
 import {Link} from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-import {devices} from '../../../config/constants/devices';
+import {devices, COLORS} from '../../../config/constants';
 
 export const SampleContainer = styled(Grid)({
   display: (props) => props.visible === 'true' ? 'block' : 'none',
@@ -123,6 +125,8 @@ export const ArticleImageHeaderContainer = styled(Grid)({
   maxHeight: '300px',
   width: '100%',
   overflow: 'hidden',
+  marginTop: '1rem',
+  marginBottom: '5rem',
   boxShadow: '0px 4px 4px gray',
 });
 
@@ -148,4 +152,25 @@ export const ArticleDescriptionArea = styled(Grid)({
   alignItems: 'center',
   padding: '10px 15px',
   textAlign: 'center',
+});
+
+export const ArticleTextContent = styled(ReactMarkdown)({
+  fontSize: '1.4rem',
+  textAlign: 'justify',
+  minHeight: '250px',
+});
+
+export const ArticleFooterContainer = styled(Grid)({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: '15px',
+});
+
+export const ArticleFooterIconButton = styled(FontAwesomeIcon)({
+  'cursor': (props) => props.state === 'disabled' ? 'normal' : 'pointer',
+  'color': (props) => props.state === 'disabled' ? COLORS.disabled : COLORS.primary,
+  '&:hover': {
+    color: (props) => props.state === 'disabled' ? COLORS.disabled : COLORS.primaryHovered,
+  },
 });
