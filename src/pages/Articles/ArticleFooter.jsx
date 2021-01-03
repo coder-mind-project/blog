@@ -1,11 +1,13 @@
 import React from 'react';
-import {Box, Divider, Tooltip, Typography} from '@material-ui/core';
+import {Box, Tooltip, Typography} from '@material-ui/core';
 
 import {
   faCommentDots,
   faShareAlt,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
+
+import CustomDivider from '../../components/Divider';
 
 import {ArticleFooterContainer, ArticleFooterIconButton} from './styles';
 
@@ -40,9 +42,7 @@ const ArticleFooter = () => {
               </Tooltip>
             </Box>
           </Box>
-          <Box width="100%" my={4}>
-            <Divider />
-          </Box>
+          <CustomDivider />
         </Box>
       </ArticleFooterContainer>
     </Box>
