@@ -1,38 +1,50 @@
 import React from 'react';
-import {Box, Grid, Divider} from '@material-ui/core';
+import {Box, Divider, Tooltip, Typography} from '@material-ui/core';
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faCommentDots,
   faShareAlt,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
 
+import {ArticleFooterContainer, ArticleFooterIconButton} from './styles';
+
 const ArticleFooter = () => {
   return (
     <Box>
-      <Grid item xs={12} className="article-footer">
+      <ArticleFooterContainer item xs={12}>
         <Box p={3} width="100%">
           <Box display="flex" alignItems="center" justifyContent="flex-end" width="100%" my={2}>
             <Box mr={2} ml={2}>
-              <Box>
-                <FontAwesomeIcon icon={faHeart} className="foot-button" color={'#8a05be'} size="2x"/>
-              </Box>
+              <Tooltip title={(<Typography component="span" variant="body2">Em breve você poderá avaliar este artigo!</Typography>)}>
+                <Box>
+                  <ArticleFooterIconButton icon={faHeart} state="disabled" size="2x"/>
+                </Box>
+              </Tooltip>
             </Box>
             <Box mr={2} ml={2}>
-              <Box>
-                <FontAwesomeIcon icon={faShareAlt} className="foot-button" color="#8a05be" size="2x"/>
-              </Box>
+              <Tooltip
+                title={(<Typography component="span" variant="body2">Em breve você poderá compartilhar este artigo!</Typography>)}
+                placement="top"
+              >
+                <Box>
+                  <ArticleFooterIconButton icon={faShareAlt} state="disabled" size="2x"/>
+                </Box>
+              </Tooltip>
             </Box>
             <Box mr={2} ml={2}>
-              <FontAwesomeIcon icon={faCommentDots} className="foot-button" color="#8a05be" size="2x"/>
+              <Tooltip title={(<Typography component="span" variant="body2">Em breve você realizar um comentário neste artigo</Typography>)}>
+                <Box>
+                  <ArticleFooterIconButton icon={faCommentDots} state="disabled" size="2x"/>
+                </Box>
+              </Tooltip>
             </Box>
           </Box>
           <Box width="100%" my={4}>
             <Divider />
           </Box>
         </Box>
-      </Grid>
+      </ArticleFooterContainer>
     </Box>
   );
 };
