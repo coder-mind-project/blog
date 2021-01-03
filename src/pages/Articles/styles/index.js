@@ -1,7 +1,9 @@
 import {styled, Grid, Icon, Box} from '@material-ui/core';
 import {Link} from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-import {devices} from '../../../config/constants/devices';
+import {devices, COLORS} from '../../../config/constants';
 
 export const SampleContainer = styled(Grid)({
   display: (props) => props.visible === 'true' ? 'block' : 'none',
@@ -113,4 +115,103 @@ export const ArticleDetails = styled(Box)({
 export const NoResultIcon = styled(Icon)({
   fontSize: '5rem',
   margin: '0 10px',
+});
+
+export const ArticleContainer = styled(Grid)({
+  marginTop: 80,
+});
+
+export const ArticleImageHeaderContainer = styled(Grid)({
+  maxHeight: '300px',
+  width: '100%',
+  overflow: 'hidden',
+  marginTop: '1rem',
+  marginBottom: '5rem',
+  boxShadow: '0px 4px 4px gray',
+});
+
+export const ArticleHudHeader = styled(Grid)({
+  padding: '15px',
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  fontSize: '.9rem',
+});
+
+export const ArticleTitleArea = styled(Grid)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '20px 15px 2px 15px',
+  textAlign: 'center',
+});
+
+export const ArticleDescriptionArea = styled(Grid)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '10px 15px',
+  textAlign: 'center',
+});
+
+export const ArticleTextContent = styled(ReactMarkdown)({
+  fontSize: '1.4rem',
+  textAlign: 'justify',
+  minHeight: '250px',
+});
+
+export const ArticleTextContentPlaceholder = styled(Box)({
+  padding: '4rem 1rem',
+  minHeight: '600px',
+});
+
+export const ArticleTextContentErrorResultContainer = styled(Box)({
+  minHeight: '650px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
+export const ArticleFooterContainer = styled(Grid)({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: '15px',
+});
+
+export const ArticleFooterIconButton = styled(FontAwesomeIcon)({
+  'cursor': (props) => props.state === 'disabled' ? 'normal' : 'pointer',
+  'color': (props) => props.state === 'disabled' ? COLORS.disabled : COLORS.primary,
+  '&:hover': {
+    color: (props) => props.state === 'disabled' ? COLORS.disabled : COLORS.primaryHovered,
+  },
+});
+
+export const ArticleErrorResultIconContainer = styled(Box)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: 4,
+  fontSize: '3rem',
+  [devices.laptop]: {
+    width: '100%',
+    marginTop: 25,
+    marginBottom: 25,
+  },
+});
+
+export const ArticleErrorResultIcon = styled(NoResultIcon)({
+  fontSize: '3rem',
+});
+
+export const ArticleErrorResultMessageContainer = styled(Box)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  [devices.laptop]: {
+    width: '100%',
+    marginTop: 20,
+    marginBottom: 20,
+  },
 });

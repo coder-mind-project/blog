@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Box, Button, Icon, Typography} from '@material-ui/core';
+import {Box, Button, Typography} from '@material-ui/core';
 
-import {SampleContainer} from './styles';
+import {
+  SampleContainer,
+  ArticleErrorResultIconContainer,
+  ArticleErrorResultIcon,
+  ArticleErrorResultMessageContainer,
+} from './styles';
 
 const ErrorResult = (props) => {
-  const {visible} = props;
+  const {visible, message} = props;
 
   return (
     <SampleContainer item xs={12} visible={visible.toString()}>
@@ -25,20 +30,14 @@ const ErrorResult = (props) => {
           m={2}
         >
           <Box display="flex" alignItems="center" flexWrap="wrap">
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              className="error-icon-area"
-            >
-              <Icon color="primary" className="error-icon">healing</Icon>
-            </Box>
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <Typography component="h2" variant="h4">
-                Ops! ocorreu um erro ao buscar nossos artigos.
-                Já tentou atualizar a página?
+            <ArticleErrorResultIconContainer>
+              <ArticleErrorResultIcon color="primary">healing</ArticleErrorResultIcon>
+            </ArticleErrorResultIconContainer>
+            <ArticleErrorResultMessageContainer>
+              <Typography component="h2" variant="h5">
+                {message}
               </Typography>
-            </Box>
+            </ArticleErrorResultMessageContainer>
           </Box>
           <Box display="flex" flexDirection="column" width="100%" mt={3}>
             <Button
@@ -57,7 +56,7 @@ const ErrorResult = (props) => {
               variant="contained"
               onClick={() => window.location.href = '/sobre#contact'}
             >
-                Reportar bug
+              Fale conosco
             </Button>
           </Box>
         </Box>
@@ -68,10 +67,13 @@ const ErrorResult = (props) => {
 
 ErrorResult.propTypes = {
   visible: PropTypes.bool,
+  message: PropTypes.string,
 };
 
-ErrorResult.defaultProp = {
+ErrorResult.defaultProps = {
   visible: false,
+  message: `Ops! ocorreu um erro ao buscar nossos artigos.
+  Já tentou atualizar a página?`,
 };
 
 export default ErrorResult;

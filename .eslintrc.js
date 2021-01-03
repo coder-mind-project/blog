@@ -24,6 +24,6 @@ module.exports = {
     'react/jsx-curly-newline': 'off',
     'react/jsx-filename-extension': 'off',
     'react/react-in-jsx-scope': 'off',
-
+    'max-len': ['error', {'code': 150}],
   },
 };
