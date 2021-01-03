@@ -13,6 +13,7 @@ import {
 import axios from 'axios';
 
 import Avatar from 'react-avatar';
+import ReactMarkdown from 'react-markdown';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
@@ -98,7 +99,9 @@ const Article = (props) => {
                 <img src={`${article.headerImg}`} alt={article.longDescription}/>
               </Grid>
           }
-          <Grid item xs={12} id="article-content">{article && article.content}</Grid>
+          <ReactMarkdown>
+            {article && article.content}
+          </ReactMarkdown>
           <Grid item xs={12} className="article-footer">
             <Box p={3} display="flex" alignItems="center">
               <Box mr={2} ml={2}>
@@ -117,24 +120,24 @@ const Article = (props) => {
             </Box>
           </Grid>
           { false &&
-                            <Divider />
+            <Divider />
           }
           { false &&
-                            <Grid item xs={12} className="more_related">
-                              <Box className="more_related_title" display="flex" alignItems="center">
-                                <Box display="flex" alignItems="center" mr={1}>
-                                  <Box m={1}>
-                                    <FontAwesomeIcon icon={faPaperclip} size="1x" color="#8a05be" id="related-articles" tabIndex="-1" />
-                                  </Box>
-                                  <Box m={1}>
-                                    <FontAwesomeIcon icon={faFileCode} size="2x" color="#8a05be" />
-                                  </Box>
-                                </Box>
-                                <h2>Conteúdos relacionados</h2>
-                              </Box>
-                              <Grid item xs={12} className="more_related_content">
-                              </Grid>
-                            </Grid>
+            <Grid item xs={12} className="more_related">
+              <Box className="more_related_title" display="flex" alignItems="center">
+                <Box display="flex" alignItems="center" mr={1}>
+                  <Box m={1}>
+                    <FontAwesomeIcon icon={faPaperclip} size="1x" color="#8a05be" id="related-articles" tabIndex="-1" />
+                  </Box>
+                  <Box m={1}>
+                    <FontAwesomeIcon icon={faFileCode} size="2x" color="#8a05be" />
+                  </Box>
+                </Box>
+                <h2>Conteúdos relacionados</h2>
+              </Box>
+              <Grid item xs={12} className="more_related_content">
+              </Grid>
+            </Grid>
           }
           <Divider />
           {/* <Grid item xs={12} className="comments">
