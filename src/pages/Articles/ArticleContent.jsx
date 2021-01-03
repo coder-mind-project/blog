@@ -1,10 +1,9 @@
 import React from 'react';
 import {Box} from '@material-ui/core';
-import ReactMarkdown from 'react-markdown';
 
 import {articleType} from '../../types';
 
-import {ArticleImageHeaderContainer} from './styles';
+import {ArticleImageHeaderContainer, ArticleTextContent} from './styles';
 
 const ArticleContent = (props) => {
   const {article} = props;
@@ -20,9 +19,9 @@ const ArticleContent = (props) => {
           />
         </ArticleImageHeaderContainer>
       }
-      <ReactMarkdown>
+      <ArticleTextContent>
         {article && article.content}
-      </ReactMarkdown>
+      </ArticleTextContent>
     </Box>
   );
 };
