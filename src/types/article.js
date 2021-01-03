@@ -2,6 +2,7 @@ import {
   shape,
   string,
   oneOfType,
+  instanceOf,
 } from 'prop-types';
 
 import {themeType} from './theme';
@@ -22,7 +23,7 @@ export const articleType = shape({
   relatedRepositoryType: string,
   relatedRepository: string,
   uri: string,
-  publishedAt: oneOfType([Date, string]),
+  publishedAt: oneOfType([instanceOf(Date), string]),
   theme: oneOfType([themeType]),
   category: oneOfType([categoryType]),
 });
