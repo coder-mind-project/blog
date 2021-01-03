@@ -165,6 +165,13 @@ export const ArticleTextContentPlaceholder = styled(Box)({
   minHeight: '600px',
 });
 
+export const ArticleTextContentErrorResultContainer = styled(Box)({
+  minHeight: '650px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
 export const ArticleFooterContainer = styled(Grid)({
   display: 'flex',
   alignItems: 'center',
@@ -177,5 +184,34 @@ export const ArticleFooterIconButton = styled(FontAwesomeIcon)({
   'color': (props) => props.state === 'disabled' ? COLORS.disabled : COLORS.primary,
   '&:hover': {
     color: (props) => props.state === 'disabled' ? COLORS.disabled : COLORS.primaryHovered,
+  },
+});
+
+export const ArticleErrorResultIconContainer = styled(Box)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: 4,
+  fontSize: '3rem',
+  [devices.laptop]: {
+    width: '100%',
+    marginTop: 25,
+    marginBottom: 25,
+  },
+});
+
+export const ArticleErrorResultIcon = styled(NoResultIcon)({
+  fontSize: '3rem',
+});
+
+export const ArticleErrorResultMessageContainer = styled(Box)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  [devices.laptop]: {
+    width: '100%',
+    marginTop: 20,
+    marginBottom: 20,
   },
 });
