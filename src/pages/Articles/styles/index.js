@@ -114,3 +114,38 @@ export const NoResultIcon = styled(Icon)({
   fontSize: '5rem',
   margin: '0 10px',
 });
+
+export const ArticleContainer = styled(Grid)({
+  marginTop: 80,
+});
+
+export const ArticleImageHeaderContainer = styled(Grid)({
+  maxHeight: '300px',
+  width: '100%',
+  overflow: 'hidden',
+  boxShadow: '0px 4px 4px gray',
+});
+
+export const ArticleHudHeader = styled(Grid)({
+  padding: '15px',
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  fontSize: '.9rem',
+});
+
+export const ArticleTitleArea = styled(Grid)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '20px 15px 2px 15px',
+  textAlign: 'center',
+});
+
+export const ArticleDescriptionArea = styled(Grid)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '10px 15px',
+  textAlign: 'center',
+});
