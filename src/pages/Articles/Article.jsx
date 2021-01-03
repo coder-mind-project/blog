@@ -11,6 +11,7 @@ import {
 
 import axios from 'axios';
 
+import ArticlePlaceholder from './placeholders/ArticlePlaceholder';
 import FloatingButton from '../../components/FloatingButton.jsx';
 import ArticleHeader from './ArticleHeader';
 import ArticleContent from './ArticleContent';
@@ -48,30 +49,18 @@ const Article = (props) => {
 
   return (
     <ArticleContainer>
-      { article && !isLoading &&
+      { isLoading &&
+        <ArticleContainer>
+          <ArticlePlaceholder />
+        </ArticleContainer>
+      }
+      { !isLoading &&
         <Grid item xs={12} className="article-content">
           <ArticleHeader article={article}/>
           <ArticleContent article={article} />
           <ArticleFooter />
           <ArticleComments />
         </Grid>
-      }
-      { isLoading &&
-        <ArticleContainer>
-          <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" height="100vh">
-            <figure>
-              <img src={null} alt="Carregando..."/>
-              <p>Carregando seu artigo, por favor aguarde...</p>
-            </figure>
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <small
-                className="refer"
-              >
-                                Powered by <a href="https://loading.io"
-                  rel="noopener noreferrer" target="_blank">loading.io</a></small>
-            </Box>
-          </Box>
-        </ArticleContainer>
       }
       { isError && !isLoading &&
         <ArticleContainer>

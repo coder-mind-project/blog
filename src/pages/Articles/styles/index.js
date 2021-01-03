@@ -160,6 +160,11 @@ export const ArticleTextContent = styled(ReactMarkdown)({
   minHeight: '250px',
 });
 
+export const ArticleTextContentPlaceholder = styled(Box)({
+  padding: '4rem 1rem',
+  minHeight: '600px',
+});
+
 export const ArticleFooterContainer = styled(Grid)({
   display: 'flex',
   alignItems: 'center',
