@@ -7,6 +7,8 @@
 ![contributions-welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
 ![license-BS3](https://img.shields.io/badge/license-BSD%203-green)
 
+> This project is no longer maintained and will no longer be updated.
+
 ## Contact information:
 
 Owner: Coder Mind
